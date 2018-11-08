@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": false,
+    "target": "es5",
+    "rootDir": "src",
+    "lib": [
+      "esnext"
+    ],
+    "baseUrl": ".",
+    "outDir": "lib",
+    "declaration": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

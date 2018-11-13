@@ -2,8 +2,8 @@
   "name": "nodejs-assistant",
   "description": "Google Assistant SDK for Node.js",
   "version": "0.1.1",
-  "main": "lib/assistant.js",
-  "types": "lib/assistant.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
   "scripts": {

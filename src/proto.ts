@@ -20,16 +20,16 @@ export namespace EmbeddedAssistantPb {
     // responses in the first gRPC message could be:
     //
     // *   AssistRequest.config
-    // *   AssistRequest.audio_in
-    // *   AssistRequest.audio_in
-    // *   AssistRequest.audio_in
-    // *   AssistRequest.audio_in
-    // *   AssistResponse.event_type.END_OF_UTTERANCE
-    // *   AssistResponse.speech_results.transcript "add to my shopping list"
-    // *   AssistResponse.dialog_state_out.microphone_mode.DIALOG_FOLLOW_ON
-    // *   AssistResponse.audio_out
-    // *   AssistResponse.audio_out
-    // *   AssistResponse.audio_out
+    // *   AssistRequest.audioIn
+    // *   AssistRequest.audioIn
+    // *   AssistRequest.audioIn
+    // *   AssistRequest.audioIn
+    // *   AssistResponse.eventType.END_OF_UTTERANCE
+    // *   AssistResponse.speechResults.transcript "add to my shopping list"
+    // *   AssistResponse.dialogStateOut.microphoneMode.DIALOG_FOLLOW_ON
+    // *   AssistResponse.audioOut
+    // *   AssistResponse.audioOut
+    // *   AssistResponse.audioOut
     //
     //
     // The user then says *bagels* and the Assistant responds
@@ -38,26 +38,26 @@ export namespace EmbeddedAssistantPb {
     // responses, such as:
     //
     // *   AssistRequest.config
-    // *   AssistRequest.audio_in
-    // *   AssistRequest.audio_in
-    // *   AssistRequest.audio_in
-    // *   AssistResponse.event_type.END_OF_UTTERANCE
-    // *   AssistResponse.dialog_state_out.microphone_mode.CLOSE_MICROPHONE
-    // *   AssistResponse.audio_out
-    // *   AssistResponse.audio_out
-    // *   AssistResponse.audio_out
-    // *   AssistResponse.audio_out
+    // *   AssistRequest.audioIn
+    // *   AssistRequest.audioIn
+    // *   AssistRequest.audioIn
+    // *   AssistResponse.eventType.END_OF_UTTERANCE
+    // *   AssistResponse.dialogStateOut.microphoneMode.CLOSE_MICROPHONE
+    // *   AssistResponse.audioOut
+    // *   AssistResponse.audioOut
+    // *   AssistResponse.audioOut
+    // *   AssistResponse.audioOut
     //
     // Although the precise order of responses is not guaranteed, sequential
-    // `AssistResponse.audio_out` messages will always contain sequential portions
+    // `AssistResponse.audioOut` messages will always contain sequential portions
     // of audio.
     assist(): ClientDuplexStream<EmbeddedAssistantPb.AssistRequest, EmbeddedAssistantPb.AssistResponse>;
   }
 
   // The top-level message sent by the client. Clients must send at least two, and
   // typically numerous `AssistRequest` messages. The first message must
-  // contain a `config` message and must not contain `audio_in` data. All
-  // subsequent messages must contain `audio_in` data and must not contain a
+  // contain a `config` message and must not contain `audioIn` data. All
+  // subsequent messages must contain `audioIn` data and must not contain a
   // `config` message.
   export type AssistRequest = {
 
@@ -71,8 +71,8 @@ export namespace EmbeddedAssistantPb {
 
     // The audio data to be recognized. Sequential chunks of audio data are sent
     // in sequential `AssistRequest` messages. The first `AssistRequest`
-    // message must not contain `audio_in` data and all subsequent
-    // `AssistRequest` messages must contain `audio_in` data. The audio bytes
+    // message must not contain `audioIn` data and all subsequent
+    // `AssistRequest` messages must contain `audioIn` data. The audio bytes
     // must be encoded as specified in `AudioInConfig`.
     // Audio must be sent at approximately real-time (16000 samples per second).
     // An error will be returned if audio is sent significantly faster or
@@ -126,11 +126,11 @@ export namespace EmbeddedAssistantPb {
     dialogStateOut?: DialogStateOut;
 
     // *Output-only* Debugging info for developer. Only returned if request set
-    // `return_debug_info` to true.
+    // `returnDebugInfo` to true.
     debugInfo?: DebugInfo;
   }
 
-  // Debug info for developer. Only returned if request set `return_debug_info`
+  // Debug info for developer. Only returned if request set `returnDebugInfo`
   // to true.
   export interface DebugInfo {
 
@@ -163,7 +163,7 @@ export namespace EmbeddedAssistantPb {
   } & ({
 
     // Specifies how to process the subsequent incoming audio. Required if
-    // [AssistRequest.audio_in][google.assistant.embedded.v1alpha2.AssistRequest.audio_in] bytes will be provided in subsequent requests.
+    // [AssistRequest.audioIn][google.assistant.embedded.v1alpha2.AssistRequest.audioIn] bytes will be provided in subsequent requests.
     audioInConfig: AudioInConfig;
 
     textQuery?: never;
@@ -197,15 +197,15 @@ export namespace EmbeddedAssistantPb {
     FLAC,
   };
 
-  // Specifies how to process the `audio_in` data that will be provided in
+  // Specifies how to process the `audioIn` data that will be provided in
   // subsequent requests. For recommended settings, see the Google Assistant SDK
   // [best practices](https://developers.google.com/assistant/sdk/guides/service/python/best-practices/audio).
   export interface AudioInConfig {
 
-    // *Required* Encoding of audio data sent in all `audio_in` messages.
+    // *Required* Encoding of audio data sent in all `audioIn` messages.
     encoding: AudioInEncoding;
 
-    // *Required* Sample rate (in Hertz) of the audio data sent in all `audio_in`
+    // *Required* Sample rate (in Hertz) of the audio data sent in all `audioIn`
     // messages. Valid values are from 16000-24000, but 16000 is optimal.
     // For best results, set the sampling rate of the audio source to 16000 Hz.
     // If that's not possible, use the native sample rate of the audio source
@@ -234,15 +234,15 @@ export namespace EmbeddedAssistantPb {
   };
 
   // Specifies the desired format for the server to use when it returns
-  // `audio_out` messages.
+  // `audioOut` messages.
   export interface AudioOutConfig {
 
-    // *Required* The encoding of audio data to be returned in all `audio_out`
+    // *Required* The encoding of audio data to be returned in all `audioOut`
     // messages.
     encoding: AudioOutEncoding;
 
     // *Required* The sample rate in Hertz of the audio data returned in
-    // `audio_out` messages. Valid values are: 16000-24000.
+    // `audioOut` messages. Valid values are: 16000-24000.
     sampleRateHertz: number;
 
     // *Required* Current volume setting of the device's audio output.
@@ -268,7 +268,7 @@ export namespace EmbeddedAssistantPb {
   }
 
   // Specifies the desired format for the server to use when it returns
-  // `screen_out` response.
+  // `screenOut` response.
   export interface ScreenOutConfig {
 
     // Current visual screen-mode for the device while issuing the query.
@@ -279,7 +279,7 @@ export namespace EmbeddedAssistantPb {
   export interface DialogStateIn {
 
     // *Required* This field must always be set to the
-    // [DialogStateOut.conversation_state][google.assistant.embedded.v1alpha2.DialogStateOut.conversation_state] value that was returned in the prior
+    // [DialogStateOut.conversationState][google.assistant.embedded.v1alpha2.DialogStateOut.conversationState] value that was returned in the prior
     // `Assist` RPC. It should only be omitted (field not set) if there was no
     // prior `Assist` RPC because this is the first `Assist` RPC made by this
     // device after it was first setup and/or a factory-default reset.
@@ -288,7 +288,7 @@ export namespace EmbeddedAssistantPb {
     // *Required* Language of the request in
     // [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for example,
     // "en-US"). See [Language Support](https://developers.google.com/assistant/sdk/reference/rpc/languages)
-    // for more information. If you have selected a language for this `device_id`
+    // for more information. If you have selected a language for this `deviceId`
     // using the [Settings](https://developers.google.com/assistant/sdk/reference/assistant-app/assistant-settings)
     // menu in your phone's Google Assistant app, that selection will override
     // this value.
@@ -317,8 +317,8 @@ export namespace EmbeddedAssistantPb {
   export interface DeviceConfig {
 
     // *Required* Unique identifier for the device. The id length must be 128
-    // characters or less. Example: DBCDW098234. This MUST match the device_id
-    // returned from device registration. This device_id is used to match against
+    // characters or less. Example: DBCDW098234. This MUST match the deviceId
+    // returned from device registration. This deviceId is used to match against
     // the user's registered devices to lookup the supported traits and
     // capabilities of this device. This information should not change across
     // device reboots. However, it should not be saved across
@@ -326,7 +326,7 @@ export namespace EmbeddedAssistantPb {
     deviceId: string;
 
     // *Required* Unique identifier for the device model. The combination of
-    // device_model_id and device_id must have been previously associated through
+    // deviceModelId and deviceId must have been previously associated through
     // device registration.
     deviceModelId: string;
   }
@@ -354,7 +354,7 @@ export namespace EmbeddedAssistantPb {
   };
 
   // The Assistant's visual output response to query. Enabled by
-  // `screen_out_config`.
+  // `screenOutConfig`.
   export interface ScreenOut {
   
     // *Output-only* The format of the provided screen data.
@@ -413,13 +413,13 @@ export namespace EmbeddedAssistantPb {
   export interface DialogStateOut {
 
     // *Output-only* Supplemental display text from the Assistant. This could be
-    // the same as the speech spoken in `AssistResponse.audio_out` or it could
+    // the same as the speech spoken in `AssistResponse.audioOut` or it could
     // be some additional information which aids the user's understanding.
     supplementalDisplayText: string;
 
     // *Output-only* State information for the subsequent `Assist` RPC. This
     // value should be saved in the client and returned in the
-    // [`DialogStateIn.conversation_state`](#dialogstatein) field with the next
+    // [`DialogStateIn.conversationState`](#dialogstatein) field with the next
     // `Assist` RPC. (The client does not need to interpret or otherwise use this
     // value.) This information should be saved across device reboots. However,
     // this value should be cleared (not saved in the client) during a
@@ -435,7 +435,7 @@ export namespace EmbeddedAssistantPb {
     // or *Set volume level 4* was recognized, in which case the value will be
     // between 1 and 100 (corresponding to the new volume level of 1% to 100%).
     // Typically, a client should use this volume level when playing the
-    // `audio_out` data, and retain this value as the current volume level and
+    // `audioOut` data, and retain this value as the current volume level and
     // supply it in the `AudioOutConfig` of the next `AssistRequest`. (Some
     // clients may also implement other ways to allow the current volume level to
     // be changed, for example, by providing a knob that the user can turn.)
@@ -446,7 +446,7 @@ export namespace EmbeddedAssistantPb {
   // Debugging parameters for the current request.
   export interface DebugConfig {
 
-    // When this field is set to true, the `debug_info` field in `AssistResponse`
+    // When this field is set to true, the `debugInfo` field in `AssistResponse`
     // may be populated. However it will significantly increase latency of
     // responses. Do not set this field true in production code.
     returnDebugInfo: boolean;

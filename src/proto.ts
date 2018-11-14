@@ -295,7 +295,7 @@ export namespace EmbeddedAssistantPb {
     languageCode: string;
 
     // *Optional* Location of the device where the query originated.
-    deviceLocation?: any;
+    deviceLocation?: DeviceLocation;
 
     // *Optional* If true, the server will treat the request as a new conversation
     // and not use state from the prior request. Set this field to true when the

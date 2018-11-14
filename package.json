@@ -10,6 +10,7 @@
     "build": "rm -rf lib && tsc -p ."
   },
   "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
     "google-auth-library": "^2.0.1",
     "google-proto-files": "^0.17.0",
     "grpc": "^1.16.0"

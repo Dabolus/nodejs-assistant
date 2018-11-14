@@ -1,16 +1,17 @@
 import { ClientDuplexStream } from 'grpc';
-import { embeddedAssistantPb } from './proto';
+import { AssistantLanguage } from './common';
+import { EmbeddedAssistantPb } from './proto';
 
 export class Conversation {
   private _onMessageCallbacks: Function[] = [];
 
   constructor(
-    private _stream: ClientDuplexStream<any, any>,
+    private _stream: ClientDuplexStream<EmbeddedAssistantPb.AssistRequest, EmbeddedAssistantPb.AssistResponse>,
     private _deviceModelId: string,
-    private _deviceInstanceId: string,
-    public locale: string,
+    private _deviceId: string,
+    public locale: AssistantLanguage,
   ) {
-    _stream.on('data', (data: any) => {
+    _stream.on('data', (data: EmbeddedAssistantPb.AssistResponse) => {
       this._onMessageCallbacks.forEach(callback => callback(data));
     });
 }
@@ -20,20 +21,22 @@ export class Conversation {
   }
 
   public send(text: string) {
-    const config = new embeddedAssistantPb.AssistConfig();
-    config.setTextQuery(text);
-    config.setAudioOutConfig(new embeddedAssistantPb.AudioOutConfig());
-    config.getAudioOutConfig().setEncoding(1);
-    config.getAudioOutConfig().setSampleRateHertz(16000);
-    config.getAudioOutConfig().setVolumePercentage(100);
-    config.setDialogStateIn(new embeddedAssistantPb.DialogStateIn());
-    config.setDeviceConfig(new embeddedAssistantPb.DeviceConfig());
-    config.getDialogStateIn().setLanguageCode(this.locale);
-    config.getDeviceConfig().setDeviceModelId(this._deviceModelId);
-    config.getDeviceConfig().setDeviceId(this._deviceInstanceId);
-    const request = new embeddedAssistantPb.AssistRequest();
-    request.setConfig(config);
-    delete request.audio_in;
-    this._stream.write(request);
+    this._stream.write({
+      config: {
+        textQuery: text,
+        audioOutConfig: {
+          encoding: EmbeddedAssistantPb.AudioOutEncoding.LINEAR16,
+          sampleRateHertz: 16000,
+          volumePercentage: 100,
+        },
+        dialogStateIn: {
+          languageCode: this.locale,
+        },
+        deviceConfig: {
+          deviceModelId: this._deviceModelId,
+          deviceId: this._deviceId,
+        },
+      },
+    });
   }
 }

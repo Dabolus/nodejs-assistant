@@ -3,9 +3,8 @@ import protoFiles from 'google-proto-files';
 import { ChannelCredentials, ClientDuplexStream, loadPackageDefinition } from 'grpc';
 
 // Service that implements the Google Assistant API.
-export interface EmbeddedAssistant {
-  // tslint:disable-next-line:no-misused-new
-  new(endpoint: string, credentials: ChannelCredentials): EmbeddedAssistant;
+export declare class EmbeddedAssistant {
+  constructor(endpoint: string, credentials: ChannelCredentials);
 
   // Initiates or continues a conversation with the embedded Assistant Service.
   // Each call performs one round-trip, sending an audio request to the service
@@ -50,7 +49,7 @@ export interface EmbeddedAssistant {
   // Although the precise order of responses is not guaranteed, sequential
   // `AssistResponse.audioOut` messages will always contain sequential portions
   // of audio.
-  assist(): ClientDuplexStream<AssistRequest, AssistResponse>;
+  public assist(): ClientDuplexStream<AssistRequest, AssistResponse>;
 }
 
 // The top-level message sent by the client. Clients must send at least two, and
@@ -513,7 +512,7 @@ export interface DeviceLocation {
 
 const PROTO_ROOT_DIR = protoFiles('..');
 
-export const embeddedAssistantPbPromise: Promise<EmbeddedAssistant> =
+export const embeddedAssistantPbPromise: Promise<typeof EmbeddedAssistant> =
   load('google/assistant/embedded/v1alpha2/embedded_assistant.proto', {
     includeDirs: [PROTO_ROOT_DIR],
   }).then(loadPackageDefinition)

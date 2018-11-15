@@ -2,14 +2,19 @@ import { JWTInput, UserRefreshClient } from 'google-auth-library';
 import * as grpc from 'grpc';
 import { AssistantLanguage, AssistantOptions, AssistantResponse } from './common';
 import { Conversation } from './conversation';
-import { AssistResponse, AudioOutEncoding, EmbeddedAssistant, embeddedAssistantPbPromise } from './proto';
+import {
+  AssistResponse,
+  AudioOutEncoding,
+  EmbeddedAssistant as EmbeddedAssistantInstance,
+  embeddedAssistantPbPromise,
+} from './proto';
 
 export class Assistant {
   public locale: AssistantLanguage;
   public deviceId: string;
   public deviceModelId: string;
   private _endpoint = 'embeddedassistant.googleapis.com';
-  private _clientPromise: Promise<EmbeddedAssistant>;
+  private _clientPromise: Promise<EmbeddedAssistantInstance>;
 
   constructor(credentials: JWTInput, options: AssistantOptions = {
     deviceId: 'default',
@@ -78,13 +83,13 @@ export class Assistant {
 
   private async _createClient(credentials: JWTInput) {
     // tslint:disable-next-line:variable-name
-    const EmbeddedAssistantConstructor: EmbeddedAssistant = await embeddedAssistantPbPromise;
+    const EmbeddedAssistant: typeof EmbeddedAssistantInstance = await embeddedAssistantPbPromise;
     const sslCreds = grpc.credentials.createSsl();
     const refresh = new UserRefreshClient();
     refresh.fromJSON(credentials);
     const callCreds = grpc.credentials.createFromGoogleCredential(refresh);
     const combinedCreds = grpc.credentials.combineChannelCredentials(sslCreds, callCreds);
-    const client = new EmbeddedAssistantConstructor(this._endpoint, combinedCreds);
+    const client = new EmbeddedAssistant(this._endpoint, combinedCreds);
     return client;
   }
 }

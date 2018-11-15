@@ -2,7 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": false,
-    "target": "es5",
+    "target": "es2017",
     "rootDir": "src",
     "lib": [
       "esnext"

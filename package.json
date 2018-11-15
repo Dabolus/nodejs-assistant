@@ -8,7 +8,9 @@
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf lib && rollup -c rollup.config.ts"
+    "build": "rm -rf lib && rollup -c rollup.config.ts",
+    "lint": "tslint -p .",
+    "format": "tslint -p . --fix"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "rollup": "^0.67.1",
     "rollup-plugin-typescript2": "^0.18.0",
+    "tslint": "^5.11.0",
     "typescript": "^3.1.6"
   }
 }

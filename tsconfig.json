@@ -9,7 +9,9 @@
     ],
     "baseUrl": ".",
     "outDir": "lib",
-    "declaration": true
+    "declaration": true,
+    "module": "esnext",
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts"

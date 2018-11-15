@@ -2,6 +2,7 @@
 node_modules/
 src/
 dev/
+.rpt2_cache/
 .*
 *.log
 ts*.json

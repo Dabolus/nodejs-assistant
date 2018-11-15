@@ -3,11 +3,12 @@
   "description": "Google Assistant SDK for Node.js",
   "version": "0.2.0",
   "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf lib && tsc -p ."
+    "build": "rm -rf lib && rollup -c rollup.config.ts"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
@@ -16,6 +17,8 @@
     "grpc": "^1.16.0"
   },
   "devDependencies": {
+    "rollup": "^0.67.1",
+    "rollup-plugin-typescript2": "^0.18.0",
     "typescript": "^3.1.6"
   }
 }

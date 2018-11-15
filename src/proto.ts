@@ -83,7 +83,7 @@ export type AssistRequest = {
 // Indicates the type of event.
 export enum AssistResponseEventType {
   // No event specified.
-  EVENT_TYPE_UNSPECIFIED,
+  EVENT_TYPE_UNSPECIFIED = 0,
 
   // This event indicates that the server has detected the end of the user's
   // speech utterance and expects no additional speech. Therefore, the server
@@ -91,7 +91,7 @@ export enum AssistResponseEventType {
   // additional results). The client should stop sending additional audio
   // data, half-close the gRPC connection, and wait for any additional results
   // until the server closes the gRPC connection.
-  END_OF_UTTERANCE,
+  END_OF_UTTERANCE = 1,
 }
 
 // The top-level message received by the client. A series of one or more
@@ -180,11 +180,11 @@ export type AssistConfig = {
 export enum AudioInEncoding {
 
   // Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][].
-  ENCODING_UNSPECIFIED,
+  ENCODING_UNSPECIFIED = 0,
 
   // Uncompressed 16-bit signed little-endian samples (Linear PCM).
   // This encoding includes no header, only the raw audio bytes.
-  LINEAR16,
+  LINEAR16 = 1,
 
   // [`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio
   // Codec) is the recommended encoding because it is
@@ -193,7 +193,7 @@ export enum AudioInEncoding {
   // includes the `FLAC` stream header followed by audio data. It supports
   // 16-bit and 24-bit samples, however, not all fields in `STREAMINFO` are
   // supported.
-  FLAC,
+  FLAC = 2,
 }
 
 // Specifies how to process the `audioIn` data that will be provided in
@@ -217,19 +217,19 @@ export interface AudioInConfig {
 export enum AudioOutEncoding {
 
   // Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][].
-  ENCODING_UNSPECIFIED,
+  ENCODING_UNSPECIFIED = 0,
 
   // Uncompressed 16-bit signed little-endian samples (Linear PCM).
-  LINEAR16,
+  LINEAR16 = 1,
 
   // MP3 audio encoding. The sample rate is encoded in the payload.
-  MP3,
+  MP3 = 2,
 
   // Opus-encoded audio wrapped in an ogg container. The result will be a
   // file which can be played natively on Android and in some browsers (such
   // as Chrome). The quality of the encoding is considerably higher than MP3
   // while using the same bitrate. The sample rate is encoded in the payload.
-  OPUS_IN_OGG,
+  OPUS_IN_OGG = 3,
 }
 
 // Specifies the desired format for the server to use when it returns
@@ -254,16 +254,16 @@ export enum ScreenMode {
 
   // No video mode specified.
   // The Assistant may respond as if in `OFF` mode.
-  SCREEN_MODE_UNSPECIFIED,
+  SCREEN_MODE_UNSPECIFIED = 0,
 
   // Screen is off (or has brightness or other settings set so low it is
   // not visible). The Assistant will typically not return a screen response
   // in this mode.
-  OFF,
+  OFF = 1,
 
   // The Assistant will typically return a partial-screen response in this
   // mode.
-  PLAYING,
+  PLAYING = 3,
 }
 
 // Specifies the desired format for the server to use when it returns
@@ -343,13 +343,13 @@ export interface AudioOut {
 export enum ScreenOutFormat {
 
   // No format specified.
-  FORMAT_UNSPECIFIED,
+  FORMAT_UNSPECIFIED = 0,
 
   // Data will contain a fully-formed HTML5 layout encoded in UTF-8, e.g.
   // `<html><body><div>...</div></body></html>`. It is intended to be rendered
   // along with the audio response. Note that HTML5 doctype should be included
   // in the actual HTML data.
-  HTML,
+  HTML = 1,
 }
 
 // The Assistant's visual output response to query. Enabled by
@@ -395,16 +395,16 @@ export interface SpeechRecognitionResult {
 export enum MicrophoneMode {
 
   // No mode specified.
-  MICROPHONE_MODE_UNSPECIFIED,
+  MICROPHONE_MODE_UNSPECIFIED = 0,
 
   // The service is not expecting a follow-on question from the user.
   // The microphone should remain off until the user re-activates it.
-  CLOSE_MICROPHONE,
+  CLOSE_MICROPHONE = 1,
 
   // The service is expecting a follow-on question from the user. The
   // microphone should be re-opened when the `AudioOut` playback completes
   // (by starting a new `Assist` RPC call to send the new audio).
-  DIALOG_FOLLOW_ON,
+  DIALOG_FOLLOW_ON = 2,
 }
 
 // The dialog state resulting from the user's query. Multiple of these messages

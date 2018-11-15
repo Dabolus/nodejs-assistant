@@ -28,4 +28,4 @@ export enum AssistantLanguage {
   SPANISH = 'es-ES',
   KOREAN = 'ko-KR',
   PORTUGUESE = 'pt-BR',
-};
+}

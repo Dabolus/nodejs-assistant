@@ -1,54 +1,43 @@
-import * as grpc from 'grpc';
 import { JWTInput, UserRefreshClient } from 'google-auth-library';
-import { embeddedAssistantPbPromise, EmbeddedAssistantPb } from './proto';
+import * as grpc from 'grpc';
+import { AssistantLanguage, AssistantOptions, AssistantResponse } from './common';
 import { Conversation } from './conversation';
-import { AssistantOptions, AssistantResponse, AssistantLanguage } from './common';
+import { AssistResponse, AudioOutEncoding, EmbeddedAssistant, embeddedAssistantPbPromise } from './proto';
 
 export class Assistant {
-  private _endpoint = 'embeddedassistant.googleapis.com';
-  private _clientPromise: Promise<EmbeddedAssistantPb.EmbeddedAssistant>;
   public locale: AssistantLanguage;
-  public deviceModelId: string;
   public deviceId: string;
+  public deviceModelId: string;
+  private _endpoint = 'embeddedassistant.googleapis.com';
+  private _clientPromise: Promise<EmbeddedAssistant>;
 
   constructor(credentials: JWTInput, options: AssistantOptions = {
-    locale: AssistantLanguage.ENGLISH,
-    deviceModelId: 'default',
     deviceId: 'default',
+    deviceModelId: 'default',
+    locale: AssistantLanguage.ENGLISH,
   }) {
     this.locale = options.locale;
-    this.deviceModelId = options.deviceModelId;
     this.deviceId = options.deviceId;
+    this.deviceModelId = options.deviceModelId;
     this._clientPromise = this._createClient(credentials);
   }
 
-  private async _createClient(credentials: JWTInput) {
-    const EmbeddedAssistant = await embeddedAssistantPbPromise;
-    const sslCreds = grpc.credentials.createSsl();
-    const refresh = new UserRefreshClient();
-    refresh.fromJSON(credentials);
-    const callCreds = grpc.credentials.createFromGoogleCredential(refresh);
-    const combinedCreds = grpc.credentials.combineChannelCredentials(sslCreds, callCreds);
-    const client = new EmbeddedAssistant(this._endpoint, combinedCreds);
-    return client;
-  }
-
-  async startConversation() {
+  public async startConversation() {
     const client = await this._clientPromise;
     return new Conversation(
       client.assist(),
-      this.deviceModelId,
       this.deviceId,
+      this.deviceModelId,
       this.locale,
     );
   }
 
-  async assist(text: string): Promise<AssistantResponse> {
+  public async assist(text: string): Promise<AssistantResponse> {
     const client = await this._clientPromise;
     const conversation = client.assist();
     return new Promise((resolve, reject) => {
-      let response: AssistantResponse = {};
-      conversation.on('data', (data: EmbeddedAssistantPb.AssistResponse) => {
+      const response: AssistantResponse = {};
+      conversation.on('data', (data: AssistResponse) => {
         if (data.deviceAction && data.deviceAction.deviceRequestJson) {
           response.action = JSON.parse(data.deviceAction.deviceRequestJson);
         }
@@ -68,22 +57,34 @@ export class Assistant {
       conversation.on('error', reject);
       conversation.write({
         config: {
-          textQuery: text,
           audioOutConfig: {
-            encoding: EmbeddedAssistantPb.AudioOutEncoding.LINEAR16,
+            encoding: AudioOutEncoding.LINEAR16,
             sampleRateHertz: 16000,
             volumePercentage: 100,
+          },
+          deviceConfig: {
+            deviceId: this.deviceId,
+            deviceModelId: this.deviceModelId,
           },
           dialogStateIn: {
             languageCode: this.locale,
           },
-          deviceConfig: {
-            deviceModelId: this.deviceModelId,
-            deviceId: this.deviceId,
-          },
+          textQuery: text,
         },
       });
       conversation.end();
     });
+  }
+
+  private async _createClient(credentials: JWTInput) {
+    // tslint:disable-next-line:variable-name
+    const EmbeddedAssistantConstructor: EmbeddedAssistant = await embeddedAssistantPbPromise;
+    const sslCreds = grpc.credentials.createSsl();
+    const refresh = new UserRefreshClient();
+    refresh.fromJSON(credentials);
+    const callCreds = grpc.credentials.createFromGoogleCredential(refresh);
+    const combinedCreds = grpc.credentials.combineChannelCredentials(sslCreds, callCreds);
+    const client = new EmbeddedAssistantConstructor(this._endpoint, combinedCreds);
+    return client;
   }
 }

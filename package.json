@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf lib && rollup -c rollup.config.ts",
+    "test": "jest",
     "lint": "tslint -p .",
     "format": "tslint -p . --fix"
   },
@@ -19,9 +20,37 @@
     "grpc": "^1.16.0"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^9.6.39",
+    "jest": "^23.6.0",
     "rollup": "^0.67.1",
     "rollup-plugin-typescript2": "^0.18.0",
+    "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.ts",
+      "!<rootDir>/src/**/*.d.ts"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "testMatch": [
+      "<rootDir>/test/**/*.spec.ts"
+    ]
   }
 }

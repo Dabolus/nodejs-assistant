@@ -6,7 +6,8 @@ import {
   AssistResponse,
   AudioOutEncoding,
   EmbeddedAssistant as EmbeddedAssistantInstance,
-  embeddedAssistantPbPromise,
+  embeddedAssistantPb as EmbeddedAssistant,
+  ScreenMode,
 } from './proto';
 
 export class Assistant {
@@ -14,7 +15,7 @@ export class Assistant {
   public deviceId: string;
   public deviceModelId: string;
   private _endpoint = 'embeddedassistant.googleapis.com';
-  private _clientPromise: Promise<EmbeddedAssistantInstance>;
+  private _client: EmbeddedAssistantInstance;
 
   constructor(credentials: JWTInput, options: AssistantOptions = {
     deviceId: 'default',
@@ -24,22 +25,20 @@ export class Assistant {
     this.locale = options.locale;
     this.deviceId = options.deviceId;
     this.deviceModelId = options.deviceModelId;
-    this._clientPromise = this._createClient(credentials);
+    this._client = this._createClient(credentials);
   }
 
-  public async startConversation() {
-    const client = await this._clientPromise;
+  public startConversation() {
     return new Conversation(
-      client.assist(),
+      this._client.assist(),
       this.deviceId,
       this.deviceModelId,
       this.locale,
     );
   }
 
-  public async assist(text: string): Promise<AssistantResponse> {
-    const client = await this._clientPromise;
-    const conversation = client.assist();
+  public assist(text: string): Promise<AssistantResponse> {
+    const conversation = this._client.assist();
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};
       conversation.on('data', (data: AssistResponse) => {
@@ -81,9 +80,7 @@ export class Assistant {
     });
   }
 
-  private async _createClient(credentials: JWTInput) {
-    // tslint:disable-next-line:variable-name
-    const EmbeddedAssistant: typeof EmbeddedAssistantInstance = await embeddedAssistantPbPromise;
+  private _createClient(credentials: JWTInput) {
     const sslCreds = grpc.credentials.createSsl();
     const refresh = new UserRefreshClient();
     refresh.fromJSON(credentials);

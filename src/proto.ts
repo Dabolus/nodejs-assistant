@@ -1,4 +1,4 @@
-import { load } from '@grpc/proto-loader';
+import { loadSync } from '@grpc/proto-loader';
 import protoFiles from 'google-proto-files';
 import { ChannelCredentials, ClientDuplexStream, loadPackageDefinition } from 'grpc';
 
@@ -512,8 +512,10 @@ export interface DeviceLocation {
 
 const PROTO_ROOT_DIR = protoFiles('..');
 
-export const embeddedAssistantPbPromise: Promise<typeof EmbeddedAssistant> =
-  load('google/assistant/embedded/v1alpha2/embedded_assistant.proto', {
-    includeDirs: [PROTO_ROOT_DIR],
-  }).then(loadPackageDefinition)
-    .then(({ google }: any) => google.assistant.embedded.v1alpha2.EmbeddedAssistant);
+const proto: any = loadSync('google/assistant/embedded/v1alpha2/embedded_assistant.proto', {
+  includeDirs: [PROTO_ROOT_DIR],
+});
+
+const { google }: any = loadPackageDefinition(proto);
+
+export const embeddedAssistantPb: typeof EmbeddedAssistant = google.assistant.embedded.v1alpha2.EmbeddedAssistant;

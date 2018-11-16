@@ -3,6 +3,7 @@
   "rules": {
     "quotemark": [true, "single"],
     "variable-name": [true, "ban-keyword", "check-format", "allow-leading-underscore"],
-    "interface-name": [true, "never-prefix"]
+    "interface-name": [true, "never-prefix"],
+    "unified-signatures": false
   }
 }

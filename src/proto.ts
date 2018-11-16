@@ -118,7 +118,7 @@ export interface AssistResponse {
   // recent audio. The strings can be concatenated to view the full
   // in-progress response. When the speech recognition completes, this list
   // will contain one item with `stability` of `1.0`.
-  speechReults?: SpeechRecognitionResult[];
+  speechResults?: SpeechRecognitionResult[];
 
   // *Output-only* Contains output related to the user's query.
   dialogStateOut?: DialogStateOut;

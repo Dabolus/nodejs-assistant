@@ -1,13 +1,27 @@
+import { AssistResponse, AssistResponseEventType, MicrophoneMode, ScreenOutFormat } from './proto';
+
 export interface AssistantOptions {
   locale: AssistantLanguage;
   deviceModelId: string;
   deviceId: string;
 }
 
+export interface AssistantSpeechRecognitionResult {
+  transcript: string;
+  stability: number;
+}
+
 export interface AssistantResponse {
   action?: any;
-  text?: string;
+  actionOnGoogle?: any;
   audio?: Buffer;
+  conversationEnded?: boolean;
+  conversationState?: Buffer;
+  html?: string;
+  newVolume?: number;
+  speechRecognitionResults?: AssistantSpeechRecognitionResult[];
+  text?: string;
+  utteranceEnded?: boolean;
 }
 
 export enum AssistantLanguage {

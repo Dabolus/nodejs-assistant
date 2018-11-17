@@ -19,8 +19,8 @@ export class Conversation extends EventEmitter {
     this._setupEvents();
   }
 
-  public sendRawRequest(request: AssistRequest): boolean {
-    return this._stream.write(request);
+  public sendRawRequest(rawRequest: AssistRequest): boolean {
+    return this._stream.write(rawRequest);
   }
 
   public sendText(text: string): boolean {

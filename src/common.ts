@@ -1,15 +1,57 @@
-import { AssistResponse, AssistResponseEventType, MicrophoneMode, ScreenOutFormat } from './proto';
+import {
+  AssistRequest,
+  AssistResponse,
+  AssistResponseEventType,
+  AudioInConfig,
+  AudioOutConfig,
+  LatLng,
+  MicrophoneMode,
+  ScreenMode,
+  ScreenOutFormat,
+} from './proto';
 
 export interface AssistantOptions {
   locale: AssistantLanguage;
-  deviceModelId: string;
   deviceId: string;
+  deviceModelId: string;
 }
 
 export interface AssistantSpeechRecognitionResult {
   transcript: string;
   stability: number;
 }
+
+export type AssistantRequest = {
+  audio?: Buffer;
+  audioInConfig?: never;
+  audioOutConfig?: never;
+  debug?: never;
+  deviceId?: never;
+  deviceModelId?: never;
+  conversationState?: never;
+  deviceLocation?: never;
+  isNewConversation?: never;
+  locale?: never;
+  html?: never;
+  text?: never;
+} | ({
+  audioOutConfig: AudioOutConfig;
+  html?: boolean;
+  conversationState?: Buffer;
+  locale: AssistantLanguage;
+  deviceLocation?: LatLng;
+  isNewConversation?: boolean;
+  deviceId: string;
+  deviceModelId: string;
+  debug?: boolean;
+  audio?: never;
+} & ({
+  audioInConfig: AudioInConfig;
+  text?: never;
+} | {
+  text: string;
+  audioInConfig?: never;
+}));
 
 export interface AssistantResponse {
   action?: unknown;
@@ -42,6 +84,55 @@ export enum AssistantLanguage {
   SPANISH = 'es-ES',
   KOREAN = 'ko-KR',
   PORTUGUESE = 'pt-BR',
+}
+
+export function mapAssistantRequestToAssistRequest({
+  audio,
+  audioInConfig,
+  audioOutConfig,
+  debug,
+  deviceId,
+  deviceModelId,
+  conversationState,
+  deviceLocation,
+  isNewConversation,
+  locale,
+  html,
+  text,
+}: AssistantRequest): AssistRequest {
+  if (audio) {
+    return { audioIn: audio };
+  }
+  return {
+    config: {
+      audioOutConfig,
+      ...html ? {
+        screenOutConfig: {
+          screenMode: ScreenMode.PLAYING,
+        },
+      } : {},
+      deviceConfig: {
+        deviceId,
+        deviceModelId,
+      },
+      dialogStateIn: {
+        ...conversationState ? { conversationState } : {},
+        languageCode: locale,
+        ...deviceLocation ? {
+          deviceLocation: {
+            coordinates: deviceLocation,
+          },
+        } : {},
+        ...isNewConversation ? { isNewConversation } : {},
+      },
+      ...debug ? {
+        debugConfig: {
+          returnDebugInfo: debug,
+        },
+      } : {},
+      ...audioInConfig ? { audioInConfig } : { textQuery: text },
+    },
+  };
 }
 
 export function mapAssistResponseToAssistantResponse({

@@ -12,8 +12,8 @@ export interface AssistantSpeechRecognitionResult {
 }
 
 export interface AssistantResponse {
-  action?: any;
-  actionOnGoogle?: any;
+  action?: unknown;
+  actionOnGoogle?: unknown;
   audio?: Buffer;
   conversationEnded?: boolean;
   conversationState?: Buffer;

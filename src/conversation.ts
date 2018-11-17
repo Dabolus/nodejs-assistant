@@ -1,6 +1,11 @@
 import { EventEmitter } from 'events';
 import { ClientDuplexStream } from 'grpc';
-import { AssistantLanguage, mapAssistResponseToAssistantResponse } from './common';
+import {
+  AssistantLanguage,
+  AssistantResponse,
+  AssistantSpeechRecognitionResult,
+  mapAssistResponseToAssistantResponse,
+} from './common';
 import { AssistRequest, AssistResponse, AudioOutEncoding } from './proto';
 
 export class Conversation extends EventEmitter {
@@ -67,4 +72,347 @@ export class Conversation extends EventEmitter {
       }
     });
   }
+}
+
+/***** TYPINGS ************************************************************************************/
+// The following are just some TypeScript goodies to make it much easier to write code
+// for both library users and developers.
+
+export type ConversationEvent =
+  'data' |
+  'action' |
+  'actionongoogle' |
+  'audio' |
+  'conversationend' |
+  'message' |
+  'html' |
+  'volume' |
+  'speechrecognition' |
+  'utteranceend';
+
+export declare interface Conversation {
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends any type of data.
+   *
+   * @param event - The 'data' event.
+   * @param listener - A callback that will receive the Assistant data as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'data', listener: (data: AssistantResponse) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered if the user has triggered a Device Action.
+   * For example, a device which supports the query *Turn on the light* would receive an
+   * object containing the semantics of the request.
+   *
+   * @param event - The 'action' event.
+   * @param listener - A callback that will receive the object containing the semantics of the request as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'action', listener: (action: unknown) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered with the original response from an
+   * Action-on-Google agent to Google server. To be able to receive this data, the conversation
+   * has to be in debug mode, the request maker has to own the AoG project and the AoG project
+   * has to be in preview mode.
+   *
+   * @param event - The 'actionongoogle' event.
+   * @param listener - A callback that will receive the original response from the AoG agent as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'actionongoogle', listener: (actionOnGoogle: unknown) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends an audio message.
+   *
+   * @param event - The 'audio' event.
+   * @param listener - A callback that will receive the Assistant audio message as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'audio', listener: (audio: Buffer) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the conversation with the Assistant ends.
+   *
+   * @param event - The 'conversationend' event.
+   * @param listener - A callback that will receive the latest Assistant response as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'conversationend', listener: (latestData: AssistantResponse) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends a text message.
+   *
+   * @param event - The 'message' event.
+   * @param listener - A callback that will receive the Assistant text message as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'message', listener: (text: string) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends HTML data.
+   *
+   * @param event - The 'html' event.
+   * @param listener - A callback that will receive the HTML data as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'html', listener: (html: string) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends the new device volume level.
+   *
+   * @param event - The 'volume' event.
+   * @param listener - A callback that will receive the new device volume level as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'volume', listener: (newVolume: number) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered with the Assistant speech recognition results.
+   *
+   * @param event - The 'speechrecognition' event.
+   * @param listener - A callback that will receive the Assistant speech recognition results as param.
+   * @returns The conversation.
+   */
+  addListener(
+    event: 'speechrecognition',
+    listener: (speechRecognitionResults: AssistantSpeechRecognitionResult[],
+  ) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant detects the end of the user's
+   * speech utterance and expects no additional speech. Therefore, it will not process additional audio
+   * (although it may subsequently return additional results).
+   *
+   * @param event - The 'utteranceend' event.
+   * @param listener - A callback that will receive the latest Assistant response as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends any type of data.
+   *
+   * @param event - The 'data' event.
+   * @param listener - A callback that will receive the Assistant data as param.
+   * @returns The conversation.
+   */
+  on(event: 'data', listener: (data: AssistantResponse) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered if the user has triggered a Device Action.
+   * For example, a device which supports the query *Turn on the light* would receive an
+   * object containing the semantics of the request.
+   *
+   * @param event - The 'action' event.
+   * @param listener - A callback that will receive the object containing the semantics of the request as param.
+   * @returns The conversation.
+   */
+  on(event: 'action', listener: (action: unknown) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered with the original response from an
+   * Action-on-Google agent to Google server. To be able to receive this data, the conversation
+   * has to be in debug mode, the request maker has to own the AoG project and the AoG project
+   * has to be in preview mode.
+   *
+   * @param event - The 'actionongoogle' event.
+   * @param listener - A callback that will receive the original response from the AoG agent as param.
+   * @returns The conversation.
+   */
+  on(event: 'actionongoogle', listener: (actionOnGoogle: unknown) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends an audio message.
+   *
+   * @param event - The 'audio' event.
+   * @param listener - A callback that will receive the Assistant audio message as param.
+   * @returns The conversation.
+   */
+  on(event: 'audio', listener: (audio: Buffer) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the conversation with the Assistant ends.
+   *
+   * @param event - The 'conversationend' event.
+   * @param listener - A callback that will receive the latest Assistant response as param.
+   * @returns The conversation.
+   */
+  on(event: 'conversationend', listener: (latestData: AssistantResponse) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends a text message.
+   *
+   * @param event - The 'message' event.
+   * @param listener - A callback that will receive the Assistant text message as param.
+   * @returns The conversation.
+   */
+  on(event: 'message', listener: (text: string) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends HTML data.
+   *
+   * @param event - The 'html' event.
+   * @param listener - A callback that will receive the HTML data as param.
+   * @returns The conversation.
+   */
+  on(event: 'html', listener: (html: string) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant sends the new device volume level.
+   *
+   * @param event - The 'volume' event.
+   * @param listener - A callback that will receive the new device volume level as param.
+   * @returns The conversation.
+   */
+  on(event: 'volume', listener: (newVolume: number) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered with the Assistant speech recognition results.
+   *
+   * @param event - The 'speechrecognition' event.
+   * @param listener - A callback that will receive the Assistant speech recognition results as param.
+   * @returns The conversation.
+   */
+  on(
+    event: 'speechrecognition',
+    listener: (speechRecognitionResults: AssistantSpeechRecognitionResult[],
+  ) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant detects the end of the user's
+   * speech utterance and expects no additional speech. Therefore, it will not process additional audio
+   * (although it may subsequently return additional results).
+   *
+   * @param event - The 'utteranceend' event.
+   * @param listener - A callback that will receive the latest Assistant response as param.
+   * @returns The conversation.
+   */
+  on(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant sends any type of data.
+   *
+   * @param event - The 'data' event.
+   * @param listener - A callback that will receive the Assistant data as param.
+   * @returns The conversation.
+   */
+  once(event: 'data', listener: (data: AssistantResponse) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered if the user has triggered a Device Action.
+   * For example, a device which supports the query *Turn on the light* would receive an
+   * object containing the semantics of the request.
+   *
+   * @param event - The 'action' event.
+   * @param listener - A callback that will receive the object containing the semantics of the request as param.
+   * @returns The conversation.
+   */
+  once(event: 'action', listener: (action: unknown) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered with the original response from an
+   * Action-on-Google agent to Google server. To be able to receive this data, the conversation
+   * has to be in debug mode, the request maker has to own the AoG project and the AoG project
+   * has to be in preview mode.
+   *
+   * @param event - The 'actionongoogle' event.
+   * @param listener - A callback that will receive the original response from the AoG agent as param.
+   * @returns The conversation.
+   */
+  once(event: 'actionongoogle', listener: (actionOnGoogle: unknown) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant sends an audio message.
+   *
+   * @param event - The 'audio' event.
+   * @param listener - A callback that will receive the Assistant audio message as param.
+   * @returns The conversation.
+   */
+  once(event: 'audio', listener: (audio: Buffer) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the conversation with the Assistant ends.
+   *
+   * @param event - The 'conversationend' event.
+   * @param listener - A callback that will receive the latest Assistant response as param.
+   * @returns The conversation.
+   */
+  once(event: 'conversationend', listener: (latestData: AssistantResponse) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant sends a text message.
+   *
+   * @param event - The 'message' event.
+   * @param listener - A callback that will receive the Assistant text message as param.
+   * @returns The conversation.
+   */
+  once(event: 'message', listener: (text: string) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant sends HTML data.
+   *
+   * @param event - The 'html' event.
+   * @param listener - A callback that will receive the HTML data as param.
+   * @returns The conversation.
+   */
+  once(event: 'html', listener: (html: string) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant sends the new device volume level.
+   *
+   * @param event - The 'volume' event.
+   * @param listener - A callback that will receive the new device volume level as param.
+   * @returns The conversation.
+   */
+  once(event: 'volume', listener: (newVolume: number) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered with the Assistant speech recognition results.
+   *
+   * @param event - The 'speechrecognition' event.
+   * @param listener - A callback that will receive the Assistant speech recognition results as param.
+   * @returns The conversation.
+   */
+  once(
+    event: 'speechrecognition',
+    listener: (speechRecognitionResults: AssistantSpeechRecognitionResult[],
+  ) => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant detects the end of the user's
+   * speech utterance and expects no additional speech. Therefore, it will not process additional audio
+   * (although it may subsequently return additional results).
+   *
+   * @param event - The 'utteranceend' event.
+   * @param listener - A callback that will receive the latest Assistant response as param.
+   * @returns The conversation.
+   */
+  once(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+
+  // TODO: add good docs to these methods too.
+  prependListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
+  prependOnceListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
+  removeListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
+  removeAllListeners(event?: ConversationEvent): this;
+  setMaxListeners(n: number): this;
+  getMaxListeners(): number;
+  listeners(event: ConversationEvent): Array<() => void>;
+  rawListeners(event: ConversationEvent): Array<() => void>;
+
+  emit(event: 'data', data: AssistantResponse): boolean;
+  emit(event: 'action', action: unknown): boolean;
+  emit(event: 'actionongoogle', actionOnGoogle: unknown): boolean;
+  emit(event: 'audio', audio: Buffer): boolean;
+  emit(event: 'conversationend', latestData: AssistantResponse): boolean;
+  emit(event: 'message', text: string): boolean;
+  emit(event: 'html', html: string): boolean;
+  emit(event: 'volume', newVolume: number): boolean;
+  emit(event: 'speechrecognition', speechRecognitionResults: AssistantSpeechRecognitionResult[]): boolean;
+  emit(event: 'utteranceend', latestData: AssistantResponse): boolean;
+
+  eventNames(): ConversationEvent[];
+  listenerCount(type: ConversationEvent): number;
 }

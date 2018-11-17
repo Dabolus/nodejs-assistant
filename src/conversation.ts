@@ -30,22 +30,16 @@ export class Conversation extends EventEmitter {
   }
 
   public sendText(text: string): boolean {
-    return this.sendRawRequest({
-      config: {
-        audioOutConfig: {
-          encoding: AudioOutEncoding.LINEAR16,
-          sampleRateHertz: 16000,
-          volumePercentage: 100,
-        },
-        deviceConfig: {
-          deviceId: this._deviceId,
-          deviceModelId: this._deviceModelId,
-        },
-        dialogStateIn: {
-          languageCode: this.locale,
-        },
-        textQuery: text,
+    return this.sendRequest({
+      audioOutConfig: {
+        encoding: AudioOutEncoding.LINEAR16,
+        sampleRateHertz: 16000,
+        volumePercentage: 100,
       },
+      deviceId: this._deviceId,
+      deviceModelId: this._deviceModelId,
+      locale: this.locale,
+      text,
     });
   }
 

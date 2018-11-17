@@ -1,6 +1,6 @@
 import { JWTInput, UserRefreshClient } from 'google-auth-library';
 import * as grpc from 'grpc';
-import { AssistantLanguage, AssistantOptions, AssistantResponse } from './common';
+import { AssistantLanguage, AssistantOptions, AssistantResponse, mapAssistResponseToAssistantResponse } from './common';
 import { Conversation } from './conversation';
 import {
   AssistResponse,
@@ -42,16 +42,36 @@ export class Assistant {
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};
       conversation.on('data', (data: AssistResponse) => {
-        if (data.deviceAction && data.deviceAction.deviceRequestJson) {
-          response.action = JSON.parse(data.deviceAction.deviceRequestJson);
+        const mappedData = mapAssistResponseToAssistantResponse(data);
+        if (mappedData.action) {
+          response.action = {
+            ...response.action,
+            ...mappedData.action,
+          };
         }
-        if (data.audioOut && data.audioOut.audioData) {
+        if (mappedData.actionOnGoogle) {
+          response.actionOnGoogle = {
+            ...response.actionOnGoogle,
+            ...mappedData.actionOnGoogle,
+          };
+        }
+        if (mappedData.audio) {
           response.audio = response.audio ?
-            Buffer.concat([response.audio, data.audioOut.audioData]) :
-            data.audioOut.audioData;
+            Buffer.concat([response.audio, mappedData.audio]) :
+            mappedData.audio;
         }
-        if (data.dialogStateOut && data.dialogStateOut.supplementalDisplayText) {
-          response.text = data.dialogStateOut.supplementalDisplayText;
+        if (mappedData.html) {
+          response.html = response.html ? `${response.html} ${mappedData.html}` : mappedData.html;
+        }
+        if (mappedData.newVolume) {
+          response.newVolume = mappedData.newVolume;
+        }
+        if (mappedData.speechRecognitionResults) {
+          response.speechRecognitionResults =
+            [...(response.speechRecognitionResults || []), ...mappedData.speechRecognitionResults];
+        }
+        if (mappedData.text) {
+          response.text = response.text ? `${response.text} ${mappedData.text}` : mappedData.text;
         }
       });
       conversation.on('end', () => {

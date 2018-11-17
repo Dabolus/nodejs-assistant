@@ -19,8 +19,12 @@ export class Conversation extends EventEmitter {
     this._setupEvents();
   }
 
+  public sendRawRequest(request: AssistRequest): boolean {
+    return this._stream.write(request);
+  }
+
   public sendText(text: string): boolean {
-    return this._stream.write({
+    return this.sendRawRequest({
       config: {
         audioOutConfig: {
           encoding: AudioOutEncoding.LINEAR16,

@@ -2,8 +2,10 @@ import { EventEmitter } from 'events';
 import { ClientDuplexStream } from 'grpc';
 import {
   AssistantLanguage,
+  AssistantRequest,
   AssistantResponse,
   AssistantSpeechRecognitionResult,
+  mapAssistantRequestToAssistRequest,
   mapAssistResponseToAssistantResponse,
 } from './common';
 import { AssistRequest, AssistResponse, AudioOutEncoding } from './proto';
@@ -21,6 +23,10 @@ export class Conversation extends EventEmitter {
 
   public sendRawRequest(rawRequest: AssistRequest): boolean {
     return this._stream.write(rawRequest);
+  }
+
+  public sendRequest(request: AssistantRequest): boolean {
+    return this.sendRawRequest(mapAssistantRequestToAssistRequest(request));
   }
 
   public sendText(text: string): boolean {

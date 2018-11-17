@@ -28,7 +28,7 @@ export class Assistant {
     this._client = this._createClient(credentials);
   }
 
-  public startConversation() {
+  public startConversation(): Conversation {
     return new Conversation(
       this._client.assist(),
       this.deviceId,
@@ -100,7 +100,7 @@ export class Assistant {
     });
   }
 
-  private _createClient(credentials: JWTInput) {
+  private _createClient(credentials: JWTInput): EmbeddedAssistantInstance {
     const sslCreds = grpc.credentials.createSsl();
     const refresh = new UserRefreshClient();
     refresh.fromJSON(credentials);

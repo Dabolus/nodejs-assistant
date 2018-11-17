@@ -19,8 +19,8 @@ export class Conversation extends EventEmitter {
     this._setupEvents();
   }
 
-  public send(text: string) {
-    this._stream.write({
+  public sendText(text: string): boolean {
+    return this._stream.write({
       config: {
         audioOutConfig: {
           encoding: AudioOutEncoding.LINEAR16,
@@ -39,7 +39,7 @@ export class Conversation extends EventEmitter {
     });
   }
 
-  private _setupEvents() {
+  private _setupEvents(): void {
     this._stream.on('data', (data: AssistResponse) => {
       const mappedResponse = mapAssistResponseToAssistantResponse(data);
       this.emit('data', mappedResponse);

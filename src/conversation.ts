@@ -8,7 +8,7 @@ import {
   mapAssistantRequestToAssistRequest,
   mapAssistResponseToAssistantResponse,
 } from './common';
-import { AssistRequest, AssistResponse, AudioOutEncoding } from './proto';
+import { AssistRequest, AssistResponse } from './proto';
 
 export class Conversation extends EventEmitter {
   constructor(
@@ -36,20 +36,6 @@ export class Conversation extends EventEmitter {
     return this.sendRawRequest(
       mapAssistantRequestToAssistRequest(finalRequest),
     );
-  }
-
-  public sendText(text: string): boolean {
-    return this.sendRequest({
-      audioOutConfig: {
-        encoding: AudioOutEncoding.LINEAR16,
-        sampleRateHertz: 16000,
-        volumePercentage: 100,
-      },
-      deviceId: this._deviceId,
-      deviceModelId: this._deviceModelId,
-      locale: this.locale,
-      text,
-    });
   }
 
   public end(): Promise<void> {

@@ -44,37 +44,41 @@ export class Conversation extends EventEmitter {
   }
 
   private _setupEvents(): void {
-    this._stream.on('data', (data: AssistResponse) => {
-      const mappedResponse = mapAssistResponseToAssistantResponse(data);
-      this.emit('data', mappedResponse);
-      if (mappedResponse.action) {
-        this.emit('action', mappedResponse.action);
-      }
-      if (mappedResponse.actionOnGoogle) {
-        this.emit('actionongoogle', mappedResponse.actionOnGoogle);
-      }
-      if (mappedResponse.audio) {
-        this.emit('audio', mappedResponse.audio);
-      }
-      if (mappedResponse.conversationEnded) {
-        this.emit('conversationend', mappedResponse);
-      }
-      if (mappedResponse.html) {
-        this.emit('html', mappedResponse.html);
-      }
-      if (mappedResponse.newVolume) {
-        this.emit('volume', mappedResponse.newVolume);
-      }
-      if (mappedResponse.speechRecognitionResults) {
-        this.emit('speechrecognition', mappedResponse.speechRecognitionResults);
-      }
-      if (mappedResponse.text) {
-        this.emit('message', mappedResponse.text);
-      }
-      if (mappedResponse.utteranceEnded) {
-        this.emit('utteranceend', mappedResponse);
-      }
-    });
+    this._stream
+      .on('data', (data: AssistResponse) => {
+        const mappedResponse = mapAssistResponseToAssistantResponse(data);
+        this.emit('data', mappedResponse);
+        if (mappedResponse.action) {
+          this.emit('action', mappedResponse.action);
+        }
+        if (mappedResponse.actionOnGoogle) {
+          this.emit('actionongoogle', mappedResponse.actionOnGoogle);
+        }
+        if (mappedResponse.audio) {
+          this.emit('audio', mappedResponse.audio);
+        }
+        if (mappedResponse.conversationEnded) {
+          this.emit('conversationend', mappedResponse);
+        }
+        if (mappedResponse.html) {
+          this.emit('html', mappedResponse.html);
+        }
+        if (mappedResponse.newVolume) {
+          this.emit('volume', mappedResponse.newVolume);
+        }
+        if (mappedResponse.speechRecognitionResults) {
+          this.emit('speechrecognition', mappedResponse.speechRecognitionResults);
+        }
+        if (mappedResponse.text) {
+          this.emit('message', mappedResponse.text);
+        }
+        if (mappedResponse.utteranceEnded) {
+          this.emit('utteranceend', mappedResponse);
+        }
+      })
+      .on('end', () => this.emit('end'))
+      .on('close', () => this.emit('close'))
+      .on('error', (err) => this.emit('error', err));
   }
 }
 
@@ -197,6 +201,35 @@ export declare interface Conversation {
   addListener(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
 
   /**
+   * Adds an event listener that will be triggered when the Assistant closes the connection,
+   * thus not sending any more data.
+   *
+   * @param event - The 'end' event.
+   * @param listener - A callback with no params.
+   * @returns The conversation.
+   */
+  addListener(event: 'end', listener: () => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the connection with the Assistant is
+   * fully closed.
+   *
+   * @param event - The 'end' event.
+   * @param listener - A callback with no params.
+   * @returns The conversation.
+   */
+  addListener(event: 'close', listener: () => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when any type of error occurs.
+   *
+   * @param event - The 'error' event.
+   * @param listener - A callback that will receive the error as param.
+   * @returns The conversation.
+   */
+  addListener(event: 'error', listener: (error: Error) => void): this;
+
+  /**
    * Adds an event listener that will be triggered when the Assistant sends any type of data.
    *
    * @param event - The 'data' event.
@@ -295,6 +328,35 @@ export declare interface Conversation {
    * @returns The conversation.
    */
   on(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the Assistant closes the connection,
+   * thus not sending any more data.
+   *
+   * @param event - The 'end' event.
+   * @param listener - A callback with no params.
+   * @returns The conversation.
+   */
+  on(event: 'end', listener: () => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when the connection with the Assistant is
+   * fully closed.
+   *
+   * @param event - The 'end' event.
+   * @param listener - A callback with no params.
+   * @returns The conversation.
+   */
+  on(event: 'close', listener: () => void): this;
+
+  /**
+   * Adds an event listener that will be triggered when any type of error occurs.
+   *
+   * @param event - The 'error' event.
+   * @param listener - A callback that will receive the error as param.
+   * @returns The conversation.
+   */
+  on(event: 'error', listener: (error: Error) => void): this;
 
   /**
    * Adds a one time event listener that will be triggered when the Assistant sends any type of data.
@@ -396,6 +458,35 @@ export declare interface Conversation {
    */
   once(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
 
+  /**
+   * Adds a one time event listener that will be triggered when the Assistant closes the connection,
+   * thus not sending any more data.
+   *
+   * @param event - The 'end' event.
+   * @param listener - A callback with no params.
+   * @returns The conversation.
+   */
+  once(event: 'end', listener: () => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when the connection with the Assistant is
+   * fully closed.
+   *
+   * @param event - The 'end' event.
+   * @param listener - A callback with no params.
+   * @returns The conversation.
+   */
+  once(event: 'close', listener: () => void): this;
+
+  /**
+   * Adds a one time event listener that will be triggered when any type of error occurs.
+   *
+   * @param event - The 'error' event.
+   * @param listener - A callback that will receive the error as param.
+   * @returns The conversation.
+   */
+  once(event: 'error', listener: (error: Error) => void): this;
+
   // TODO: add good docs to these methods too.
   prependListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
   prependOnceListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
@@ -416,6 +507,9 @@ export declare interface Conversation {
   emit(event: 'volume', newVolume: number): boolean;
   emit(event: 'speechrecognition', speechRecognitionResults: AssistantSpeechRecognitionResult[]): boolean;
   emit(event: 'utteranceend', latestData: AssistantResponse): boolean;
+  emit(event: 'end'): boolean;
+  emit(event: 'close'): boolean;
+  emit(event: 'error', error: Error): boolean;
 
   eventNames(): ConversationEvent[];
   listenerCount(type: ConversationEvent): number;

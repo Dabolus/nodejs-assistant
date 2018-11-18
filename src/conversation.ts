@@ -13,8 +13,8 @@ import { AssistRequest, AssistResponse, AudioOutEncoding } from './proto';
 export class Conversation extends EventEmitter {
   constructor(
     private _stream: ClientDuplexStream<AssistRequest, AssistResponse>,
-    private _deviceId: string,
-    private _deviceModelId: string,
+    protected _deviceId: string,
+    protected _deviceModelId: string,
     public locale: AssistantLanguage,
   ) {
     super();

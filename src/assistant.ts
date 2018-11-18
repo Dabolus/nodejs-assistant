@@ -1,14 +1,17 @@
 import { JWTInput, UserRefreshClient } from 'google-auth-library';
 import * as grpc from 'grpc';
+import { AudioConversation } from './audio-conversation';
 import { AssistantLanguage, AssistantOptions, AssistantResponse, mapAssistResponseToAssistantResponse } from './common';
 import { Conversation } from './conversation';
 import {
   AssistResponse,
+  AudioInConfig,
+  AudioOutConfig,
   AudioOutEncoding,
   EmbeddedAssistant as EmbeddedAssistantInstance,
   embeddedAssistantPb as EmbeddedAssistant,
-  ScreenMode,
 } from './proto';
+import { TextConversation } from './text-conversation';
 
 export class Assistant {
   public locale: AssistantLanguage;
@@ -28,12 +31,23 @@ export class Assistant {
     this._client = this._createClient(credentials);
   }
 
-  public startConversation(): Conversation {
-    return new Conversation(
+  public startTextConversation(): TextConversation {
+    return new TextConversation(
       this._client.assist(),
       this.deviceId,
       this.deviceModelId,
       this.locale,
+    );
+  }
+
+  public startAudioConversation(audioInConfig: AudioInConfig, audioOutConfig: AudioOutConfig): AudioConversation {
+    return new AudioConversation(
+      this._client.assist(),
+      this.deviceId,
+      this.deviceModelId,
+      this.locale,
+      audioInConfig,
+      audioOutConfig,
     );
   }
 

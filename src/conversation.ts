@@ -26,7 +26,16 @@ export class Conversation extends EventEmitter {
   }
 
   public sendRequest(request: AssistantRequest): boolean {
-    return this.sendRawRequest(mapAssistantRequestToAssistRequest(request));
+    const finalRequest = request.audio ? request : {
+      deviceId: this._deviceId,
+      deviceModelId: this._deviceModelId,
+      locale: this.locale,
+      ...request,
+    } as AssistantRequest;
+
+    return this.sendRawRequest(
+      mapAssistantRequestToAssistRequest(finalRequest),
+    );
   }
 
   public sendText(text: string): boolean {

@@ -51,7 +51,7 @@ export class Assistant {
     );
   }
 
-  public assist(text: string): Promise<AssistantResponse> {
+  public query(text: string): Promise<AssistantResponse> {
     const conversation = this._client.assist();
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};

@@ -31,6 +31,9 @@
     "typedoc": "^0.13.0",
     "typescript": "^3.1.6"
   },
+  "contributors": [
+    "Giorgio Garasto <giorgio@garasto.it>"
+  ],
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",

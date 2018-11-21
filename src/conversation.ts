@@ -10,7 +10,21 @@ import {
 } from './common';
 import { AssistRequest, AssistResponse } from './proto';
 
+/**
+ * Represents a conversation with the Assistant.
+ * @author Giorgio Garasto <giorgio@garasto.it>
+ * @license MIT
+ * @class
+ */
 export class Conversation extends EventEmitter {
+  /**
+   * Creates a new conversation.
+   * @param _stream The duplex stream to use to communicate with the Assistant SDK.
+   * @param _deviceId The device ID to use during this conversation.
+   * @param _deviceModelId The device model ID to use during this conversation.
+   * @param locale The locale to use during this conversation.
+   * @constructor
+   */
   constructor(
     private _stream: ClientDuplexStream<AssistRequest, AssistResponse>,
     protected _deviceId: string,

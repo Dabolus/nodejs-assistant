@@ -64,8 +64,92 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="nodejs-assistant">nodejs-assistant</h1>
-				<h2 id="google-assistant-sdk-for-node-js">Google Assistant SDK for Node.js</h2>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Google_Assistant_logo.svg" alt="Google Assistant logo" title="Google Assistant" align="right" height="96" width="96"/>
+				<h1 id="google-assistant-sdk-node-js-client"><a href="https://github.com/Dabolus/nodejs-assistant">Google Assistant SDK: Node.js Client</a></h1>
+				<!-- TODO: Add some badges here -->
+				<blockquote>
+					<p>Node.js idiomatic client for <a href="https://developers.google.com/assistant/sdk/">Google Assistant SDK</a> (unofficial).</p>
+				</blockquote>
+				<p>The <a href="https://developers.google.com/assistant/sdk/">Google Assistant SDK</a> lets you add hotword detection, voice
+					control, natural language understanding and Google’s smarts to your devices.
+					Your device captures an utterance (a spoken audio request, such as
+					<em>What&#39;s on my calendar?</em>), sends it to the Google Assistant, and receives a
+				spoken audio response in addition to the raw text of the utterance.</p>
+				<ul>
+					<li><a href="https://dabolus.github.io/nodejs-assistant/">Google Assistant SDK Node.js Client API Reference</a></li>
+					<li><a href="https://github.com/Dabolus/nodejs-assistant">github.com/Dabolus/nodejs-assistant</a></li>
+					<li><a href="https://developers.google.com/assistant/sdk/">Google Assistant SDK documentation</a></li>
+				</ul>
+				<p>Read more about the client libraries for Cloud APIs, including the older
+				Google APIs Client Libraries, in <a href="https://cloud.google.com/apis/docs/client-libraries-explained">Client Libraries Explained</a>.</p>
+				<p><strong>Table of contents:</strong></p>
+				<ul>
+					<li><a href="#quickstart">Quickstart</a><ul>
+							<li><a href="#before-you-begin">Before you begin</a></li>
+							<li><a href="#installing-the-client-library">Installing the client library</a></li>
+							<li><a href="#using-the-client-library">Using the client library</a></li>
+						</ul>
+					</li>
+					<li><a href="#samples">Samples</a></li>
+					<li><a href="#contributing">Contributing</a></li>
+					<li><a href="#license">License</a></li>
+				</ul>
+				<h2 id="quickstart">Quickstart</h2>
+				<h3 id="before-you-begin">Before you begin</h3>
+				<p>Some configuration steps are needed to make this library work correctly, for
+					example creating a Cloud Platform project, creating a device and generating
+					OAuth2 credentials. Please, follow
+					<a href="https://developers.google.com/assistant/sdk/guides/library/python/">the Google Assistant Library for Python guide</a>
+				to get started quickly.</p>
+				<h3 id="installing-the-client-library">Installing the client library</h3>
+				<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save nodejs-assistant</span></code></pre><h3 id="using-the-client-library">Using the client library</h3>
+				<pre><code class="language-javascript"><span class="hljs-comment">// Imports the Google Cloud client library</span>
+<span class="hljs-keyword">const</span> {Assistant, AssistantLanguage} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'nodejs-assistant'</span>);
+
+<span class="hljs-comment">// Your credentials</span>
+<span class="hljs-keyword">const</span> credentials = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path-to-your-credentials.json'</span>);
+
+<span class="hljs-comment">// Creates a client</span>
+<span class="hljs-keyword">const</span> assistant = <span class="hljs-keyword">new</span> Assistant(<span class="hljs-comment">/* required credentials */</span> {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'authorized_user'</span>,
+  <span class="hljs-attr">client_id</span>: credentials.client_id,
+  <span class="hljs-attr">client_secret</span>: credentials.client_secret,
+  <span class="hljs-attr">refresh_token</span>: credentials.refresh_token,
+}, <span class="hljs-comment">/* additional, optional options */</span> {
+  <span class="hljs-attr">locale</span>: AssistantLanguage.ITALIAN, <span class="hljs-comment">// Defaults to AssistantLanguage.ENGLISH (en-US)</span>
+  deviceId: <span class="hljs-string">'your device id'</span>,
+  <span class="hljs-attr">deviceModelId</span>: <span class="hljs-string">'your device model id'</span>,
+});
+
+<span class="hljs-comment">// Sends a text query to the assistant</span>
+assistant.query(<span class="hljs-string">'Hi!'</span>)
+  .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> {
+    <span class="hljs-comment">// response contains all the fields returned by the assistant, such as the text and audio</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Response: <span class="hljs-subst">${response.text}</span>`</span>);
+    <span class="hljs-comment">// response.audio is a Buffer containing the audio response by the assistant</span>
+  })
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'ERROR: '</span>, err);
+  });</code></pre>
+				<h2 id="samples">Samples</h2>
+				<!--
+Samples are in the [`samples/`](https://github.com/googleapis/nodejs-datastore/tree/master/samples) directory. The samples' `README.md`
+has instructions for running the samples.
+
+| Sample                      | Source Code                       | Try it |
+| --------------------------- | --------------------------------- | ------ |
+| Tasks | [source code](https://github.com/googleapis/nodejs-datastore/blob/master/samples/tasks.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-datastore&page=editor&open_in_editor=samples/tasks.js,samples/README.md) |
+| Concepts | [source code](https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-datastore&page=editor&open_in_editor=samples/concepts.js,samples/README.md) |
+| Errors and Error Handling | [source code](https://github.com/googleapis/nodejs-datastore/blob/master/samples/error.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-datastore&page=editor&open_in_editor=samples/error.js,samples/README.md) |
+
+The [Cloud Datastore Node.js Client API Reference][client-docs] documentation
+also contains samples.
+-->
+				<h2 id="contributing">Contributing</h2>
+				<p>Contributions welcome! See the <a href="https://github.com/googleapis/nodejs-datastore/blob/master/.github/CONTRIBUTING.md">Contributing Guide</a>.</p>
+				<h2 id="license">License</h2>
+				<p>Apache Version 2.0</p>
+				<p>See <a href="https://github.com/googleapis/nodejs-datastore/blob/master/LICENSE">LICENSE</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

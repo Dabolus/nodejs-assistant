@@ -23,9 +23,9 @@ jobs:
       - checkout
       - restore_cache:
         keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
       - run: npm install
       - save_cache:
         paths:
@@ -39,9 +39,9 @@ jobs:
       - checkout
       - restore_cache:
         keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+        - v1-dependencies-{{ checksum "package.json" }}
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
       - run: npm install
       - save_cache:
         paths:
@@ -50,7 +50,7 @@ jobs:
       - run: npm run build
 workflows:
   version: 2
-  build_and_test:
+  lint_test_build:
     jobs:
       - lint
       - test

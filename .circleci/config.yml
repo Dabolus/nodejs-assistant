@@ -38,8 +38,7 @@ jobs:
       - run: npm run build
 workflows:
   version: 2
-  lint_test_build:
+  run_pipeline:
     jobs:
-      - lint
-      - test
-      - build
+      - node8
+      - node10

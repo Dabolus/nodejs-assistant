@@ -62,9 +62,13 @@ jobs:
       - deploy:
           name: Deploy docs
           command: |
+            git config credential.helper 'cache --timeout=120'
+            git config user.name "${GITHUB_NAME}"
+            git config user.email "${GITHUB_EMAIL}"
             git add .
             git commit -m "docs: Automatic generation"
-            git push -q origin gh-pages
+            echo "Pushing to gh-pages branch..."
+            git push -q https://${GITHUB_TOKEN}@github.com/Dabolus/nodejs-assistant.git gh-pages
 workflows:
   version: 2
   run_pipeline:

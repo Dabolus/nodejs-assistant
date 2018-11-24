@@ -22,7 +22,6 @@
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "@types/node": "^9.6.39",
-    "husky": "^1.1.4",
     "jest": "^23.6.0",
     "rollup": "^0.67.1",
     "rollup-plugin-typescript2": "^0.18.0",
@@ -57,10 +56,5 @@
     "testMatch": [
       "<rootDir>/test/**/*.spec.ts"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "rm -rf docs && typedoc src --out docs --mode file --name 'Assistant SDK for Node.js' && git add docs/"
-    }
   }
 }

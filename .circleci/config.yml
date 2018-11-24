@@ -1,9 +1,6 @@
 version: 2
 jobs:
   node8:
-    branches:
-      only:
-        - master
     docker:
       - image: circleci/node:8
     steps:
@@ -22,9 +19,6 @@ jobs:
       - run: npm test
       - run: npm run build
   node10:
-    branches:
-      only:
-        - master
     docker:
       - image: circleci/node:10
     steps:
@@ -43,9 +37,6 @@ jobs:
       - run: npm test
       - run: npm run build
   docs:
-    branches:
-      only:
-        - master
     docker:
       - image: circleci/node:10
     steps:
@@ -82,9 +73,18 @@ workflows:
   version: 2
   run_pipeline:
     jobs:
-      - node8
-      - node10
+      - node8:
+          filters:
+            branches:
+              only: master
+      - node10:
+          filters:
+            branches:
+              only: master
       - docs:
+          filters:
+            branches:
+              only: master
           requires:
             - node8
             - node10

@@ -36,9 +36,26 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+  docs:
+    docker:
+      - image: node:10-alpine
+    steps:
+      - checkout
+      - run: npm run generate-docs
+      - run:
+          command: |
+            npm run generate-docs
+            git checkout docs
+            mv docs/* .
+            rm -rf docs/ classes/ enums/ interfaces/ README.md
+            ls -la
 workflows:
   version: 2
   run_pipeline:
     jobs:
       - node8
       - node10
+      - docs:
+          requires:
+            - node8
+            - node10

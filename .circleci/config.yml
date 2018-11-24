@@ -1,6 +1,9 @@
 version: 2
 jobs:
   node8:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/node:8
     steps:
@@ -19,6 +22,9 @@ jobs:
       - run: npm test
       - run: npm run build
   node10:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/node:10
     steps:
@@ -37,6 +43,9 @@ jobs:
       - run: npm test
       - run: npm run build
   docs:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/node:10
     steps:

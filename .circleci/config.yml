@@ -2,7 +2,7 @@ version: 2
 jobs:
   node8:
     docker:
-      - image: node:8-alpine
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
@@ -20,7 +20,7 @@ jobs:
       - run: npm run build
   node10:
     docker:
-      - image: node:10-alpine
+      - image: circleci/node:10
     steps:
       - checkout
       - restore_cache:
@@ -38,7 +38,7 @@ jobs:
       - run: npm run build
   docs:
     docker:
-      - image: node:10-alpine
+      - image: circleci/node:10
     steps:
       - checkout
       - run: npm run generate-docs

@@ -12,8 +12,8 @@ jobs:
             - v1-npm-deps-
       - run: npm install
       - save_cache:
-        paths:
-          - node_modules
+          paths:
+            - node_modules
         key: v1-npm-deps-{{ checksum "package-lock.json" }}
       - run: npm run lint
       - run: npm test
@@ -30,8 +30,8 @@ jobs:
             - v1-npm-deps-
       - run: npm install
       - save_cache:
-        paths:
-          - node_modules
+          paths:
+            - node_modules
         key: v1-npm-deps-{{ checksum "package-lock.json" }}
       - run: npm run lint
       - run: npm test

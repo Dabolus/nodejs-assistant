@@ -1,52 +1,40 @@
 version: 2
 jobs:
-  lint:
+  node8:
     docker:
-      - image: circleci/node:10.13
+      - image: node:8-alpine
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+          keys:
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-npm-deps-
       - run: npm install
       - save_cache:
         paths:
           - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+        key: v1-npm-deps-{{ checksum "package-lock.json" }}
       - run: npm run lint
-  test:
-    docker:
-      - image: circleci/node:10.13
-    steps:
-      - checkout
-      - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
-      - run: npm install
-      - save_cache:
-        paths:
-          - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
-  build:
+      - run: npm run build
+  node10:
     docker:
-      - image: circleci/node:10.13
+      - image: node:10-alpine
     steps:
       - checkout
       - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "package.json" }}
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+          keys:
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-npm-deps-
       - run: npm install
       - save_cache:
         paths:
           - node_modules
-        key: v1-dependencies-{{ checksum "package.json" }}
+        key: v1-npm-deps-{{ checksum "package-lock.json" }}
+      - run: npm run lint
+      - run: npm test
       - run: npm run build
 workflows:
   version: 2

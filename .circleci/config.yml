@@ -52,13 +52,19 @@ jobs:
           paths:
             - node_modules
       - run:
-          name: update docs
+          name: Generate docs
           command: |
             npm run generate-docs
             git checkout gh-pages
+            rm -rf node_modules/ classes/ enums/ interfaces/ README.md
             mv docs/* .
-            rm -rf docs/ classes/ enums/ interfaces/ README.md
-            ls -la
+            rmdir docs
+      - deploy:
+          name: Deploy docs
+          command: |
+            git add .
+            git commit -m "docs: Automatic generation"
+            git push -q origin gh-pages
 workflows:
   version: 2
   run_pipeline:

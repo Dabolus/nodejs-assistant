@@ -2,6 +2,13 @@
 
 # Class: Assistant
 
+The base class to connect with the Assistant.
+*__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
+
+*__license__*: MIT
+
+*__class__*: 
+
 ## Hierarchy
 
 **Assistant**
@@ -37,12 +44,15 @@
 
 ⊕ **new Assistant**(credentials: *`JWTInput`*, options?: *[AssistantOptions](../interfaces/assistantoptions.md)*): [Assistant](assistant.md)
 
+Creates a new connection with the assistant.
+*__constructor__*: 
+
 **Parameters:**
 
-| Name | Type | Default value |
-| ------ | ------ | ------ |
-| credentials | `JWTInput` | - |
-| `Default value` options | [AssistantOptions](../interfaces/assistantoptions.md) |  {deviceId: &#x27;default&#x27;,deviceModelId: &#x27;default&#x27;,locale: AssistantLanguage.ENGLISH,} |
+| Name | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| credentials | `JWTInput` | - |  The credentials to use to authenticate with the Assistant. |
+| `Default value` options | [AssistantOptions](../interfaces/assistantoptions.md) |  {deviceId: &#x27;default&#x27;,deviceModelId: &#x27;default&#x27;,locale: AssistantLanguage.ENGLISH,} |  Some additional (optional) options. |
 
 **Returns:** [Assistant](assistant.md)
 
@@ -109,13 +119,16 @@ ___
 
 ▸ **query**(text: *`string`*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 
+Sends a single text query to the Assistant and wait for its response.
+
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| text | `string` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| text | `string` |  The text query to send to the Assistant. |
 
 **Returns:** `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
+A promise that resolves to the Assistant response.
 
 ___
 <a id="startaudioconversation"></a>
@@ -124,14 +137,17 @@ ___
 
 ▸ **startAudioConversation**(audioInConfig: *[AudioInConfig](../interfaces/audioinconfig.md)*, audioOutConfig: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [AudioConversation](audioconversation.md)
 
+Starts a new audio conversation with the Assistant.
+
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| audioInConfig | [AudioInConfig](../interfaces/audioinconfig.md) |
-| audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| audioInConfig | [AudioInConfig](../interfaces/audioinconfig.md) |  The audio input configuration. |
+| audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  The audio output configuration. |
 
 **Returns:** [AudioConversation](audioconversation.md)
+The new audio conversation.
 
 ___
 <a id="starttextconversation"></a>
@@ -140,7 +156,10 @@ ___
 
 ▸ **startTextConversation**(): [TextConversation](textconversation.md)
 
+Starts a new text conversation with the Assistant.
+
 **Returns:** [TextConversation](textconversation.md)
+The new text conversation.
 
 ___
 

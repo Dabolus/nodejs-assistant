@@ -45,6 +45,10 @@ export class Assistant {
     this._client = this._createClient(credentials);
   }
 
+  /**
+   * Starts a new text conversation with the Assistant.
+   * @returns The new text conversation.
+   */
   public startTextConversation(): TextConversation {
     return new TextConversation(
       this._client.assist(),
@@ -54,6 +58,12 @@ export class Assistant {
     );
   }
 
+  /**
+   * Starts a new audio conversation with the Assistant.
+   * @param audioInConfig - The audio input configuration.
+   * @param audioOutConfig - The audio output configuration.
+   * @returns The new audio conversation.
+   */
   public startAudioConversation(audioInConfig: AudioInConfig, audioOutConfig: AudioOutConfig): AudioConversation {
     return new AudioConversation(
       this._client.assist(),
@@ -65,6 +75,11 @@ export class Assistant {
     );
   }
 
+  /**
+   * Sends a single text query to the Assistant and wait for its response.
+   * @param text - The text query to send to the Assistant.
+   * @returns A promise that resolves to the Assistant response.
+   */
   public query(text: string): Promise<AssistantResponse> {
     const conversation = this._client.assist();
     return new Promise((resolve, reject) => {

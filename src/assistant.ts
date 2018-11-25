@@ -2,7 +2,6 @@ import { JWTInput, UserRefreshClient } from 'google-auth-library';
 import * as grpc from 'grpc';
 import { AudioConversation } from './audio-conversation';
 import { AssistantLanguage, AssistantOptions, AssistantResponse, mapAssistResponseToAssistantResponse } from './common';
-import { Conversation } from './conversation';
 import {
   AssistResponse,
   AudioInConfig,

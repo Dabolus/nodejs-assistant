@@ -12,6 +12,12 @@ import {
 } from './proto';
 import { TextConversation } from './text-conversation';
 
+/**
+ * The base class to connect with the Assistant.
+ * @author Giorgio Garasto <giorgio@garasto.it>
+ * @license MIT
+ * @class
+ */
 export class Assistant {
   public locale: AssistantLanguage;
   public deviceId: string;
@@ -19,6 +25,15 @@ export class Assistant {
   private _endpoint = 'embeddedassistant.googleapis.com';
   private _client: EmbeddedAssistantInstance;
 
+  /**
+   * Creates a new connection with the assistant.
+   * @param credentials - The credentials to use to authenticate with the Assistant.
+   * @param options - Some additional (optional) options.
+   * @param options.deviceId - The device ID to use in the conversations with the Assistant.
+   * @param options.deviceModelId - The device model ID to use in the conversations with the Assistant.
+   * @param options.locale - The locale to use in the conversations with the Assistant.
+   * @constructor
+   */
   constructor(credentials: JWTInput, options: AssistantOptions = {
     deviceId: 'default',
     deviceModelId: 'default',

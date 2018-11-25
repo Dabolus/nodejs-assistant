@@ -19,10 +19,10 @@ import { AssistRequest, AssistResponse } from './proto';
 export class Conversation extends EventEmitter {
   /**
    * Creates a new conversation.
-   * @param _stream The duplex stream to use to communicate with the Assistant SDK.
-   * @param _deviceId The device ID to use during this conversation.
-   * @param _deviceModelId The device model ID to use during this conversation.
-   * @param locale The locale to use during this conversation.
+   * @param _stream - The duplex stream to use to communicate with the Assistant SDK.
+   * @param _deviceId - The device ID to use during this conversation.
+   * @param _deviceModelId - The device model ID to use during this conversation.
+   * @param locale - The locale to use during this conversation.
    * @constructor
    */
   constructor(

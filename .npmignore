@@ -12,3 +12,4 @@ test/
 ts*.json
 CODE_OF_CONDUCT.md
 CONTRIBUTORS
+rollup.config.ts

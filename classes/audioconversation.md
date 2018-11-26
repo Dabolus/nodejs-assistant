@@ -2,6 +2,13 @@
 
 # Class: AudioConversation
 
+Represents an audio conversation with the Assistant.
+*__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
+
+*__license__*: MIT
+
+*__class__*: 
+
 ## Hierarchy
 
 ↳  [Conversation](conversation.md)
@@ -53,16 +60,19 @@
 
 ⊕ **new AudioConversation**(_stream: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*, _deviceId: *`string`*, _deviceModelId: *`string`*, locale: *[AssistantLanguage](../enums/assistantlanguage.md)*, audioInConfig: *[AudioInConfig](../interfaces/audioinconfig.md)*, audioOutConfig: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [AudioConversation](audioconversation.md)
 
+Creates a new audio conversation.
+*__constructor__*: 
+
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| _stream | `ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)> |
-| _deviceId | `string` |
-| _deviceModelId | `string` |
-| locale | [AssistantLanguage](../enums/assistantlanguage.md) |
-| audioInConfig | [AudioInConfig](../interfaces/audioinconfig.md) |
-| audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| _stream | `ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)> |  The duplex stream to use to communicate with the Assistant SDK. |
+| _deviceId | `string` |  The device ID to use during this conversation. |
+| _deviceModelId | `string` |  The device model ID to use during this conversation. |
+| locale | [AssistantLanguage](../enums/assistantlanguage.md) |  The locale to use during this conversation. |
+| audioInConfig | [AudioInConfig](../interfaces/audioinconfig.md) |  The audio input configuration. |
+| audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  The audio output configuration. |
 
 **Returns:** [AudioConversation](audioconversation.md)
 
@@ -312,13 +322,16 @@ ___
 
 ▸ **send**(audio: *`Buffer`*): `boolean`
 
+Sends audio to the Assistant.
+
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| audio | `Buffer` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| audio | `Buffer` |  The audio buffer to send to the Assistant. |
 
 **Returns:** `boolean`
+A boolean that tells whether the audio buffer was successfully sent or not.
 
 ___
 <a id="sendrawrequest"></a>

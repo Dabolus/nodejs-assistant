@@ -2,6 +2,13 @@
 
 # Class: TextConversation
 
+Represents a text conversation with the Assistant.
+*__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
+
+*__license__*: MIT
+
+*__class__*: 
+
 ## Hierarchy
 
 ↳  [Conversation](conversation.md)
@@ -313,13 +320,16 @@ ___
 
 ▸ **send**(text: *`string`*): `boolean`
 
+Sends a text query to the Assistant.
+
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| text | `string` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| text | `string` |  The text query to send to the Assistant. |
 
 **Returns:** `boolean`
+A boolean that tells whether the text query was successfully sent or not.
 
 ___
 <a id="sendrawrequest"></a>

@@ -1,9 +1,14 @@
 .idea/
+.circleci/
+.github/
 node_modules/
 src/
 dev/
 docs/
+test/
 .rpt2_cache/
 .*
 *.log
 ts*.json
+CODE_OF_CONDUCT.md
+CONTRIBUTORS

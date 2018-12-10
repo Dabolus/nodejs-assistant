@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-docs-samples-assistant",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dabolus/nodejs-assistant.git"
+  },
+  "author": "Giorgio Garasto <giorgio@garasto.it>",
+  "license": "MIT",
+  "dependencies": {
+    "nodejs-assistant": "^0.6.1"
+  },
+  "devDependencies": {}
+}

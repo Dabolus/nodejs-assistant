@@ -1,7 +1,9 @@
 const { Assistant, AssistantLanguage } = require('nodejs-assistant');
+const { getCredentials } = require('./credentials');
 
 const startAssistant = async () => {
-  const assistant = new Assistant(/* TODO: get credentials */ {}, {
+  const credentials = await getCredentials();
+  const assistant = new Assistant(credentials, {
     deviceId: 'test device',
     deviceModelId: 'test device model',
     locale: AssistantLanguage.ENGLISH,

@@ -13,3 +13,4 @@ ts*.json
 CODE_OF_CONDUCT.md
 CONTRIBUTORS
 rollup.config.ts
+client_secret*.json

@@ -1,12 +1,13 @@
+// tslint:disable:object-literal-sort-keys
 import fs from 'fs';
 import typescript from 'rollup-plugin-typescript2';
 
 const inputs = fs
   .readdirSync('src')
-  .filter(file => !file.endsWith('.d.ts'))
-  .map(file => file.slice(0, -3));
+  .filter((file) => !file.endsWith('.d.ts'))
+  .map((file) => file.slice(0, -3));
 
-export default inputs.map(input => ({
+export default inputs.map((input) => ({
   input: `src/${input}.ts`,
   output: [{
     file: `lib/${input}.js`,

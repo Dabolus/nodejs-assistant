@@ -9,6 +9,7 @@
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
   "dependencies": {
+    "google-auth-library": "^2.0.1",
     "nodejs-assistant": "^0.6.1"
   },
   "devDependencies": {}

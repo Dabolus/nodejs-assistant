@@ -81,28 +81,27 @@ assistant.query('Hi!')
 
 ## Samples
 
-<!--
-Samples are in the [`samples/`](https://github.com/googleapis/nodejs-datastore/tree/master/samples) directory. The samples' `README.md`
+Samples are in the [`samples/`](https://github.com/Dabolus/nodejs-assistant/tree/master/samples) directory. The samples' `README.md`
 has instructions for running the samples.
 
 | Sample                      | Source Code                       | Try it |
 | --------------------------- | --------------------------------- | ------ |
-| Tasks | [source code](https://github.com/googleapis/nodejs-datastore/blob/master/samples/tasks.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-datastore&page=editor&open_in_editor=samples/tasks.js,samples/README.md) |
-| Concepts | [source code](https://github.com/googleapis/nodejs-datastore/blob/master/samples/concepts.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-datastore&page=editor&open_in_editor=samples/concepts.js,samples/README.md) |
-| Errors and Error Handling | [source code](https://github.com/googleapis/nodejs-datastore/blob/master/samples/error.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-datastore&page=editor&open_in_editor=samples/error.js,samples/README.md) |
+| Quickstart | [source code](https://github.com/Dabolus/nodejs-assistant/blob/master/samples/quickstart.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/quickstart.js,samples/README.md) |
+| Text Conversation | [source code](https://github.com/Dabolus/nodejs-assistant/blob/master/samples/text.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/text.js,samples/README.md) |
+| Audio Conversation | [source code](https://github.com/Dabolus/nodejs-assistant/blob/master/samples/audio.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/audio.js,samples/README.md) |
 
-The [Cloud Datastore Node.js Client API Reference][client-docs] documentation
-also contains samples.
--->
+You might also want to check out [Google Assistant Desktop _(Unofficial)_](https://github.com/Dabolus/google-assistant-desktop-unofficial) 
+for a more concrete example.
+
 ## Contributing
 
-Contributions welcome! See the [Contributing Guide](https://github.com/googleapis/nodejs-datastore/blob/master/.github/CONTRIBUTING.md).
+Contributions welcome! See the [Contributing Guide](https://github.com/Dabolus/nodejs-assistant/blob/master/.github/CONTRIBUTING.md).
 
 ## License
 
 Apache Version 2.0
 
-See [LICENSE](https://github.com/googleapis/nodejs-datastore/blob/master/LICENSE)
+See [LICENSE](https://github.com/Dabolus/nodejs-assistant/blob/master/LICENSE)
 
 [client-docs]: https://dabolus.github.io/nodejs-assistant/
 [product-docs]: https://developers.google.com/assistant/sdk/

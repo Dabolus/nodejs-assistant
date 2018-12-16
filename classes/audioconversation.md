@@ -37,6 +37,7 @@ Represents an audio conversation with the Assistant.
 * [getMaxListeners](audioconversation.md#getmaxlisteners)
 * [listenerCount](audioconversation.md#listenercount)
 * [listeners](audioconversation.md#listeners)
+* [off](audioconversation.md#off)
 * [on](audioconversation.md#on)
 * [once](audioconversation.md#once)
 * [prependListener](audioconversation.md#prependlistener)
@@ -204,6 +205,22 @@ ___
 | event |  `string` &#124; `symbol`|
 
 **Returns:** `Function`[]
+
+___
+<a id="off"></a>
+
+###  off
+
+▸ **off**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| event |  `string` &#124; `symbol`|
+| listener | `function` |
+
+**Returns:** `this`
 
 ___
 <a id="on"></a>
@@ -384,6 +401,8 @@ ___
 ### `<Static>` listenerCount
 
 ▸ **listenerCount**(emitter: *`EventEmitter`*, event: * `string` &#124; `symbol`*): `number`
+
+*__deprecated__*: since v4.0.0
 
 **Parameters:**
 

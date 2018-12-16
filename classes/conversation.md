@@ -43,6 +43,7 @@ Represents a conversation with the Assistant.
 * [getMaxListeners](conversation.md#getmaxlisteners)
 * [listenerCount](conversation.md#listenercount)
 * [listeners](conversation.md#listeners)
+* [off](conversation.md#off)
 * [on](conversation.md#on)
 * [once](conversation.md#once)
 * [prependListener](conversation.md#prependlistener)
@@ -576,6 +577,22 @@ ___
 | event | [ConversationEvent](../#conversationevent) |
 
 **Returns:** `Array`<`function`>
+
+___
+<a id="off"></a>
+
+###  off
+
+▸ **off**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| event |  `string` &#124; `symbol`|
+| listener | `function` |
+
+**Returns:** `this`
 
 ___
 <a id="on"></a>
@@ -1165,6 +1182,8 @@ ___
 ### `<Static>` listenerCount
 
 ▸ **listenerCount**(emitter: *`EventEmitter`*, event: * `string` &#124; `symbol`*): `number`
+
+*__deprecated__*: since v4.0.0
 
 **Parameters:**
 

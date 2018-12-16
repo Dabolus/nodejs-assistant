@@ -73,17 +73,45 @@ assistant.query('Hi!')
 Samples
 -------
 
+Samples are in the [`samples/`](https://github.com/Dabolus/nodejs-assistant/tree/master/samples) directory. The samples' `README.md` has instructions for running the samples.
+
+Sample
+
+Source Code
+
+Try it
+
+Quickstart
+
+[source code](https://github.com/Dabolus/nodejs-assistant/blob/master/samples/quickstart.js)
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/quickstart.js,samples/README.md)
+
+Text Conversation
+
+[source code](https://github.com/Dabolus/nodejs-assistant/blob/master/samples/text.js)
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/text.js,samples/README.md)
+
+Audio Conversation
+
+[source code](https://github.com/Dabolus/nodejs-assistant/blob/master/samples/audio.js)
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/audio.js,samples/README.md)
+
+You might also want to check out [Google Assistant Desktop _(Unofficial)_](https://github.com/Dabolus/google-assistant-desktop-unofficial) for a more concrete example.
+
 Contributing
 ------------
 
-Contributions welcome! See the [Contributing Guide](https://github.com/googleapis/nodejs-datastore/blob/master/.github/CONTRIBUTING.md).
+Contributions welcome! See the [Contributing Guide](https://github.com/Dabolus/nodejs-assistant/blob/master/.github/CONTRIBUTING.md).
 
 License
 -------
 
 Apache Version 2.0
 
-See [LICENSE](https://github.com/googleapis/nodejs-datastore/blob/master/LICENSE)
+See [LICENSE](https://github.com/Dabolus/nodejs-assistant/blob/master/LICENSE)
 
 ## Index
 

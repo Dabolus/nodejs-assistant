@@ -10,7 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "google-auth-library": "^2.0.1",
-    "nodejs-assistant": "^0.6.1"
+    "node-record-lpcm16": "^0.3.1",
+    "nodejs-assistant": "^0.6.1",
+    "speaker": "^0.4.1"
   },
   "devDependencies": {}
 }

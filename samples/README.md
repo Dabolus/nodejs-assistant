@@ -41,7 +41,7 @@ __Usage:__ `node quickstart.js`
 ### Text Conversation
 
 An example that shows how to open a text conversation with the Assistant, send 
-text queries and receive responses.
+text queries and receive text responses.
 
 View the [source code][text_code].
 
@@ -50,6 +50,19 @@ View the [source code][text_code].
 __Usage:__ `node text.js`
 
 [text_code]: text.js
+
+### Audio Conversation
+
+An example that shows how to open an audio conversation with the Assistant, send 
+audio queries and receive audio responses.
+
+View the [source code][audio_code].
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/audio.js,samples/README.md)
+
+__Usage:__ `node audio.js`
+
+[audio_code]: audio.js
 
 [shell_img]: https://gstatic.com/cloudssh/images/open-btn.png
 [shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/README.md

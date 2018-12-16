@@ -55,6 +55,7 @@ jobs:
           name: Generate docs
           command: |
             npm run generate-docs
+            git reset --hard
             git checkout gh-pages
             rm -rf node_modules/ classes/ enums/ interfaces/ README.md
             mv docs/* .

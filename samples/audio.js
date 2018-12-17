@@ -1,9 +1,11 @@
 const record = require('node-record-lpcm16');
 const Speaker = require('speaker');
 const { Assistant, AssistantLanguage, AudioInEncoding, AudioOutEncoding } = require('nodejs-assistant');
+const { Detector, Models } = require('snowboy');
 const { getCredentials } = require('./credentials');
 
-const startTextAssistant = async () => {
+const startAudioAssistant = async (mic) => {
+  console.log('Speak now!');
   const credentials = await getCredentials();
   const assistant = new Assistant(credentials, {
     deviceId: 'test device',
@@ -14,11 +16,6 @@ const startTextAssistant = async () => {
   let speakerOpenTime = 0;
   let speakerTimer;
 
-  // Setup the mic
-  const mic = record.start({
-    sampleRate: 16000,
-    threshold: 0,
-  });
   // Setup the speaker
   const speaker = new Speaker({
     sampleRate: 16000,
@@ -66,4 +63,34 @@ const startTextAssistant = async () => {
     .on('close', () => void 0);
 };
 
-startTextAssistant();
+const waitForHotword = () => {
+  const models = new Models();
+  models.add({
+    file: 'resources/ok_google.pmdl',
+    sensitivity: '0.5',
+    hotwords: 'Ok Google',
+  });
+  models.add({
+    file: 'resources/hey_google.pmdl',
+    sensitivity: '0.5',
+    hotwords: 'Hey Google',
+  });
+
+  const detector = new Detector({
+    models,
+    resource: 'resources/common.res',
+    audioGain: 1,
+    applyFrontend: false,
+  });
+
+  // Setup the mic
+  const mic = record.start({
+    sampleRate: 16000,
+    threshold: 0,
+  });
+
+  detector.on('hotword', () => startAudioAssistant(mic));
+  mic.pipe(detector);
+};
+
+waitForHotword();

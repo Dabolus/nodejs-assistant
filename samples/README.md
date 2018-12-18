@@ -16,6 +16,7 @@ spoken audio response in addition to the raw text of the utterance.
 * [Samples](#samples)
   * [Quickstart](#quickstart)
   * [Text Conversation](#text-conversation)
+  * [Audio Conversation](#audio-conversation)
 
 ## Before you begin
 
@@ -53,8 +54,12 @@ __Usage:__ `node text.js`
 
 ### Audio Conversation
 
-An example that shows how to open an audio conversation with the Assistant, send 
-audio queries and receive audio responses.
+An example that shows how to detect an hotword using [Snowboy](https://snowboy.kitt.ai/), 
+open an audio conversation with the Assistant, send audio queries and receive 
+audio responses. Note that the two hotwords ("Ok Google" and "Hey Google") were 
+trained against my voice, so you might want to train your own hotwords from 
+Snowboy's dashboard. The great thing is that Snowboy lets you train any keyword 
+you want, not just "Ok Google" and "Hey Google".
 
 View the [source code][audio_code].
 

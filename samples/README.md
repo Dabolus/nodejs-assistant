@@ -37,7 +37,7 @@ View the [source code][quickstart_code].
 
 __Usage:__ `node quickstart.js`
 
-[quickstart_code]: quickstart.js
+[quickstart_code]: https://github.com/Dabolus/nodejs-assistant/blob/master/samples/quickstart.js
 
 ### Text Conversation
 
@@ -50,7 +50,7 @@ View the [source code][text_code].
 
 __Usage:__ `node text.js`
 
-[text_code]: text.js
+[text_code]: https://github.com/Dabolus/nodejs-assistant/blob/master/samples/text.js
 
 ### Audio Conversation
 
@@ -67,7 +67,7 @@ View the [source code][audio_code].
 
 __Usage:__ `node audio.js`
 
-[audio_code]: audio.js
+[audio_code]: https://github.com/Dabolus/nodejs-assistant/blob/master/samples/audio.js
 
 [shell_img]: https://gstatic.com/cloudssh/images/open-btn.png
 [shell_link]: https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/Dabolus/nodejs-assistant&page=editor&open_in_editor=samples/README.md

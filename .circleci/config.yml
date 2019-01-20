@@ -56,9 +56,11 @@ jobs:
           command: |
             npm run generate-docs
             git reset --hard
+            cp README.md /tmp
             git checkout gh-pages
             rm -rf node_modules/ classes/ enums/ interfaces/ README.md
             mv docs/* .
+            mv /tmp/README.md .
             rmdir docs
       - deploy:
           name: Deploy docs

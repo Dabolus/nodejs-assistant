@@ -98,7 +98,7 @@ for a more concrete example.
 
 ## Contributing
 
-Contributions welcome! See the [Contributing Guide](https://github.com/Dabolus/nodejs-assistant/blob/master/.github/CONTRIBUTING.md).
+Contributions welcome! See the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 

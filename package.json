@@ -12,7 +12,7 @@
     "test": "jest",
     "lint": "tslint -p .",
     "format": "tslint -p . --fix",
-    "generate-docs": "typedoc src --out docs --mode file --name 'Assistant SDK for Node.js' --theme markdown --mdHideSources"
+    "generate-docs": "typedoc src --out api --mode file --name 'Assistant SDK for Node.js' --theme markdown --mdHideSources"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",

@@ -5,7 +5,7 @@ node_modules/
 samples/
 src/
 dev/
-docs/
+api/
 test/
 .rpt2_cache/
 .*

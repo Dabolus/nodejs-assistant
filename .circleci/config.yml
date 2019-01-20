@@ -58,13 +58,9 @@ jobs:
             git reset --hard
             cp README.md /tmp
             git checkout gh-pages
-            rm -rf node_modules/
             shopt -s extglob
-            echo !(.|..|.git|_config.yml)
-            rm -rf classes/ enums/ interfaces/ README.md
-            mv docs/* .
+            rm -rf !(.|..|.git|_config.yml|api)
             mv /tmp/README.md .
-            rmdir docs
       - deploy:
           name: Deploy docs
           command: |

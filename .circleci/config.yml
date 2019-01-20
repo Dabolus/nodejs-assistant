@@ -61,6 +61,7 @@ jobs:
             shopt -s extglob
             rm -rf !(.|..|.git|_config.yml|api)
             mv /tmp/README.md .
+            sed -nie '/## Index/,$p' api/README.md
       - deploy:
           name: Deploy docs
           command: |

@@ -79,9 +79,12 @@ assistant.query('Hi!')
   });
 ```
 
+Head over the [API docs](https://dabolus.github.io/nodejs-assistant/api/) for 
+more information.
+
 ## Samples
 
-Samples are in the [`samples/`](https://github.com/Dabolus/nodejs-assistant/tree/master/samples) directory. The samples' `README.md`
+Samples are in the [`samples/`](samples/) directory. The samples' `README.md`
 has instructions for running the samples.
 
 | Sample                      | Source Code                       | Try it |

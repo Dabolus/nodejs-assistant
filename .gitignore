@@ -5,3 +5,4 @@ dev/
 .rpt2_cache/
 client_secret*.json
 credentials.json
+docs/

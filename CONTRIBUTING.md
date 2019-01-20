@@ -8,14 +8,15 @@
 
 ## Contributing A Patch
 
-1.  Submit an issue describing your proposed change to the repo in question.
-2.  The repo owner will respond to your issue promptly.
-3.  If your proposed change is accepted, fork the desired repo, develop and
+1.  Read the [Code of Conduct](CODE_OF_CONDUCT.md).
+2.  Submit an issue describing your proposed change to the repo in question.
+3.  The repo owner will respond to your issue promptly.
+4.  If your proposed change is accepted, fork the desired repo, develop and
     test your code changes.
-4.  Ensure that your code adheres to the existing style in the code to which
+5.  Ensure that your code adheres to the existing style in the code to which
     you are contributing.
-5.  Ensure that your code has an appropriate set of tests which all pass.
-6.  Submit a pull request.
+6.  Ensure that your code has an appropriate set of tests which all pass.
+7.  Submit a pull request.
 
 ## Running the tests
 

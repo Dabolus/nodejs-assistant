@@ -55,13 +55,15 @@ jobs:
           name: Generate docs
           command: |
             npm run generate-docs
+            mv api /tmp
             git reset --hard
             cp README.md /tmp
             git checkout gh-pages
             shopt -s extglob
-            rm -rf !(.|..|.git|_config.yml|api)
+            rm -rf !(.|..|.git|_config.yml)
+            mv /tmp/api .
             mv /tmp/README.md .
-            sed -nie '/## Index/,$p' api/README.md
+            sed -nie '/## Index/,$p' api/README.md && rm api/README.mde
       - deploy:
           name: Deploy docs
           command: |

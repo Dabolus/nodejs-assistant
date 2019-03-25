@@ -3,6 +3,7 @@
 # Class: Assistant
 
 The base class to connect with the Assistant.
+
 *__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
 
 *__license__*: MIT
@@ -45,6 +46,7 @@ The base class to connect with the Assistant.
 ⊕ **new Assistant**(credentials: *`JWTInput`*, options?: *[AssistantOptions](../interfaces/assistantoptions.md)*): [Assistant](assistant.md)
 
 Creates a new connection with the assistant.
+
 *__constructor__*: 
 
 **Parameters:**

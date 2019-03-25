@@ -3,6 +3,7 @@
 # Class: AudioConversation
 
 Represents an audio conversation with the Assistant.
+
 *__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
 
 *__license__*: MIT
@@ -62,6 +63,7 @@ Represents an audio conversation with the Assistant.
 ⊕ **new AudioConversation**(_stream: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*, _deviceId: *`string`*, _deviceModelId: *`string`*, locale: *[AssistantLanguage](../enums/assistantlanguage.md)*, audioInConfig: *[AudioInConfig](../interfaces/audioinconfig.md)*, audioOutConfig: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [AudioConversation](audioconversation.md)
 
 Creates a new audio conversation.
+
 *__constructor__*: 
 
 **Parameters:**
@@ -122,13 +124,13 @@ ___
 
 ###  addListener
 
-▸ **addListener**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **addListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -138,13 +140,13 @@ ___
 
 ###  emit
 
-▸ **emit**(event: * `string` &#124; `symbol`*, ...args: *`any`[]*): `boolean`
+▸ **emit**(event: *`string` \| `symbol`*, ...args: *`any`[]*): `boolean`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | `Rest` args | `any`[] |
 
 **Returns:** `boolean`
@@ -163,9 +165,9 @@ ___
 
 ###  eventNames
 
-▸ **eventNames**(): `Array`< `string` &#124; `symbol`>
+▸ **eventNames**(): `Array`<`string` \| `symbol`>
 
-**Returns:** `Array`< `string` &#124; `symbol`>
+**Returns:** `Array`<`string` \| `symbol`>
 
 ___
 <a id="getmaxlisteners"></a>
@@ -181,13 +183,13 @@ ___
 
 ###  listenerCount
 
-▸ **listenerCount**(type: * `string` &#124; `symbol`*): `number`
+▸ **listenerCount**(type: *`string` \| `symbol`*): `number`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| type |  `string` &#124; `symbol`|
+| type | `string` \| `symbol` |
 
 **Returns:** `number`
 
@@ -196,13 +198,13 @@ ___
 
 ###  listeners
 
-▸ **listeners**(event: * `string` &#124; `symbol`*): `Function`[]
+▸ **listeners**(event: *`string` \| `symbol`*): `Function`[]
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 
 **Returns:** `Function`[]
 
@@ -211,13 +213,13 @@ ___
 
 ###  off
 
-▸ **off**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **off**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -227,13 +229,13 @@ ___
 
 ###  on
 
-▸ **on**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **on**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -243,13 +245,13 @@ ___
 
 ###  once
 
-▸ **once**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **once**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -259,13 +261,13 @@ ___
 
 ###  prependListener
 
-▸ **prependListener**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **prependListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -275,13 +277,13 @@ ___
 
 ###  prependOnceListener
 
-▸ **prependOnceListener**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **prependOnceListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -291,13 +293,13 @@ ___
 
 ###  rawListeners
 
-▸ **rawListeners**(event: * `string` &#124; `symbol`*): `Function`[]
+▸ **rawListeners**(event: *`string` \| `symbol`*): `Function`[]
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 
 **Returns:** `Function`[]
 
@@ -306,13 +308,13 @@ ___
 
 ###  removeAllListeners
 
-▸ **removeAllListeners**(event?: * `string` &#124; `symbol`*): `this`
+▸ **removeAllListeners**(event?: *`string` \| `symbol`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| `Optional` event |  `string` &#124; `symbol`|
+| `Optional` event | `string` \| `symbol` |
 
 **Returns:** `this`
 
@@ -321,13 +323,13 @@ ___
 
 ###  removeListener
 
-▸ **removeListener**(event: * `string` &#124; `symbol`*, listener: *`function`*): `this`
+▸ **removeListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 | listener | `function` |
 
 **Returns:** `this`
@@ -400,7 +402,7 @@ ___
 
 ### `<Static>` listenerCount
 
-▸ **listenerCount**(emitter: *`EventEmitter`*, event: * `string` &#124; `symbol`*): `number`
+▸ **listenerCount**(emitter: *`EventEmitter`*, event: *`string` \| `symbol`*): `number`
 
 *__deprecated__*: since v4.0.0
 
@@ -409,7 +411,7 @@ ___
 | Name | Type |
 | ------ | ------ |
 | emitter | `EventEmitter` |
-| event |  `string` &#124; `symbol`|
+| event | `string` \| `symbol` |
 
 **Returns:** `number`
 

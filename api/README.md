@@ -66,35 +66,28 @@
 
 ###  AssistConfig
 
-**Ƭ AssistConfig**: * `object` &  `object` &#124; `object`
-
-*
+**Ƭ AssistConfig**: *`object` & `object` \| `object`*
 
 ___
 <a id="assistrequest"></a>
 
 ###  AssistRequest
 
-**Ƭ AssistRequest**: * `object` &#124; `object`
-*
+**Ƭ AssistRequest**: *`object` \| `object`*
 
 ___
 <a id="assistantrequest"></a>
 
 ###  AssistantRequest
 
-**Ƭ AssistantRequest**: * `object` &#124;   `object` & `object`
- &#124;  `object` & `object`
-
-*
+**Ƭ AssistantRequest**: *`object` \| `object` & `object` \| `object` & `object`*
 
 ___
 <a id="conversationevent"></a>
 
 ###  ConversationEvent
 
-**Ƭ ConversationEvent**: * "data" &#124; "action" &#124; "actionongoogle" &#124; "audio" &#124; "conversationend" &#124; "message" &#124; "html" &#124; "volume" &#124; "speechrecognition" &#124; "utteranceend"
-*
+**Ƭ ConversationEvent**: *"data" \| "action" \| "actionongoogle" \| "audio" \| "conversationend" \| "message" \| "html" \| "volume" \| "speechrecognition" \| "utteranceend"*
 
 TYPINGS
 

@@ -16,21 +16,21 @@
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.4.0",
-    "google-auth-library": "^3.1.0",
-    "google-proto-files": "^0.18.0",
+    "google-auth-library": "^3.1.2",
+    "google-proto-files": "^0.20.0",
     "grpc": "^1.19.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
-    "@types/node": "^11.11.2",
+    "@types/node": "^11.11.6",
     "jest": "^24.5.0",
-    "rollup": "^1.6.0",
-    "rollup-plugin-typescript2": "^0.20.0",
+    "rollup": "^1.7.3",
+    "rollup-plugin-typescript2": "^0.20.1",
     "ts-jest": "^24.0.0",
-    "tslint": "^5.13.1",
+    "tslint": "^5.14.0",
     "typedoc": "^0.14.2",
     "typedoc-plugin-markdown": "^1.1.27",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.4000"
   },
   "contributors": [
     "Giorgio Garasto <giorgio@garasto.it>"

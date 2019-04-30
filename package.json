@@ -15,22 +15,22 @@
     "generate-docs": "typedoc src --out api --mode file --name 'Assistant SDK for Node.js' --theme markdown --mdHideSources"
   },
   "dependencies": {
-    "@grpc/proto-loader": "^0.4.0",
+    "@grpc/proto-loader": "^0.5.0",
     "google-auth-library": "^3.1.2",
     "google-proto-files": "^0.20.0",
-    "grpc": "^1.19.0"
+    "grpc": "^1.20.2"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^11.11.6",
-    "jest": "^24.5.0",
-    "rollup": "^1.7.3",
-    "rollup-plugin-typescript2": "^0.20.1",
-    "ts-jest": "^24.0.0",
-    "tslint": "^5.14.0",
+    "@types/jest": "^24.0.12",
+    "@types/node": "^11.13.8",
+    "jest": "^24.7.1",
+    "rollup": "^1.10.1",
+    "rollup-plugin-typescript2": "^0.21.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.16.0",
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.27",
-    "typescript": "^3.3.4000"
+    "typedoc-plugin-markdown": "^1.2.0",
+    "typescript": "^3.4.5"
   },
   "contributors": [
     "Giorgio Garasto <giorgio@garasto.it>"

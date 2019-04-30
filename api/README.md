@@ -99,7 +99,7 @@ ___
 
 ### `<Const>` PROTO_ROOT_DIR
 
-**● PROTO_ROOT_DIR**: *`any`* =  protoFiles('..')
+**● PROTO_ROOT_DIR**: *`string`* =  getProtoPath('..')
 
 ___
 <a id="embeddedassistantpb"></a>

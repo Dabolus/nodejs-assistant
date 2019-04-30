@@ -1,5 +1,5 @@
 import { loadSync } from '@grpc/proto-loader';
-import protoFiles from 'google-proto-files';
+import { getProtoPath } from 'google-proto-files';
 import { ChannelCredentials, ClientDuplexStream, loadPackageDefinition } from 'grpc';
 
 // Service that implements the Google Assistant API.
@@ -510,7 +510,7 @@ export interface DeviceLocation {
   coordinates: LatLng;
 }
 
-const PROTO_ROOT_DIR = protoFiles('..');
+const PROTO_ROOT_DIR = getProtoPath('..');
 
 const proto: any = loadSync('google/assistant/embedded/v1alpha2/embedded_assistant.proto', {
   includeDirs: [PROTO_ROOT_DIR],

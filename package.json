@@ -32,6 +32,7 @@
     "typedoc-plugin-markdown": "^1.2.0",
     "typescript": "^3.4.5"
   },
+  "repository": "Dabolus/nodejs-assistant",
   "contributors": [
     "Giorgio Garasto <giorgio@garasto.it>"
   ],

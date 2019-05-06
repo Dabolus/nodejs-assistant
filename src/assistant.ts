@@ -5,6 +5,7 @@ import { AssistantLanguage, AssistantOptions, AssistantResponse, mapAssistRespon
 import {
   AssistResponse,
   AudioInConfig,
+  AudioInEncoding,
   AudioOutConfig,
   AudioOutEncoding,
   EmbeddedAssistant as EmbeddedAssistantInstance,
@@ -47,14 +48,20 @@ export class Assistant {
 
   /**
    * Starts a new text conversation with the Assistant.
+   * @param audioOutConfig - The audio output configuration.
    * @returns The new text conversation.
    */
-  public startTextConversation(): TextConversation {
+  public startTextConversation(audioOutConfig: AudioOutConfig = {
+    encoding: AudioOutEncoding.LINEAR16,
+    sampleRateHertz: 16000,
+    volumePercentage: 100,
+  }): TextConversation {
     return new TextConversation(
       this._client.assist(),
       this.deviceId,
       this.deviceModelId,
       this.locale,
+      audioOutConfig,
     );
   }
 
@@ -64,7 +71,17 @@ export class Assistant {
    * @param audioOutConfig - The audio output configuration.
    * @returns The new audio conversation.
    */
-  public startAudioConversation(audioInConfig: AudioInConfig, audioOutConfig: AudioOutConfig): AudioConversation {
+  public startAudioConversation(
+    audioInConfig: AudioInConfig = {
+      encoding: AudioInEncoding.LINEAR16,
+      sampleRateHertz: 16000,
+    },
+    audioOutConfig: AudioOutConfig = {
+      encoding: AudioOutEncoding.LINEAR16,
+      sampleRateHertz: 16000,
+      volumePercentage: 100,
+    },
+  ): AudioConversation {
     return new AudioConversation(
       this._client.assist(),
       this.deviceId,
@@ -78,9 +95,14 @@ export class Assistant {
   /**
    * Sends a single text query to the Assistant and wait for its response.
    * @param text - The text query to send to the Assistant.
+   * @param audioOutConfig - The audio output configuration.
    * @returns A promise that resolves to the Assistant response.
    */
-  public query(text: string): Promise<AssistantResponse> {
+  public query(text: string, audioOutConfig: AudioOutConfig = {
+    encoding: AudioOutEncoding.LINEAR16,
+    sampleRateHertz: 16000,
+    volumePercentage: 100,
+  }): Promise<AssistantResponse> {
     const conversation = this._client.assist();
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};
@@ -124,11 +146,7 @@ export class Assistant {
       conversation.on('error', reject);
       conversation.write({
         config: {
-          audioOutConfig: {
-            encoding: AudioOutEncoding.LINEAR16,
-            sampleRateHertz: 16000,
-            volumePercentage: 100,
-          },
+          audioOutConfig,
           deviceConfig: {
             deviceId: this.deviceId,
             deviceModelId: this.deviceModelId,

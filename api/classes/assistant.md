@@ -119,15 +119,16 @@ ___
 
 ###  query
 
-▸ **query**(text: *`string`*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
+▸ **query**(text: *`string`*, audioOutConfig?: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 
 Sends a single text query to the Assistant and wait for its response.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| text | `string` |  The text query to send to the Assistant. |
+| Name | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| text | `string` | - |  The text query to send to the Assistant. |
+| `Default value` audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  {encoding: AudioOutEncoding.LINEAR16,sampleRateHertz: 16000,volumePercentage: 100,} |  The audio output configuration. |
 
 **Returns:** `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 A promise that resolves to the Assistant response.
@@ -137,16 +138,16 @@ ___
 
 ###  startAudioConversation
 
-▸ **startAudioConversation**(audioInConfig: *[AudioInConfig](../interfaces/audioinconfig.md)*, audioOutConfig: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [AudioConversation](audioconversation.md)
+▸ **startAudioConversation**(audioInConfig?: *[AudioInConfig](../interfaces/audioinconfig.md)*, audioOutConfig?: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [AudioConversation](audioconversation.md)
 
 Starts a new audio conversation with the Assistant.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| audioInConfig | [AudioInConfig](../interfaces/audioinconfig.md) |  The audio input configuration. |
-| audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  The audio output configuration. |
+| Name | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `Default value` audioInConfig | [AudioInConfig](../interfaces/audioinconfig.md) |  {encoding: AudioInEncoding.LINEAR16,sampleRateHertz: 16000,} |  The audio input configuration. |
+| `Default value` audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  {encoding: AudioOutEncoding.LINEAR16,sampleRateHertz: 16000,volumePercentage: 100,} |  The audio output configuration. |
 
 **Returns:** [AudioConversation](audioconversation.md)
 The new audio conversation.
@@ -156,9 +157,15 @@ ___
 
 ###  startTextConversation
 
-▸ **startTextConversation**(): [TextConversation](textconversation.md)
+▸ **startTextConversation**(audioOutConfig?: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [TextConversation](textconversation.md)
 
 Starts a new text conversation with the Assistant.
+
+**Parameters:**
+
+| Name | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `Default value` audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  {encoding: AudioOutEncoding.LINEAR16,sampleRateHertz: 16000,volumePercentage: 100,} |  The audio output configuration. |
 
 **Returns:** [TextConversation](textconversation.md)
 The new text conversation.

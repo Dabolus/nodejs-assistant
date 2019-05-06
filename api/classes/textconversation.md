@@ -24,6 +24,7 @@ Represents a text conversation with the Assistant.
 
 ### Properties
 
+* [_audioOutConfig](textconversation.md#_audiooutconfig)
 * [_deviceId](textconversation.md#_deviceid)
 * [_deviceModelId](textconversation.md#_devicemodelid)
 * [locale](textconversation.md#locale)
@@ -60,20 +61,21 @@ Represents a text conversation with the Assistant.
 
 ###  constructor
 
-⊕ **new TextConversation**(_stream: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*, _deviceId: *`string`*, _deviceModelId: *`string`*, locale: *[AssistantLanguage](../enums/assistantlanguage.md)*): [TextConversation](textconversation.md)
+⊕ **new TextConversation**(_stream: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*, _deviceId: *`string`*, _deviceModelId: *`string`*, locale: *[AssistantLanguage](../enums/assistantlanguage.md)*, _audioOutConfig?: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [TextConversation](textconversation.md)
 
-Creates a new conversation.
+Creates a new audio conversation.
 
 *__constructor__*: 
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| _stream | `ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)> |  The duplex stream to use to communicate with the Assistant SDK. |
-| _deviceId | `string` |  The device ID to use during this conversation. |
-| _deviceModelId | `string` |  The device model ID to use during this conversation. |
-| locale | [AssistantLanguage](../enums/assistantlanguage.md) |  The locale to use during this conversation. |
+| Name | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| _stream | `ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)> | - |  The duplex stream to use to communicate with the Assistant SDK. |
+| _deviceId | `string` | - |  The device ID to use during this conversation. |
+| _deviceModelId | `string` | - |  The device model ID to use during this conversation. |
+| locale | [AssistantLanguage](../enums/assistantlanguage.md) | - |  The locale to use during this conversation. |
+| `Default value` _audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  {encoding: AudioOutEncoding.LINEAR16,sampleRateHertz: 16000,volumePercentage: 100,} |  The audio output configuration. |
 
 **Returns:** [TextConversation](textconversation.md)
 
@@ -81,6 +83,15 @@ ___
 
 ## Properties
 
+<a id="_audiooutconfig"></a>
+
+### `<Private>` _audioOutConfig
+
+**● _audioOutConfig**: *[AudioOutConfig](../interfaces/audiooutconfig.md)*
+
+The audio output configuration.
+
+___
 <a id="_deviceid"></a>
 
 ### `<Protected>` _deviceId

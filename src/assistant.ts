@@ -116,40 +116,40 @@ export class Assistant {
       const response: AssistantResponse = {};
       conversation.on('data', (data: AssistResponse) => {
         const mappedData = mapAssistResponseToAssistantResponse(data);
-        if (mappedData.action) {
+        if (typeof mappedData.action !== 'undefined') {
           response.action = {
             ...response.action,
             ...mappedData.action,
           };
         }
-        if (mappedData.actionOnGoogle) {
+        if (typeof mappedData.actionOnGoogle !== 'undefined') {
           response.actionOnGoogle = {
             ...response.actionOnGoogle,
             ...mappedData.actionOnGoogle,
           };
         }
-        if (mappedData.audio) {
+        if (typeof mappedData.audio !== 'undefined') {
           response.audio = response.audio ?
             Buffer.concat([response.audio, mappedData.audio]) :
             mappedData.audio;
         }
-        if (mappedData.conversationEnded) {
+        if (typeof mappedData.conversationEnded !== 'undefined') {
           response.conversationEnded = mappedData.conversationEnded;
         }
-        if (mappedData.conversationState) {
+        if (typeof mappedData.conversationState !== 'undefined') {
           response.conversationState = mappedData.conversationState;
         }
-        if (mappedData.html) {
+        if (typeof mappedData.html !== 'undefined') {
           response.html = response.html ? `${response.html} ${mappedData.html}` : mappedData.html;
         }
-        if (mappedData.newVolume) {
+        if (typeof mappedData.newVolume !== 'undefined') {
           response.newVolume = mappedData.newVolume;
         }
-        if (mappedData.speechRecognitionResults) {
+        if (typeof mappedData.speechRecognitionResults !== 'undefined') {
           response.speechRecognitionResults =
             [...(response.speechRecognitionResults || []), ...mappedData.speechRecognitionResults];
         }
-        if (mappedData.text) {
+        if (typeof mappedData.text !== 'undefined') {
           response.text = response.text ? `${response.text} ${mappedData.text}` : mappedData.text;
         }
       });

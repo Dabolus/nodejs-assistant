@@ -125,6 +125,12 @@ export class Assistant {
             Buffer.concat([response.audio, mappedData.audio]) :
             mappedData.audio;
         }
+        if (mappedData.conversationEnded) {
+          response.conversationEnded = mappedData.conversationEnded;
+        }
+        if (mappedData.conversationState) {
+          response.conversationState = mappedData.conversationState;
+        }
         if (mappedData.html) {
           response.html = response.html ? `${response.html} ${mappedData.html}` : mappedData.html;
         }

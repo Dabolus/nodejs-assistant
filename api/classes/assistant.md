@@ -119,16 +119,22 @@ ___
 
 ###  query
 
-▸ **query**(text: *`string`*, audioOutConfig?: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
+▸ **query**(text: *`string`*, __namedParameters: *`object`*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 
 Sends a single text query to the Assistant and wait for its response.
 
 **Parameters:**
 
-| Name | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| text | `string` | - |  The text query to send to the Assistant. |
-| `Default value` audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  {encoding: AudioOutEncoding.LINEAR16,sampleRateHertz: 16000,volumePercentage: 100,} |  The audio output configuration. |
+**text: `string`**
+
+The text query to send to the Assistant.
+
+**__namedParameters: `object`**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| conversationState | `Buffer` |
+| audioOutConfig | `object` |  The audio output configuration. |
 
 **Returns:** `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 A promise that resolves to the Assistant response.

@@ -22,6 +22,7 @@
 
 * [AssistResponse](interfaces/assistresponse.md)
 * [AssistantOptions](interfaces/assistantoptions.md)
+* [AssistantQueryOptions](interfaces/assistantqueryoptions.md)
 * [AssistantResponse](interfaces/assistantresponse.md)
 * [AssistantSpeechRecognitionResult](interfaces/assistantspeechrecognitionresult.md)
 * [AudioInConfig](interfaces/audioinconfig.md)

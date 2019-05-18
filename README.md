@@ -102,7 +102,7 @@ Contributions welcome! See the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
-Apache Version 2.0
+MIT
 
 See [LICENSE](https://github.com/Dabolus/nodejs-assistant/blob/master/LICENSE)
 

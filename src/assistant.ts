@@ -13,6 +13,11 @@ import {
 } from './proto';
 import { TextConversation } from './text-conversation';
 
+export interface AssistantQueryOptions {
+  conversationState?: Buffer;
+  audioOutConfig?: AudioOutConfig;
+}
+
 /**
  * The base class to connect with the Assistant.
  * @author Giorgio Garasto <giorgio@garasto.it>
@@ -98,11 +103,14 @@ export class Assistant {
    * @param audioOutConfig - The audio output configuration.
    * @returns A promise that resolves to the Assistant response.
    */
-  public query(text: string, audioOutConfig: AudioOutConfig = {
-    encoding: AudioOutEncoding.LINEAR16,
-    sampleRateHertz: 16000,
-    volumePercentage: 100,
-  }): Promise<AssistantResponse> {
+  public query(text: string, {
+    conversationState,
+    audioOutConfig = {
+      encoding: AudioOutEncoding.LINEAR16,
+      sampleRateHertz: 16000,
+      volumePercentage: 100,
+    },
+  }: AssistantQueryOptions): Promise<AssistantResponse> {
     const conversation = this._client.assist();
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};
@@ -158,6 +166,7 @@ export class Assistant {
             deviceModelId: this.deviceModelId,
           },
           dialogStateIn: {
+            conversationState,
             languageCode: this.locale,
           },
           textQuery: text,

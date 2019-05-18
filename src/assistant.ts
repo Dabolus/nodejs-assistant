@@ -105,12 +105,14 @@ export class Assistant {
    */
   public query(text: string, {
     conversationState,
-    audioOutConfig = {
+    audioOutConfig,
+  }: AssistantQueryOptions = {
+    audioOutConfig: {
       encoding: AudioOutEncoding.LINEAR16,
       sampleRateHertz: 16000,
       volumePercentage: 100,
     },
-  }: AssistantQueryOptions): Promise<AssistantResponse> {
+  }): Promise<AssistantResponse> {
     const conversation = this._client.assist();
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};

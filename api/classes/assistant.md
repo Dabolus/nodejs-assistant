@@ -119,7 +119,7 @@ ___
 
 ###  query
 
-▸ **query**(text: *`string`*, __namedParameters: *`object`*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
+▸ **query**(text: *`string`*, __namedParameters?: *`object`*): `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 
 Sends a single text query to the Assistant and wait for its response.
 
@@ -129,12 +129,12 @@ Sends a single text query to the Assistant and wait for its response.
 
 The text query to send to the Assistant.
 
-**__namedParameters: `object`**
+**`Default value` __namedParameters: `object`**
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
+| audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  The audio output configuration. |
 | conversationState | `Buffer` |
-| audioOutConfig | `object` |  The audio output configuration. |
 
 **Returns:** `Promise`<[AssistantResponse](../interfaces/assistantresponse.md)>
 A promise that resolves to the Assistant response.

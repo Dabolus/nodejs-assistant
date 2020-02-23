@@ -117,36 +117,30 @@ export function mapAssistantRequestToAssistRequest({
   return {
     config: {
       audioOutConfig,
-      ...(html
-        ? {
-            screenOutConfig: {
-              screenMode: ScreenMode.PLAYING,
-            },
-          }
-        : {}),
+      ...(html && {
+        screenOutConfig: {
+          screenMode: ScreenMode.PLAYING,
+        },
+      }),
       deviceConfig: {
         deviceId,
         deviceModelId,
       },
       dialogStateIn: {
-        ...(conversationState ? { conversationState } : {}),
+        ...(conversationState && { conversationState }),
         languageCode: locale,
-        ...(deviceLocation
-          ? {
-              deviceLocation: {
-                coordinates: deviceLocation,
-              },
-            }
-          : {}),
-        ...(isNewConversation ? { isNewConversation } : {}),
+        ...(deviceLocation && {
+          deviceLocation: {
+            coordinates: deviceLocation,
+          },
+        }),
+        ...(isNewConversation && { isNewConversation }),
       },
-      ...(debug
-        ? {
-            debugConfig: {
-              returnDebugInfo: debug,
-            },
-          }
-        : {}),
+      ...(debug && {
+        debugConfig: {
+          returnDebugInfo: debug,
+        },
+      }),
       ...(audioInConfig ? { audioInConfig } : { textQuery: text }),
     },
   };
@@ -162,30 +156,26 @@ export function mapAssistResponseToAssistantResponse({
   speechResults,
 }: AssistResponse): AssistantResponse {
   return {
-    ...(audioOut ? { audio: audioOut.audioData } : {}),
-    ...(debugInfo
-      ? { actionOnGoogle: JSON.parse(debugInfo.aogAgentToAssistantJson) }
-      : {}),
-    ...(deviceAction
-      ? { action: JSON.parse(deviceAction.deviceRequestJson) }
-      : {}),
-    ...(dialogStateOut
-      ? {
-          conversationEnded:
-            dialogStateOut.microphoneMode === MicrophoneMode.CLOSE_MICROPHONE,
-          conversationState: dialogStateOut.conversationState,
-          text: dialogStateOut.supplementalDisplayText,
-          ...(dialogStateOut.volumePercentage
-            ? { newVolume: dialogStateOut.volumePercentage }
-            : {}),
-        }
-      : {}),
-    ...(screenOut && screenOut.format === ScreenOutFormat.HTML
-      ? { html: screenOut.data.toString() }
-      : {}),
-    ...(speechResults && speechResults.length
-      ? { speechRecognitionResults: speechResults }
-      : {}),
+    ...(audioOut && { audio: audioOut.audioData }),
+    ...(debugInfo && {
+      actionOnGoogle: JSON.parse(debugInfo.aogAgentToAssistantJson),
+    }),
+    ...(deviceAction && { action: JSON.parse(deviceAction.deviceRequestJson) }),
+    ...(dialogStateOut && {
+      conversationEnded:
+        dialogStateOut.microphoneMode === MicrophoneMode.CLOSE_MICROPHONE,
+      conversationState: dialogStateOut.conversationState,
+      text: dialogStateOut.supplementalDisplayText,
+      ...(dialogStateOut.volumePercentage && {
+        newVolume: dialogStateOut.volumePercentage,
+      }),
+    }),
+    ...(screenOut &&
+      screenOut.format === ScreenOutFormat.HTML && {
+        html: screenOut.data.toString(),
+      }),
+    ...(speechResults &&
+      speechResults.length && { speechRecognitionResults: speechResults }),
     utteranceEnded: eventType === AssistResponseEventType.END_OF_UTTERANCE,
   };
 }

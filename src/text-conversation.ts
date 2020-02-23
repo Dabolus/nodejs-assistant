@@ -4,7 +4,6 @@ import { Conversation } from './conversation';
 import {
   AssistRequest,
   AssistResponse,
-  AudioInConfig,
   AudioOutConfig,
   AudioOutEncoding,
 } from './proto';

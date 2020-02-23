@@ -53,9 +53,15 @@ export type AssistantRequest = {
   audioInConfig?: never;
 }));
 
+// TODO: replace with more specific types
+export type Action = { [key: string]: unknown };
+
+// TODO: replace with more specific types
+export type ActionOnGoogle = { [key: string]: unknown };
+
 export interface AssistantResponse {
-  action?: unknown;
-  actionOnGoogle?: unknown;
+  action?: Action;
+  actionOnGoogle?: ActionOnGoogle;
   audio?: Buffer;
   conversationEnded?: boolean;
   conversationState?: Buffer;
@@ -146,8 +152,8 @@ export function mapAssistResponseToAssistantResponse({
 }: AssistResponse): AssistantResponse {
   return {
     ...audioOut ? { audio: audioOut.audioData } : {},
-    ...debugInfo ? { actionOnGoogle: debugInfo.aogAgentToAssistantJson } : {},
-    ...deviceAction ? { action: deviceAction.deviceRequestJson } : {},
+    ...debugInfo ? { actionOnGoogle: JSON.parse(debugInfo.aogAgentToAssistantJson) } : {},
+    ...deviceAction ? { action: JSON.parse(deviceAction.deviceRequestJson) } : {},
     ...dialogStateOut ? {
       conversationEnded: dialogStateOut.microphoneMode === MicrophoneMode.CLOSE_MICROPHONE,
       conversationState: dialogStateOut.conversationState,

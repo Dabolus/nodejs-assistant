@@ -1,6 +1,10 @@
 import { loadSync } from '@grpc/proto-loader';
 import { getProtoPath } from 'google-proto-files';
-import { ChannelCredentials, ClientDuplexStream, loadPackageDefinition } from 'grpc';
+import {
+  ChannelCredentials,
+  ClientDuplexStream,
+  loadPackageDefinition,
+} from 'grpc';
 
 // Service that implements the Google Assistant API.
 export declare class EmbeddedAssistant {
@@ -57,28 +61,28 @@ export declare class EmbeddedAssistant {
 // contain a `config` message and must not contain `audioIn` data. All
 // subsequent messages must contain `audioIn` data and must not contain a
 // `config` message.
-export type AssistRequest = {
+export type AssistRequest =
+  | {
+      // The `config` message provides information to the recognizer that
+      // specifies how to process the request.
+      // The first `AssistRequest` message must contain a `config` message.
+      config: AssistConfig;
 
-  // The `config` message provides information to the recognizer that
-  // specifies how to process the request.
-  // The first `AssistRequest` message must contain a `config` message.
-  config: AssistConfig;
+      audioIn?: never;
+    }
+  | {
+      // The audio data to be recognized. Sequential chunks of audio data are sent
+      // in sequential `AssistRequest` messages. The first `AssistRequest`
+      // message must not contain `audioIn` data and all subsequent
+      // `AssistRequest` messages must contain `audioIn` data. The audio bytes
+      // must be encoded as specified in `AudioInConfig`.
+      // Audio must be sent at approximately real-time (16000 samples per second).
+      // An error will be returned if audio is sent significantly faster or
+      // slower.
+      audioIn: Buffer;
 
-  audioIn?: never;
-} | {
-
-  // The audio data to be recognized. Sequential chunks of audio data are sent
-  // in sequential `AssistRequest` messages. The first `AssistRequest`
-  // message must not contain `audioIn` data and all subsequent
-  // `AssistRequest` messages must contain `audioIn` data. The audio bytes
-  // must be encoded as specified in `AudioInConfig`.
-  // Audio must be sent at approximately real-time (16000 samples per second).
-  // An error will be returned if audio is sent significantly faster or
-  // slower.
-  audioIn: Buffer;
-
-  config?: never;
-};
+      config?: never;
+    };
 
 // Indicates the type of event.
 export enum AssistResponseEventType {
@@ -97,7 +101,6 @@ export enum AssistResponseEventType {
 // The top-level message received by the client. A series of one or more
 // `AssistResponse` messages are streamed back to the client.
 export interface AssistResponse {
-
   // *Output-only* Indicates the type of event.
   eventType: AssistResponseEventType;
 
@@ -131,7 +134,6 @@ export interface AssistResponse {
 // Debug info for developer. Only returned if request set `returnDebugInfo`
 // to true.
 export interface DebugInfo {
-
   // The original JSON response from an Action-on-Google agent to Google server.
   // See
   // https://developers.google.com/actions/reference/rest/Shared.Types/AppResponse.
@@ -142,7 +144,6 @@ export interface DebugInfo {
 
 // Specifies how to process the `AssistRequest` messages.
 export type AssistConfig = {
-
   // *Required* Specifies how to format the audio that will be returned.
   audioOutConfig: AudioOutConfig;
 
@@ -158,27 +159,27 @@ export type AssistConfig = {
 
   // *Optional* Debugging parameters for the whole `Assist` RPC.
   debugConfig?: DebugConfig;
-} & ({
+} & (
+  | {
+      // Specifies how to process the subsequent incoming audio. Required if
+      // [AssistRequest.audioIn][google.assistant.embedded.v1alpha2.AssistRequest.audioIn]
+      // bytes will be provided in subsequent requests.
+      audioInConfig: AudioInConfig;
 
-  // Specifies how to process the subsequent incoming audio. Required if
-  // [AssistRequest.audioIn][google.assistant.embedded.v1alpha2.AssistRequest.audioIn]
-  // bytes will be provided in subsequent requests.
-  audioInConfig: AudioInConfig;
+      textQuery?: never;
+    }
+  | {
+      // The text input to be sent to the Assistant. This can be populated from a
+      // text interface if audio input is not available.
+      textQuery: string;
 
-  textQuery?: never;
-} | {
-
-  // The text input to be sent to the Assistant. This can be populated from a
-  // text interface if audio input is not available.
-  textQuery: string;
-
-  audioInConfig?: never;
-});
+      audioInConfig?: never;
+    }
+);
 
 // Audio encoding of the data sent in the audio message.
 // Audio must be one-channel (mono).
 export enum AudioInEncoding {
-
   // Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][].
   ENCODING_UNSPECIFIED = 0,
 
@@ -200,7 +201,6 @@ export enum AudioInEncoding {
 // subsequent requests. For recommended settings, see the Google Assistant SDK
 // [best practices](https://developers.google.com/assistant/sdk/guides/service/python/best-practices/audio).
 export interface AudioInConfig {
-
   // *Required* Encoding of audio data sent in all `audioIn` messages.
   encoding: AudioInEncoding;
 
@@ -215,7 +215,6 @@ export interface AudioInConfig {
 // Audio encoding of the data returned in the audio message. All encodings are
 // raw audio bytes with no header, except as indicated below.
 export enum AudioOutEncoding {
-
   // Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][].
   ENCODING_UNSPECIFIED = 0,
 
@@ -235,7 +234,6 @@ export enum AudioOutEncoding {
 // Specifies the desired format for the server to use when it returns
 // `audioOut` messages.
 export interface AudioOutConfig {
-
   // *Required* The encoding of audio data to be returned in all `audioOut`
   // messages.
   encoding: AudioOutEncoding;
@@ -251,7 +249,6 @@ export interface AudioOutConfig {
 
 // Possible modes for visual screen-output on the device.
 export enum ScreenMode {
-
   // No video mode specified.
   // The Assistant may respond as if in `OFF` mode.
   SCREEN_MODE_UNSPECIFIED = 0,
@@ -269,14 +266,12 @@ export enum ScreenMode {
 // Specifies the desired format for the server to use when it returns
 // `screenOut` response.
 export interface ScreenOutConfig {
-
   // Current visual screen-mode for the device while issuing the query.
   screenMode?: ScreenMode;
 }
 
 // Provides information about the current dialog state.
 export interface DialogStateIn {
-
   // *Required* This field must always be set to the
   // [DialogStateOut.conversationState][google.assistant.embedded.v1alpha2.DialogStateOut.conversationState]
   // value that was returned in the prior `Assist` RPC. It should only be omitted (field not set)
@@ -314,7 +309,6 @@ export interface DialogStateIn {
 // *   [Device
 // Proto](https://developers.google.com/assistant/sdk/reference/rpc/google.assistant.devices.v1alpha2#device)
 export interface DeviceConfig {
-
   // *Required* Unique identifier for the device. The id length must be 128
   // characters or less. Example: DBCDW098234. This MUST match the deviceId
   // returned from device registration. This deviceId is used to match against
@@ -341,7 +335,6 @@ export interface AudioOut {
 
 // Possible formats of the screen data.
 export enum ScreenOutFormat {
-
   // No format specified.
   FORMAT_UNSPECIFIED = 0,
 
@@ -355,7 +348,6 @@ export enum ScreenOutFormat {
 // The Assistant's visual output response to query. Enabled by
 // `screenOutConfig`.
 export interface ScreenOut {
-
   // *Output-only* The format of the provided screen data.
   format: ScreenOutFormat;
 
@@ -369,7 +361,6 @@ export interface ScreenOut {
 // would receive a `DeviceAction` with a JSON payload containing the semantics
 // of the request.
 export interface DeviceAction {
-
   // JSON containing the device command response generated from the triggered
   // Device Action grammar. The format is given by the
   // `action.devices.EXECUTE` intent for a given
@@ -380,7 +371,6 @@ export interface DeviceAction {
 // The estimated transcription of a phrase the user has spoken. This could be
 // a single segment or the full guess of the user's spoken query.
 export interface SpeechRecognitionResult {
-
   // *Output-only* Transcript text representing the words that the user spoke.
   transcript: string;
 
@@ -393,7 +383,6 @@ export interface SpeechRecognitionResult {
 
 // Possible states of the microphone after a `Assist` RPC completes.
 export enum MicrophoneMode {
-
   // No mode specified.
   MICROPHONE_MODE_UNSPECIFIED = 0,
 
@@ -410,7 +399,6 @@ export enum MicrophoneMode {
 // The dialog state resulting from the user's query. Multiple of these messages
 // may be received.
 export interface DialogStateOut {
-
   // *Output-only* Supplemental display text from the Assistant. This could be
   // the same as the speech spoken in `AssistResponse.audioOut` or it could
   // be some additional information which aids the user's understanding.
@@ -443,7 +431,6 @@ export interface DialogStateOut {
 
 // Debugging parameters for the current request.
 export interface DebugConfig {
-
   // When this field is set to true, the `debugInfo` field in `AssistResponse`
   // may be populated. However it will significantly increase latency of
   // responses. Do not set this field true in production code.
@@ -490,7 +477,6 @@ export interface DebugConfig {
 //     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
 //     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 export interface LatLng {
-
   // The latitude in degrees. It must be in the range [-90.0, +90.0].
   latitude: number;
 
@@ -512,10 +498,14 @@ export interface DeviceLocation {
 
 const PROTO_ROOT_DIR = getProtoPath('..');
 
-const proto: any = loadSync('google/assistant/embedded/v1alpha2/embedded_assistant.proto', {
-  includeDirs: [PROTO_ROOT_DIR],
-});
+const proto: any = loadSync(
+  'google/assistant/embedded/v1alpha2/embedded_assistant.proto',
+  {
+    includeDirs: [PROTO_ROOT_DIR],
+  },
+);
 
 const { google }: any = loadPackageDefinition(proto);
 
-export const embeddedAssistantPb: typeof EmbeddedAssistant = google.assistant.embedded.v1alpha2.EmbeddedAssistant;
+export const embeddedAssistantPb: typeof EmbeddedAssistant =
+  google.assistant.embedded.v1alpha2.EmbeddedAssistant;

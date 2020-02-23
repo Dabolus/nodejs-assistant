@@ -1,7 +1,12 @@
 import { ClientDuplexStream } from 'grpc';
 import { AssistantLanguage } from './common';
 import { Conversation } from './conversation';
-import { AssistRequest, AssistResponse, AudioInConfig, AudioOutConfig } from './proto';
+import {
+  AssistRequest,
+  AssistResponse,
+  AudioInConfig,
+  AudioOutConfig,
+} from './proto';
 
 /**
  * Represents an audio conversation with the Assistant.
@@ -45,6 +50,6 @@ export class AudioConversation extends Conversation {
    * @returns A boolean that tells whether the audio buffer was successfully sent or not.
    */
   public send(audio: Buffer): boolean {
-    return this.sendRequest({ audio });
+    return this.sendRequest({ audio });
   }
 }

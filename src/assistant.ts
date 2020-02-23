@@ -1,7 +1,12 @@
 import { JWTInput, UserRefreshClient } from 'google-auth-library';
 import * as grpc from 'grpc';
 import { AudioConversation } from './audio-conversation';
-import { AssistantLanguage, AssistantOptions, AssistantResponse, mapAssistResponseToAssistantResponse } from './common';
+import {
+  AssistantLanguage,
+  AssistantOptions,
+  AssistantResponse,
+  mapAssistResponseToAssistantResponse,
+} from './common';
 import {
   AssistResponse,
   AudioInConfig,
@@ -40,11 +45,14 @@ export class Assistant {
    * @param options.locale - The locale to use in the conversations with the Assistant.
    * @constructor
    */
-  constructor(credentials: JWTInput, options: AssistantOptions = {
-    deviceId: 'default',
-    deviceModelId: 'default',
-    locale: AssistantLanguage.ENGLISH,
-  }) {
+  constructor(
+    credentials: JWTInput,
+    options: AssistantOptions = {
+      deviceId: 'default',
+      deviceModelId: 'default',
+      locale: AssistantLanguage.ENGLISH,
+    },
+  ) {
     this.locale = options.locale;
     this.deviceId = options.deviceId;
     this.deviceModelId = options.deviceModelId;
@@ -56,11 +64,13 @@ export class Assistant {
    * @param audioOutConfig - The audio output configuration.
    * @returns The new text conversation.
    */
-  public startTextConversation(audioOutConfig: AudioOutConfig = {
-    encoding: AudioOutEncoding.LINEAR16,
-    sampleRateHertz: 16000,
-    volumePercentage: 100,
-  }): TextConversation {
+  public startTextConversation(
+    audioOutConfig: AudioOutConfig = {
+      encoding: AudioOutEncoding.LINEAR16,
+      sampleRateHertz: 16000,
+      volumePercentage: 100,
+    },
+  ): TextConversation {
     return new TextConversation(
       this._client.assist(),
       this.deviceId,
@@ -103,16 +113,16 @@ export class Assistant {
    * @param audioOutConfig - The audio output configuration.
    * @returns A promise that resolves to the Assistant response.
    */
-  public query(text: string, {
-    conversationState,
-    audioOutConfig,
-  }: AssistantQueryOptions = {
-    audioOutConfig: {
-      encoding: AudioOutEncoding.LINEAR16,
-      sampleRateHertz: 16000,
-      volumePercentage: 100,
+  public query(
+    text: string,
+    { conversationState, audioOutConfig }: AssistantQueryOptions = {
+      audioOutConfig: {
+        encoding: AudioOutEncoding.LINEAR16,
+        sampleRateHertz: 16000,
+        volumePercentage: 100,
+      },
     },
-  }): Promise<AssistantResponse> {
+  ): Promise<AssistantResponse> {
     const conversation = this._client.assist();
     return new Promise((resolve, reject) => {
       const response: AssistantResponse = {};
@@ -131,9 +141,9 @@ export class Assistant {
           };
         }
         if (typeof mappedData.audio !== 'undefined') {
-          response.audio = response.audio ?
-            Buffer.concat([response.audio, mappedData.audio]) :
-            mappedData.audio;
+          response.audio = response.audio
+            ? Buffer.concat([response.audio, mappedData.audio])
+            : mappedData.audio;
         }
         if (typeof mappedData.conversationEnded !== 'undefined') {
           response.conversationEnded = mappedData.conversationEnded;
@@ -142,22 +152,28 @@ export class Assistant {
           response.conversationState = mappedData.conversationState;
         }
         if (typeof mappedData.html !== 'undefined') {
-          response.html = response.html ? `${response.html} ${mappedData.html}` : mappedData.html;
+          response.html = response.html
+            ? `${response.html} ${mappedData.html}`
+            : mappedData.html;
         }
         if (typeof mappedData.newVolume !== 'undefined') {
           response.newVolume = mappedData.newVolume;
         }
         if (typeof mappedData.speechRecognitionResults !== 'undefined') {
-          response.speechRecognitionResults =
-            [...(response.speechRecognitionResults || []), ...mappedData.speechRecognitionResults];
+          response.speechRecognitionResults = [
+            ...(response.speechRecognitionResults || []),
+            ...mappedData.speechRecognitionResults,
+          ];
         }
         if (typeof mappedData.text !== 'undefined') {
-          response.text = response.text ? `${response.text} ${mappedData.text}` : mappedData.text;
+          response.text = response.text
+            ? `${response.text} ${mappedData.text}`
+            : mappedData.text;
         }
       });
       conversation.on('end', () => {
-          // Response ended, resolve with the whole response.
-          resolve(response);
+        // Response ended, resolve with the whole response.
+        resolve(response);
       });
       conversation.on('error', reject);
       conversation.write({
@@ -183,7 +199,10 @@ export class Assistant {
     const refresh = new UserRefreshClient();
     refresh.fromJSON(credentials);
     const callCreds = grpc.credentials.createFromGoogleCredential(refresh);
-    const combinedCreds = grpc.credentials.combineChannelCredentials(sslCreds, callCreds);
+    const combinedCreds = grpc.credentials.combineChannelCredentials(
+      sslCreds,
+      callCreds,
+    );
     const client = new EmbeddedAssistant(this._endpoint, combinedCreds);
     return client;
   }

@@ -1,7 +1,13 @@
 import { ClientDuplexStream } from 'grpc';
 import { AssistantLanguage } from './common';
 import { Conversation } from './conversation';
-import { AssistRequest, AssistResponse, AudioInConfig, AudioOutConfig, AudioOutEncoding } from './proto';
+import {
+  AssistRequest,
+  AssistResponse,
+  AudioInConfig,
+  AudioOutConfig,
+  AudioOutEncoding,
+} from './proto';
 
 /**
  * Represents a text conversation with the Assistant.

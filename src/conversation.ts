@@ -40,12 +40,14 @@ export class Conversation extends EventEmitter {
   }
 
   public sendRequest(request: AssistantRequest): boolean {
-    const finalRequest = request.audio ? request : {
-      deviceId: this._deviceId,
-      deviceModelId: this._deviceModelId,
-      locale: this.locale,
-      ...request,
-    } as AssistantRequest;
+    const finalRequest = request.audio
+      ? request
+      : ({
+          deviceId: this._deviceId,
+          deviceModelId: this._deviceModelId,
+          locale: this.locale,
+          ...request,
+        } as AssistantRequest);
 
     return this.sendRawRequest(
       mapAssistantRequestToAssistRequest(finalRequest),
@@ -88,7 +90,10 @@ export class Conversation extends EventEmitter {
           this.emit('volume', mappedResponse.newVolume);
         }
         if (mappedResponse.speechRecognitionResults) {
-          this.emit('speechrecognition', mappedResponse.speechRecognitionResults);
+          this.emit(
+            'speechrecognition',
+            mappedResponse.speechRecognitionResults,
+          );
         }
         if (mappedResponse.text) {
           this.emit('message', mappedResponse.text);
@@ -99,7 +104,7 @@ export class Conversation extends EventEmitter {
       })
       .on('end', () => this.emit('end'))
       .on('close', () => this.emit('close'))
-      .on('error', (err) => this.emit('error', err));
+      .on('error', err => this.emit('error', err));
   }
 }
 
@@ -108,19 +113,18 @@ export class Conversation extends EventEmitter {
 // for both library users and developers.
 
 export type ConversationEvent =
-  'data' |
-  'action' |
-  'actionongoogle' |
-  'audio' |
-  'conversationend' |
-  'message' |
-  'html' |
-  'volume' |
-  'speechrecognition' |
-  'utteranceend';
+  | 'data'
+  | 'action'
+  | 'actionongoogle'
+  | 'audio'
+  | 'conversationend'
+  | 'message'
+  | 'html'
+  | 'volume'
+  | 'speechrecognition'
+  | 'utteranceend';
 
 export declare interface Conversation {
-
   /**
    * Adds an event listener that will be triggered when the Assistant sends any type of data.
    *
@@ -151,7 +155,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the original response from the AoG agent as param.
    * @returns The conversation.
    */
-  addListener(event: 'actionongoogle', listener: (actionOnGoogle: unknown) => void): this;
+  addListener(
+    event: 'actionongoogle',
+    listener: (actionOnGoogle: unknown) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant sends an audio message.
@@ -169,7 +176,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the latest Assistant response as param.
    * @returns The conversation.
    */
-  addListener(event: 'conversationend', listener: (latestData: AssistantResponse) => void): this;
+  addListener(
+    event: 'conversationend',
+    listener: (latestData: AssistantResponse) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant sends a text message.
@@ -207,8 +217,10 @@ export declare interface Conversation {
    */
   addListener(
     event: 'speechrecognition',
-    listener: (speechRecognitionResults: AssistantSpeechRecognitionResult[],
-  ) => void): this;
+    listener: (
+      speechRecognitionResults: AssistantSpeechRecognitionResult[],
+    ) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant detects the end of the user's
@@ -219,7 +231,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the latest Assistant response as param.
    * @returns The conversation.
    */
-  addListener(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+  addListener(
+    event: 'utteranceend',
+    listener: (latestData: AssistantResponse) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant closes the connection,
@@ -280,7 +295,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the original response from the AoG agent as param.
    * @returns The conversation.
    */
-  on(event: 'actionongoogle', listener: (actionOnGoogle: unknown) => void): this;
+  on(
+    event: 'actionongoogle',
+    listener: (actionOnGoogle: unknown) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant sends an audio message.
@@ -298,7 +316,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the latest Assistant response as param.
    * @returns The conversation.
    */
-  on(event: 'conversationend', listener: (latestData: AssistantResponse) => void): this;
+  on(
+    event: 'conversationend',
+    listener: (latestData: AssistantResponse) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant sends a text message.
@@ -336,8 +357,10 @@ export declare interface Conversation {
    */
   on(
     event: 'speechrecognition',
-    listener: (speechRecognitionResults: AssistantSpeechRecognitionResult[],
-  ) => void): this;
+    listener: (
+      speechRecognitionResults: AssistantSpeechRecognitionResult[],
+    ) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant detects the end of the user's
@@ -348,7 +371,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the latest Assistant response as param.
    * @returns The conversation.
    */
-  on(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+  on(
+    event: 'utteranceend',
+    listener: (latestData: AssistantResponse) => void,
+  ): this;
 
   /**
    * Adds an event listener that will be triggered when the Assistant closes the connection,
@@ -409,7 +435,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the original response from the AoG agent as param.
    * @returns The conversation.
    */
-  once(event: 'actionongoogle', listener: (actionOnGoogle: unknown) => void): this;
+  once(
+    event: 'actionongoogle',
+    listener: (actionOnGoogle: unknown) => void,
+  ): this;
 
   /**
    * Adds a one time event listener that will be triggered when the Assistant sends an audio message.
@@ -427,7 +456,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the latest Assistant response as param.
    * @returns The conversation.
    */
-  once(event: 'conversationend', listener: (latestData: AssistantResponse) => void): this;
+  once(
+    event: 'conversationend',
+    listener: (latestData: AssistantResponse) => void,
+  ): this;
 
   /**
    * Adds a one time event listener that will be triggered when the Assistant sends a text message.
@@ -465,8 +497,10 @@ export declare interface Conversation {
    */
   once(
     event: 'speechrecognition',
-    listener: (speechRecognitionResults: AssistantSpeechRecognitionResult[],
-  ) => void): this;
+    listener: (
+      speechRecognitionResults: AssistantSpeechRecognitionResult[],
+    ) => void,
+  ): this;
 
   /**
    * Adds a one time event listener that will be triggered when the Assistant detects the end of the user's
@@ -477,7 +511,10 @@ export declare interface Conversation {
    * @param listener - A callback that will receive the latest Assistant response as param.
    * @returns The conversation.
    */
-  once(event: 'utteranceend', listener: (latestData: AssistantResponse) => void): this;
+  once(
+    event: 'utteranceend',
+    listener: (latestData: AssistantResponse) => void,
+  ): this;
 
   /**
    * Adds a one time event listener that will be triggered when the Assistant closes the connection,
@@ -509,9 +546,18 @@ export declare interface Conversation {
   once(event: 'error', listener: (error: Error) => void): this;
 
   // TODO: add good docs to these methods too.
-  prependListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
-  prependOnceListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
-  removeListener(event: ConversationEvent, listener: (...args: any[]) => void): this;
+  prependListener(
+    event: ConversationEvent,
+    listener: (...args: any[]) => void,
+  ): this;
+  prependOnceListener(
+    event: ConversationEvent,
+    listener: (...args: any[]) => void,
+  ): this;
+  removeListener(
+    event: ConversationEvent,
+    listener: (...args: any[]) => void,
+  ): this;
   removeAllListeners(event?: ConversationEvent): this;
   setMaxListeners(n: number): this;
   getMaxListeners(): number;
@@ -526,7 +572,10 @@ export declare interface Conversation {
   emit(event: 'message', text: string): boolean;
   emit(event: 'html', html: string): boolean;
   emit(event: 'volume', newVolume: number): boolean;
-  emit(event: 'speechrecognition', speechRecognitionResults: AssistantSpeechRecognitionResult[]): boolean;
+  emit(
+    event: 'speechrecognition',
+    speechRecognitionResults: AssistantSpeechRecognitionResult[],
+  ): boolean;
   emit(event: 'utteranceend', latestData: AssistantResponse): boolean;
   emit(event: 'end'): boolean;
   emit(event: 'close'): boolean;

@@ -21,37 +21,42 @@ export interface AssistantSpeechRecognitionResult {
   stability: number;
 }
 
-export type AssistantRequest = {
-  audio?: Buffer;
-  audioInConfig?: never;
-  audioOutConfig?: never;
-  debug?: never;
-  deviceId?: never;
-  deviceModelId?: never;
-  conversationState?: never;
-  deviceLocation?: never;
-  isNewConversation?: never;
-  locale?: never;
-  html?: never;
-  text?: never;
-} | ({
-  audioOutConfig: AudioOutConfig;
-  html?: boolean;
-  conversationState?: Buffer;
-  locale: AssistantLanguage;
-  deviceLocation?: LatLng;
-  isNewConversation?: boolean;
-  deviceId: string;
-  deviceModelId: string;
-  debug?: boolean;
-  audio?: never;
-} & ({
-  audioInConfig: AudioInConfig;
-  text?: never;
-} | {
-  text: string;
-  audioInConfig?: never;
-}));
+export type AssistantRequest =
+  | {
+      audio?: Buffer;
+      audioInConfig?: never;
+      audioOutConfig?: never;
+      debug?: never;
+      deviceId?: never;
+      deviceModelId?: never;
+      conversationState?: never;
+      deviceLocation?: never;
+      isNewConversation?: never;
+      locale?: never;
+      html?: never;
+      text?: never;
+    }
+  | ({
+      audioOutConfig: AudioOutConfig;
+      html?: boolean;
+      conversationState?: Buffer;
+      locale: AssistantLanguage;
+      deviceLocation?: LatLng;
+      isNewConversation?: boolean;
+      deviceId: string;
+      deviceModelId: string;
+      debug?: boolean;
+      audio?: never;
+    } & (
+      | {
+          audioInConfig: AudioInConfig;
+          text?: never;
+        }
+      | {
+          text: string;
+          audioInConfig?: never;
+        }
+    ));
 
 // TODO: replace with more specific types
 export type Action = { [key: string]: unknown };
@@ -112,31 +117,37 @@ export function mapAssistantRequestToAssistRequest({
   return {
     config: {
       audioOutConfig,
-      ...html ? {
-        screenOutConfig: {
-          screenMode: ScreenMode.PLAYING,
-        },
-      } : {},
+      ...(html
+        ? {
+            screenOutConfig: {
+              screenMode: ScreenMode.PLAYING,
+            },
+          }
+        : {}),
       deviceConfig: {
         deviceId,
         deviceModelId,
       },
       dialogStateIn: {
-        ...conversationState ? { conversationState } : {},
+        ...(conversationState ? { conversationState } : {}),
         languageCode: locale,
-        ...deviceLocation ? {
-          deviceLocation: {
-            coordinates: deviceLocation,
-          },
-        } : {},
-        ...isNewConversation ? { isNewConversation } : {},
+        ...(deviceLocation
+          ? {
+              deviceLocation: {
+                coordinates: deviceLocation,
+              },
+            }
+          : {}),
+        ...(isNewConversation ? { isNewConversation } : {}),
       },
-      ...debug ? {
-        debugConfig: {
-          returnDebugInfo: debug,
-        },
-      } : {},
-      ...audioInConfig ? { audioInConfig } : { textQuery: text },
+      ...(debug
+        ? {
+            debugConfig: {
+              returnDebugInfo: debug,
+            },
+          }
+        : {}),
+      ...(audioInConfig ? { audioInConfig } : { textQuery: text }),
     },
   };
 }
@@ -151,17 +162,30 @@ export function mapAssistResponseToAssistantResponse({
   speechResults,
 }: AssistResponse): AssistantResponse {
   return {
-    ...audioOut ? { audio: audioOut.audioData } : {},
-    ...debugInfo ? { actionOnGoogle: JSON.parse(debugInfo.aogAgentToAssistantJson) } : {},
-    ...deviceAction ? { action: JSON.parse(deviceAction.deviceRequestJson) } : {},
-    ...dialogStateOut ? {
-      conversationEnded: dialogStateOut.microphoneMode === MicrophoneMode.CLOSE_MICROPHONE,
-      conversationState: dialogStateOut.conversationState,
-      text: dialogStateOut.supplementalDisplayText,
-      ...dialogStateOut.volumePercentage ? { newVolume: dialogStateOut.volumePercentage } : {},
-    } : {},
-    ...screenOut && screenOut.format === ScreenOutFormat.HTML ? { html: screenOut.data.toString() } : {},
-    ...speechResults && speechResults.length ? { speechRecognitionResults: speechResults } : {},
+    ...(audioOut ? { audio: audioOut.audioData } : {}),
+    ...(debugInfo
+      ? { actionOnGoogle: JSON.parse(debugInfo.aogAgentToAssistantJson) }
+      : {}),
+    ...(deviceAction
+      ? { action: JSON.parse(deviceAction.deviceRequestJson) }
+      : {}),
+    ...(dialogStateOut
+      ? {
+          conversationEnded:
+            dialogStateOut.microphoneMode === MicrophoneMode.CLOSE_MICROPHONE,
+          conversationState: dialogStateOut.conversationState,
+          text: dialogStateOut.supplementalDisplayText,
+          ...(dialogStateOut.volumePercentage
+            ? { newVolume: dialogStateOut.volumePercentage }
+            : {}),
+        }
+      : {}),
+    ...(screenOut && screenOut.format === ScreenOutFormat.HTML
+      ? { html: screenOut.data.toString() }
+      : {}),
+    ...(speechResults && speechResults.length
+      ? { speechRecognitionResults: speechResults }
+      : {}),
     utteranceEnded: eventType === AssistResponseEventType.END_OF_UTTERANCE,
   };
 }

@@ -20,6 +20,7 @@ import { TextConversation } from './text-conversation';
 
 export interface AssistantQueryOptions {
   conversationState?: Buffer;
+  audioInConfig?: AudioInConfig;
   audioOutConfig?: AudioOutConfig;
 }
 
@@ -109,13 +110,21 @@ export class Assistant {
 
   /**
    * Sends a single text query to the Assistant and wait for its response.
-   * @param text - The text query to send to the Assistant.
-   * @param audioOutConfig - The audio output configuration.
+   * @param textOrAudio - The text query or the audio buffer to send to the Assistant.
+   * @param options - The additional query options.
    * @returns A promise that resolves to the Assistant response.
    */
   public query(
-    text: string,
-    { conversationState, audioOutConfig }: AssistantQueryOptions = {
+    textOrAudio: string | Buffer,
+    {
+      conversationState,
+      audioInConfig,
+      audioOutConfig,
+    }: AssistantQueryOptions = {
+      audioInConfig: {
+        encoding: AudioInEncoding.LINEAR16,
+        sampleRateHertz: 16000,
+      },
       audioOutConfig: {
         encoding: AudioOutEncoding.LINEAR16,
         sampleRateHertz: 16000,
@@ -187,9 +196,18 @@ export class Assistant {
             conversationState,
             languageCode: this.locale,
           },
-          textQuery: text,
+          ...(typeof textOrAudio === 'string'
+            ? {
+                textQuery: textOrAudio,
+              }
+            : {
+                audioInConfig,
+              }),
         },
       });
+      if (typeof textOrAudio !== 'string') {
+        conversation.write({ audioIn: textOrAudio });
+      }
       conversation.end();
     });
   }

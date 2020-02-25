@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [SpeechRecognitionResult](../interfaces/speechrecognitionresult.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [SpeechRecognitionResult](speechrecognitionresult.md)
 
 # Interface: SpeechRecognitionResult
 
 ## Hierarchy
 
-**SpeechRecognitionResult**
+* **SpeechRecognitionResult**
 
 ## Index
 
@@ -13,22 +13,14 @@
 * [stability](speechrecognitionresult.md#stability)
 * [transcript](speechrecognitionresult.md#transcript)
 
----
-
 ## Properties
-
-<a id="stability"></a>
 
 ###  stability
 
-**● stability**: *`number`*
+• **stability**: *number*
 
 ___
-<a id="transcript"></a>
 
 ###  transcript
 
-**● transcript**: *`string`*
-
-___
-
+• **transcript**: *string*

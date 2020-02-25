@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [AssistantOptions](../interfaces/assistantoptions.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AssistantOptions](assistantoptions.md)
 
 # Interface: AssistantOptions
 
 ## Hierarchy
 
-**AssistantOptions**
+* **AssistantOptions**
 
 ## Index
 
@@ -14,29 +14,20 @@
 * [deviceModelId](assistantoptions.md#devicemodelid)
 * [locale](assistantoptions.md#locale)
 
----
-
 ## Properties
-
-<a id="deviceid"></a>
 
 ###  deviceId
 
-**● deviceId**: *`string`*
+• **deviceId**: *string*
 
 ___
-<a id="devicemodelid"></a>
 
 ###  deviceModelId
 
-**● deviceModelId**: *`string`*
+• **deviceModelId**: *string*
 
 ___
-<a id="locale"></a>
 
 ###  locale
 
-**● locale**: *[AssistantLanguage](../enums/assistantlanguage.md)*
-
-___
-
+• **locale**: *[AssistantLanguage](../enums/assistantlanguage.md)*

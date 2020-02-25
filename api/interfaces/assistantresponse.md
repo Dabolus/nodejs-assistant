@@ -1,98 +1,82 @@
-[Assistant SDK for Node.js](../README.md) > [AssistantResponse](../interfaces/assistantresponse.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AssistantResponse](assistantresponse.md)
 
 # Interface: AssistantResponse
 
 ## Hierarchy
 
-**AssistantResponse**
+* **AssistantResponse**
 
 ## Index
 
 ### Properties
 
-* [action](assistantresponse.md#action)
-* [actionOnGoogle](assistantresponse.md#actionongoogle)
-* [audio](assistantresponse.md#audio)
-* [conversationEnded](assistantresponse.md#conversationended)
-* [conversationState](assistantresponse.md#conversationstate)
-* [html](assistantresponse.md#html)
-* [newVolume](assistantresponse.md#newvolume)
-* [speechRecognitionResults](assistantresponse.md#speechrecognitionresults)
-* [text](assistantresponse.md#text)
-* [utteranceEnded](assistantresponse.md#utteranceended)
-
----
+* [action](assistantresponse.md#optional-action)
+* [actionOnGoogle](assistantresponse.md#optional-actionongoogle)
+* [audio](assistantresponse.md#optional-audio)
+* [conversationEnded](assistantresponse.md#optional-conversationended)
+* [conversationState](assistantresponse.md#optional-conversationstate)
+* [html](assistantresponse.md#optional-html)
+* [newVolume](assistantresponse.md#optional-newvolume)
+* [speechRecognitionResults](assistantresponse.md#optional-speechrecognitionresults)
+* [text](assistantresponse.md#optional-text)
+* [utteranceEnded](assistantresponse.md#optional-utteranceended)
 
 ## Properties
 
-<a id="action"></a>
+### `Optional` action
 
-### `<Optional>` action
-
-**● action**: *`unknown`*
-
-___
-<a id="actionongoogle"></a>
-
-### `<Optional>` actionOnGoogle
-
-**● actionOnGoogle**: *`unknown`*
-
-___
-<a id="audio"></a>
-
-### `<Optional>` audio
-
-**● audio**: *`Buffer`*
-
-___
-<a id="conversationended"></a>
-
-### `<Optional>` conversationEnded
-
-**● conversationEnded**: *`boolean`*
-
-___
-<a id="conversationstate"></a>
-
-### `<Optional>` conversationState
-
-**● conversationState**: *`Buffer`*
-
-___
-<a id="html"></a>
-
-### `<Optional>` html
-
-**● html**: *`string`*
-
-___
-<a id="newvolume"></a>
-
-### `<Optional>` newVolume
-
-**● newVolume**: *`number`*
-
-___
-<a id="speechrecognitionresults"></a>
-
-### `<Optional>` speechRecognitionResults
-
-**● speechRecognitionResults**: *[AssistantSpeechRecognitionResult](assistantspeechrecognitionresult.md)[]*
-
-___
-<a id="text"></a>
-
-### `<Optional>` text
-
-**● text**: *`string`*
-
-___
-<a id="utteranceended"></a>
-
-### `<Optional>` utteranceEnded
-
-**● utteranceEnded**: *`boolean`*
+• **action**? : *[Action](../globals.md#action)*
 
 ___
 
+### `Optional` actionOnGoogle
+
+• **actionOnGoogle**? : *[ActionOnGoogle](../globals.md#actionongoogle)*
+
+___
+
+### `Optional` audio
+
+• **audio**? : *Buffer*
+
+___
+
+### `Optional` conversationEnded
+
+• **conversationEnded**? : *boolean*
+
+___
+
+### `Optional` conversationState
+
+• **conversationState**? : *Buffer*
+
+___
+
+### `Optional` html
+
+• **html**? : *string*
+
+___
+
+### `Optional` newVolume
+
+• **newVolume**? : *number*
+
+___
+
+### `Optional` speechRecognitionResults
+
+• **speechRecognitionResults**? : *[AssistantSpeechRecognitionResult](assistantspeechrecognitionresult.md)[]*
+
+___
+
+### `Optional` text
+
+• **text**? : *string*
+
+___
+
+### `Optional` utteranceEnded
+
+• **utteranceEnded**? : *boolean*

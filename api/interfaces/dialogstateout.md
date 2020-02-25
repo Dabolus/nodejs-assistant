@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [DialogStateOut](../interfaces/dialogstateout.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DialogStateOut](dialogstateout.md)
 
 # Interface: DialogStateOut
 
 ## Hierarchy
 
-**DialogStateOut**
+* **DialogStateOut**
 
 ## Index
 
@@ -15,36 +15,26 @@
 * [supplementalDisplayText](dialogstateout.md#supplementaldisplaytext)
 * [volumePercentage](dialogstateout.md#volumepercentage)
 
----
-
 ## Properties
-
-<a id="conversationstate"></a>
 
 ###  conversationState
 
-**● conversationState**: *`Buffer`*
+• **conversationState**: *Buffer*
 
 ___
-<a id="microphonemode"></a>
 
 ###  microphoneMode
 
-**● microphoneMode**: *[MicrophoneMode](../enums/microphonemode.md)*
+• **microphoneMode**: *[MicrophoneMode](../enums/microphonemode.md)*
 
 ___
-<a id="supplementaldisplaytext"></a>
 
 ###  supplementalDisplayText
 
-**● supplementalDisplayText**: *`string`*
+• **supplementalDisplayText**: *string*
 
 ___
-<a id="volumepercentage"></a>
 
 ###  volumePercentage
 
-**● volumePercentage**: *`number`*
-
-___
-
+• **volumePercentage**: *number*

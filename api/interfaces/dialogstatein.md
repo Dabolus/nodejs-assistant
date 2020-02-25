@@ -1,50 +1,40 @@
-[Assistant SDK for Node.js](../README.md) > [DialogStateIn](../interfaces/dialogstatein.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DialogStateIn](dialogstatein.md)
 
 # Interface: DialogStateIn
 
 ## Hierarchy
 
-**DialogStateIn**
+* **DialogStateIn**
 
 ## Index
 
 ### Properties
 
-* [conversationState](dialogstatein.md#conversationstate)
-* [deviceLocation](dialogstatein.md#devicelocation)
-* [isNewConversation](dialogstatein.md#isnewconversation)
+* [conversationState](dialogstatein.md#optional-conversationstate)
+* [deviceLocation](dialogstatein.md#optional-devicelocation)
+* [isNewConversation](dialogstatein.md#optional-isnewconversation)
 * [languageCode](dialogstatein.md#languagecode)
-
----
 
 ## Properties
 
-<a id="conversationstate"></a>
+### `Optional` conversationState
 
-### `<Optional>` conversationState
-
-**● conversationState**: *`Buffer`*
+• **conversationState**? : *Buffer*
 
 ___
-<a id="devicelocation"></a>
 
-### `<Optional>` deviceLocation
+### `Optional` deviceLocation
 
-**● deviceLocation**: *[DeviceLocation](devicelocation.md)*
-
-___
-<a id="isnewconversation"></a>
-
-### `<Optional>` isNewConversation
-
-**● isNewConversation**: *`boolean`*
+• **deviceLocation**? : *[DeviceLocation](devicelocation.md)*
 
 ___
-<a id="languagecode"></a>
+
+### `Optional` isNewConversation
+
+• **isNewConversation**? : *boolean*
+
+___
 
 ###  languageCode
 
-**● languageCode**: *`string`*
-
-___
-
+• **languageCode**: *string*

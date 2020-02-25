@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [LatLng](../interfaces/latlng.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [LatLng](latlng.md)
 
 # Interface: LatLng
 
 ## Hierarchy
 
-**LatLng**
+* **LatLng**
 
 ## Index
 
@@ -13,22 +13,14 @@
 * [latitude](latlng.md#latitude)
 * [longitude](latlng.md#longitude)
 
----
-
 ## Properties
-
-<a id="latitude"></a>
 
 ###  latitude
 
-**● latitude**: *`number`*
+• **latitude**: *number*
 
 ___
-<a id="longitude"></a>
 
 ###  longitude
 
-**● longitude**: *`number`*
-
-___
-
+• **longitude**: *number*

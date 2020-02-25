@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [ScreenOut](../interfaces/screenout.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [ScreenOut](screenout.md)
 
 # Interface: ScreenOut
 
 ## Hierarchy
 
-**ScreenOut**
+* **ScreenOut**
 
 ## Index
 
@@ -13,22 +13,14 @@
 * [data](screenout.md#data)
 * [format](screenout.md#format)
 
----
-
 ## Properties
-
-<a id="data"></a>
 
 ###  data
 
-**● data**: *`Buffer`*
+• **data**: *Buffer*
 
 ___
-<a id="format"></a>
 
 ###  format
 
-**● format**: *[ScreenOutFormat](../enums/screenoutformat.md)*
-
-___
-
+• **format**: *[ScreenOutFormat](../enums/screenoutformat.md)*

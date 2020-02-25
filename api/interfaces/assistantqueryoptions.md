@@ -1,34 +1,33 @@
-[Assistant SDK for Node.js](../README.md) > [AssistantQueryOptions](../interfaces/assistantqueryoptions.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AssistantQueryOptions](assistantqueryoptions.md)
 
 # Interface: AssistantQueryOptions
 
 ## Hierarchy
 
-**AssistantQueryOptions**
+* **AssistantQueryOptions**
 
 ## Index
 
 ### Properties
 
-* [audioOutConfig](assistantqueryoptions.md#audiooutconfig)
-* [conversationState](assistantqueryoptions.md#conversationstate)
-
----
+* [audioInConfig](assistantqueryoptions.md#optional-audioinconfig)
+* [audioOutConfig](assistantqueryoptions.md#optional-audiooutconfig)
+* [conversationState](assistantqueryoptions.md#optional-conversationstate)
 
 ## Properties
 
-<a id="audiooutconfig"></a>
+### `Optional` audioInConfig
 
-### `<Optional>` audioOutConfig
-
-**● audioOutConfig**: *[AudioOutConfig](audiooutconfig.md)*
-
-___
-<a id="conversationstate"></a>
-
-### `<Optional>` conversationState
-
-**● conversationState**: *`Buffer`*
+• **audioInConfig**? : *[AudioInConfig](audioinconfig.md)*
 
 ___
 
+### `Optional` audioOutConfig
+
+• **audioOutConfig**? : *[AudioOutConfig](audiooutconfig.md)*
+
+___
+
+### `Optional` conversationState
+
+• **conversationState**? : *Buffer*

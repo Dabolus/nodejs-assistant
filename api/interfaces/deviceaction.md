@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [DeviceAction](../interfaces/deviceaction.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DeviceAction](deviceaction.md)
 
 # Interface: DeviceAction
 
 ## Hierarchy
 
-**DeviceAction**
+* **DeviceAction**
 
 ## Index
 
@@ -12,15 +12,8 @@
 
 * [deviceRequestJson](deviceaction.md#devicerequestjson)
 
----
-
 ## Properties
-
-<a id="devicerequestjson"></a>
 
 ###  deviceRequestJson
 
-**● deviceRequestJson**: *`string`*
-
-___
-
+• **deviceRequestJson**: *string*

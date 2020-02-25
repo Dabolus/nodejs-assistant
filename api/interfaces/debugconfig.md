@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [DebugConfig](../interfaces/debugconfig.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DebugConfig](debugconfig.md)
 
 # Interface: DebugConfig
 
 ## Hierarchy
 
-**DebugConfig**
+* **DebugConfig**
 
 ## Index
 
@@ -12,15 +12,8 @@
 
 * [returnDebugInfo](debugconfig.md#returndebuginfo)
 
----
-
 ## Properties
-
-<a id="returndebuginfo"></a>
 
 ###  returnDebugInfo
 
-**● returnDebugInfo**: *`boolean`*
-
-___
-
+• **returnDebugInfo**: *boolean*

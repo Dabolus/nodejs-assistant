@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [DeviceLocation](../interfaces/devicelocation.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DeviceLocation](devicelocation.md)
 
 # Interface: DeviceLocation
 
 ## Hierarchy
 
-**DeviceLocation**
+* **DeviceLocation**
 
 ## Index
 
@@ -12,15 +12,8 @@
 
 * [coordinates](devicelocation.md#coordinates)
 
----
-
 ## Properties
-
-<a id="coordinates"></a>
 
 ###  coordinates
 
-**● coordinates**: *[LatLng](latlng.md)*
-
-___
-
+• **coordinates**: *[LatLng](latlng.md)*

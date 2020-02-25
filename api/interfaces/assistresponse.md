@@ -1,74 +1,61 @@
-[Assistant SDK for Node.js](../README.md) > [AssistResponse](../interfaces/assistresponse.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AssistResponse](assistresponse.md)
 
 # Interface: AssistResponse
 
 ## Hierarchy
 
-**AssistResponse**
+* **AssistResponse**
 
 ## Index
 
 ### Properties
 
-* [audioOut](assistresponse.md#audioout)
-* [debugInfo](assistresponse.md#debuginfo)
-* [deviceAction](assistresponse.md#deviceaction)
-* [dialogStateOut](assistresponse.md#dialogstateout)
+* [audioOut](assistresponse.md#optional-audioout)
+* [debugInfo](assistresponse.md#optional-debuginfo)
+* [deviceAction](assistresponse.md#optional-deviceaction)
+* [dialogStateOut](assistresponse.md#optional-dialogstateout)
 * [eventType](assistresponse.md#eventtype)
-* [screenOut](assistresponse.md#screenout)
-* [speechResults](assistresponse.md#speechresults)
-
----
+* [screenOut](assistresponse.md#optional-screenout)
+* [speechResults](assistresponse.md#optional-speechresults)
 
 ## Properties
 
-<a id="audioout"></a>
+### `Optional` audioOut
 
-### `<Optional>` audioOut
-
-**● audioOut**: *[AudioOut](audioout.md)*
+• **audioOut**? : *[AudioOut](audioout.md)*
 
 ___
-<a id="debuginfo"></a>
 
-### `<Optional>` debugInfo
+### `Optional` debugInfo
 
-**● debugInfo**: *[DebugInfo](debuginfo.md)*
-
-___
-<a id="deviceaction"></a>
-
-### `<Optional>` deviceAction
-
-**● deviceAction**: *[DeviceAction](deviceaction.md)*
+• **debugInfo**? : *[DebugInfo](debuginfo.md)*
 
 ___
-<a id="dialogstateout"></a>
 
-### `<Optional>` dialogStateOut
+### `Optional` deviceAction
 
-**● dialogStateOut**: *[DialogStateOut](dialogstateout.md)*
+• **deviceAction**? : *[DeviceAction](deviceaction.md)*
 
 ___
-<a id="eventtype"></a>
+
+### `Optional` dialogStateOut
+
+• **dialogStateOut**? : *[DialogStateOut](dialogstateout.md)*
+
+___
 
 ###  eventType
 
-**● eventType**: *[AssistResponseEventType](../enums/assistresponseeventtype.md)*
-
-___
-<a id="screenout"></a>
-
-### `<Optional>` screenOut
-
-**● screenOut**: *[ScreenOut](screenout.md)*
-
-___
-<a id="speechresults"></a>
-
-### `<Optional>` speechResults
-
-**● speechResults**: *[SpeechRecognitionResult](speechrecognitionresult.md)[]*
+• **eventType**: *[AssistResponseEventType](../enums/assistresponseeventtype.md)*
 
 ___
 
+### `Optional` screenOut
+
+• **screenOut**? : *[ScreenOut](screenout.md)*
+
+___
+
+### `Optional` speechResults
+
+• **speechResults**? : *[SpeechRecognitionResult](speechrecognitionresult.md)[]*

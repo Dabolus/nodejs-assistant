@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [AudioInConfig](../interfaces/audioinconfig.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AudioInConfig](audioinconfig.md)
 
 # Interface: AudioInConfig
 
 ## Hierarchy
 
-**AudioInConfig**
+* **AudioInConfig**
 
 ## Index
 
@@ -13,22 +13,14 @@
 * [encoding](audioinconfig.md#encoding)
 * [sampleRateHertz](audioinconfig.md#sampleratehertz)
 
----
-
 ## Properties
-
-<a id="encoding"></a>
 
 ###  encoding
 
-**● encoding**: *[AudioInEncoding](../enums/audioinencoding.md)*
+• **encoding**: *[AudioInEncoding](../enums/audioinencoding.md)*
 
 ___
-<a id="sampleratehertz"></a>
 
 ###  sampleRateHertz
 
-**● sampleRateHertz**: *`number`*
-
-___
-
+• **sampleRateHertz**: *number*

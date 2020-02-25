@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [AudioOutConfig](../interfaces/audiooutconfig.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AudioOutConfig](audiooutconfig.md)
 
 # Interface: AudioOutConfig
 
 ## Hierarchy
 
-**AudioOutConfig**
+* **AudioOutConfig**
 
 ## Index
 
@@ -14,29 +14,20 @@
 * [sampleRateHertz](audiooutconfig.md#sampleratehertz)
 * [volumePercentage](audiooutconfig.md#volumepercentage)
 
----
-
 ## Properties
-
-<a id="encoding"></a>
 
 ###  encoding
 
-**● encoding**: *[AudioOutEncoding](../enums/audiooutencoding.md)*
+• **encoding**: *[AudioOutEncoding](../enums/audiooutencoding.md)*
 
 ___
-<a id="sampleratehertz"></a>
 
 ###  sampleRateHertz
 
-**● sampleRateHertz**: *`number`*
+• **sampleRateHertz**: *number*
 
 ___
-<a id="volumepercentage"></a>
 
 ###  volumePercentage
 
-**● volumePercentage**: *`number`*
-
-___
-
+• **volumePercentage**: *number*

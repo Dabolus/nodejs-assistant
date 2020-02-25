@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [AudioOut](../interfaces/audioout.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [AudioOut](audioout.md)
 
 # Interface: AudioOut
 
 ## Hierarchy
 
-**AudioOut**
+* **AudioOut**
 
 ## Index
 
@@ -12,15 +12,8 @@
 
 * [audioData](audioout.md#audiodata)
 
----
-
 ## Properties
-
-<a id="audiodata"></a>
 
 ###  audioData
 
-**● audioData**: *`Buffer`*
-
-___
-
+• **audioData**: *Buffer*

@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [DeviceConfig](../interfaces/deviceconfig.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DeviceConfig](deviceconfig.md)
 
 # Interface: DeviceConfig
 
 ## Hierarchy
 
-**DeviceConfig**
+* **DeviceConfig**
 
 ## Index
 
@@ -13,22 +13,14 @@
 * [deviceId](deviceconfig.md#deviceid)
 * [deviceModelId](deviceconfig.md#devicemodelid)
 
----
-
 ## Properties
-
-<a id="deviceid"></a>
 
 ###  deviceId
 
-**● deviceId**: *`string`*
+• **deviceId**: *string*
 
 ___
-<a id="devicemodelid"></a>
 
 ###  deviceModelId
 
-**● deviceModelId**: *`string`*
-
-___
-
+• **deviceModelId**: *string*

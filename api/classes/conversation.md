@@ -1,24 +1,22 @@
-[Assistant SDK for Node.js](../README.md) > [Conversation](../classes/conversation.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [Conversation](conversation.md)
 
 # Class: Conversation
 
 Represents a conversation with the Assistant.
 
-*__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
+**`author`** Giorgio Garasto <giorgio@garasto.it>
 
-*__license__*: MIT
-
-*__class__*: 
+**`license`** MIT
 
 ## Hierarchy
 
- `EventEmitter`
+* EventEmitter
 
-**↳ Conversation**
+  ↳ **Conversation**
 
-↳  [AudioConversation](audioconversation.md)
+  ↳ [AudioConversation](audioconversation.md)
 
-↳  [TextConversation](textconversation.md)
+  ↳ [TextConversation](textconversation.md)
 
 ## Index
 
@@ -28,15 +26,15 @@ Represents a conversation with the Assistant.
 
 ### Properties
 
-* [_deviceId](conversation.md#_deviceid)
-* [_deviceModelId](conversation.md#_devicemodelid)
-* [_stream](conversation.md#_stream)
+* [_deviceId](conversation.md#protected-_deviceid)
+* [_deviceModelId](conversation.md#protected-_devicemodelid)
+* [_stream](conversation.md#private-_stream)
 * [locale](conversation.md#locale)
-* [defaultMaxListeners](conversation.md#defaultmaxlisteners)
+* [defaultMaxListeners](conversation.md#static-defaultmaxlisteners)
 
 ### Methods
 
-* [_setupEvents](conversation.md#_setupevents)
+* [_setupEvents](conversation.md#private-_setupevents)
 * [addListener](conversation.md#addlistener)
 * [emit](conversation.md#emit)
 * [end](conversation.md#end)
@@ -55,1146 +53,1795 @@ Represents a conversation with the Assistant.
 * [sendRawRequest](conversation.md#sendrawrequest)
 * [sendRequest](conversation.md#sendrequest)
 * [setMaxListeners](conversation.md#setmaxlisteners)
-* [listenerCount](conversation.md#listenercount-1)
-
----
+* [listenerCount](conversation.md#static-listenercount)
 
 ## Constructors
 
-<a id="constructor"></a>
-
 ###  constructor
 
-⊕ **new Conversation**(_stream: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*, _deviceId: *`string`*, _deviceModelId: *`string`*, locale: *[AssistantLanguage](../enums/assistantlanguage.md)*): [Conversation](conversation.md)
+\+ **new Conversation**(`_stream`: ClientDuplexStream‹[AssistRequest](../globals.md#assistrequest), [AssistResponse](../interfaces/assistresponse.md)›, `_deviceId`: string, `_deviceModelId`: string, `locale`: [AssistantLanguage](../enums/assistantlanguage.md)): *[Conversation](conversation.md)*
+
+*Overrides void*
 
 Creates a new conversation.
 
-*__constructor__*: 
-
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| _stream | `ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)> |  The duplex stream to use to communicate with the Assistant SDK. |
-| _deviceId | `string` |  The device ID to use during this conversation. |
-| _deviceModelId | `string` |  The device model ID to use during this conversation. |
-| locale | [AssistantLanguage](../enums/assistantlanguage.md) |  The locale to use during this conversation. |
+Name | Type | Description |
+------ | ------ | ------ |
+`_stream` | ClientDuplexStream‹[AssistRequest](../globals.md#assistrequest), [AssistResponse](../interfaces/assistresponse.md)› | The duplex stream to use to communicate with the Assistant SDK. |
+`_deviceId` | string | The device ID to use during this conversation. |
+`_deviceModelId` | string | The device model ID to use during this conversation. |
+`locale` | [AssistantLanguage](../enums/assistantlanguage.md) | The locale to use during this conversation. |
 
-**Returns:** [Conversation](conversation.md)
-
-___
+**Returns:** *[Conversation](conversation.md)*
 
 ## Properties
 
-<a id="_deviceid"></a>
+### `Protected` _deviceId
 
-### `<Protected>` _deviceId
-
-**● _deviceId**: *`string`*
+• **_deviceId**: *string*
 
 The device ID to use during this conversation.
 
 ___
-<a id="_devicemodelid"></a>
 
-### `<Protected>` _deviceModelId
+### `Protected` _deviceModelId
 
-**● _deviceModelId**: *`string`*
+• **_deviceModelId**: *string*
 
 The device model ID to use during this conversation.
 
 ___
-<a id="_stream"></a>
 
-### `<Private>` _stream
+### `Private` _stream
 
-**● _stream**: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*
+• **_stream**: *ClientDuplexStream‹[AssistRequest](../globals.md#assistrequest), [AssistResponse](../interfaces/assistresponse.md)›*
 
 The duplex stream to use to communicate with the Assistant SDK.
 
 ___
-<a id="locale"></a>
 
 ###  locale
 
-**● locale**: *[AssistantLanguage](../enums/assistantlanguage.md)*
+• **locale**: *[AssistantLanguage](../enums/assistantlanguage.md)*
 
 The locale to use during this conversation.
 
 ___
-<a id="defaultmaxlisteners"></a>
 
-### `<Static>` defaultMaxListeners
+### `Static` defaultMaxListeners
 
-**● defaultMaxListeners**: *`number`*
+▪ **defaultMaxListeners**: *number*
 
-___
+*Inherited from [Conversation](conversation.md).[defaultMaxListeners](conversation.md#static-defaultmaxlisteners)*
 
 ## Methods
 
-<a id="_setupevents"></a>
+### `Private` _setupEvents
 
-### `<Private>` _setupEvents
+▸ **_setupEvents**(): *void*
 
-▸ **_setupEvents**(): `void`
-
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="addlistener"></a>
 
 ###  addListener
 
-▸ **addListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **addListener**(`event`: string | symbol, `listener`: function): *this*
 
-▸ **addListener**(event: *"data"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"action"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"actionongoogle"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"audio"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"conversationend"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"message"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"html"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"volume"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"speechrecognition"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"utteranceend"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"end"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"close"*, listener: *`function`*): `this`
-
-▸ **addListener**(event: *"error"*, listener: *`function`*): `this`
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+▸ **addListener**(`event`: "data", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when the Assistant sends any type of data.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "data" |  The 'data' event. |
-| listener | `function` |  A callback that will receive the Assistant data as param. |
+▪ **event**: *"data"*
 
-**Returns:** `this`
-The conversation.
+The 'data' event.
 
-Adds an event listener that will be triggered if the user has triggered a Device Action. For example, a device which supports the query _Turn on the light_ would receive an object containing the semantics of the request.
+▪ **listener**: *function*
 
-**Parameters:**
+A callback that will receive the Assistant data as param.
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "action" |  The 'action' event. |
-| listener | `function` |  A callback that will receive the object containing the semantics of the request as param. |
-
-**Returns:** `this`
-The conversation.
-
-Adds an event listener that will be triggered with the original response from an Action-on-Google agent to Google server. To be able to receive this data, the conversation has to be in debug mode, the request maker has to own the AoG project and the AoG project has to be in preview mode.
+▸ (`data`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "actionongoogle" |  The 'actionongoogle' event. |
-| listener | `function` |  A callback that will receive the original response from the AoG agent as param. |
+Name | Type |
+------ | ------ |
+`data` | [AssistantResponse](../interfaces/assistantresponse.md) |
 
-**Returns:** `this`
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "action", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
+
+Adds an event listener that will be triggered if the user has triggered a Device Action.
+For example, a device which supports the query *Turn on the light* would receive an
+object containing the semantics of the request.
+
+**Parameters:**
+
+▪ **event**: *"action"*
+
+The 'action' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the object containing the semantics of the request as param.
+
+▸ (`action`: unknown): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`action` | unknown |
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **addListener**(`event`: "actionongoogle", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
+
+Adds an event listener that will be triggered with the original response from an
+Action-on-Google agent to Google server. To be able to receive this data, the conversation
+has to be in debug mode, the request maker has to own the AoG project and the AoG project
+has to be in preview mode.
+
+**Parameters:**
+
+▪ **event**: *"actionongoogle"*
+
+The 'actionongoogle' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the original response from the AoG agent as param.
+
+▸ (`actionOnGoogle`: unknown): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`actionOnGoogle` | unknown |
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **addListener**(`event`: "audio", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when the Assistant sends an audio message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "audio" |  The 'audio' event. |
-| listener | `function` |  A callback that will receive the Assistant audio message as param. |
+▪ **event**: *"audio"*
 
-**Returns:** `this`
+The 'audio' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the Assistant audio message as param.
+
+▸ (`audio`: Buffer): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`audio` | Buffer |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "conversationend", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when the conversation with the Assistant ends.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "conversationend" |  The 'conversationend' event. |
-| listener | `function` |  A callback that will receive the latest Assistant response as param. |
+▪ **event**: *"conversationend"*
 
-**Returns:** `this`
+The 'conversationend' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the latest Assistant response as param.
+
+▸ (`latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "message", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when the Assistant sends a text message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "message" |  The 'message' event. |
-| listener | `function` |  A callback that will receive the Assistant text message as param. |
+▪ **event**: *"message"*
 
-**Returns:** `this`
+The 'message' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the Assistant text message as param.
+
+▸ (`text`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`text` | string |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "html", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when the Assistant sends HTML data.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "html" |  The 'html' event. |
-| listener | `function` |  A callback that will receive the HTML data as param. |
+▪ **event**: *"html"*
 
-**Returns:** `this`
+The 'html' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the HTML data as param.
+
+▸ (`html`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`html` | string |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "volume", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when the Assistant sends the new device volume level.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "volume" |  The 'volume' event. |
-| listener | `function` |  A callback that will receive the new device volume level as param. |
+▪ **event**: *"volume"*
 
-**Returns:** `this`
+The 'volume' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the new device volume level as param.
+
+▸ (`newVolume`: number): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`newVolume` | number |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "speechrecognition", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered with the Assistant speech recognition results.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "speechrecognition" |  The 'speechrecognition' event. |
-| listener | `function` |  A callback that will receive the Assistant speech recognition results as param. |
+▪ **event**: *"speechrecognition"*
 
-**Returns:** `this`
-The conversation.
+The 'speechrecognition' event.
 
-Adds an event listener that will be triggered when the Assistant detects the end of the user's speech utterance and expects no additional speech. Therefore, it will not process additional audio (although it may subsequently return additional results).
+▪ **listener**: *function*
 
-**Parameters:**
+A callback that will receive the Assistant speech recognition results as param.
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "utteranceend" |  The 'utteranceend' event. |
-| listener | `function` |  A callback that will receive the latest Assistant response as param. |
-
-**Returns:** `this`
-The conversation.
-
-Adds an event listener that will be triggered when the Assistant closes the connection, thus not sending any more data.
+▸ (`speechRecognitionResults`: [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[]): *void*
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "end" |  The 'end' event. |
-| listener | `function` |  A callback with no params. |
+Name | Type |
+------ | ------ |
+`speechRecognitionResults` | [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[] |
 
-**Returns:** `this`
+**Returns:** *this*
+
 The conversation.
 
-Adds an event listener that will be triggered when the connection with the Assistant is fully closed.
+▸ **addListener**(`event`: "utteranceend", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
+
+Adds an event listener that will be triggered when the Assistant detects the end of the user's
+speech utterance and expects no additional speech. Therefore, it will not process additional audio
+(although it may subsequently return additional results).
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "close" |  The 'end' event. |
-| listener | `function` |  A callback with no params. |
+▪ **event**: *"utteranceend"*
 
-**Returns:** `this`
+The 'utteranceend' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the latest Assistant response as param.
+
+▸ (`latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **addListener**(`event`: "end", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
+
+Adds an event listener that will be triggered when the Assistant closes the connection,
+thus not sending any more data.
+
+**Parameters:**
+
+▪ **event**: *"end"*
+
+The 'end' event.
+
+▪ **listener**: *function*
+
+A callback with no params.
+
+▸ (): *void*
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **addListener**(`event`: "close", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
+
+Adds an event listener that will be triggered when the connection with the Assistant is
+fully closed.
+
+**Parameters:**
+
+▪ **event**: *"close"*
+
+The 'end' event.
+
+▪ **listener**: *function*
+
+A callback with no params.
+
+▸ (): *void*
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **addListener**(`event`: "error", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
 
 Adds an event listener that will be triggered when any type of error occurs.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "error" |  The 'error' event. |
-| listener | `function` |  A callback that will receive the error as param. |
+▪ **event**: *"error"*
 
-**Returns:** `this`
+The 'error' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the error as param.
+
+▸ (`error`: Error): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`error` | Error |
+
+**Returns:** *this*
+
 The conversation.
 
 ___
-<a id="emit"></a>
 
 ###  emit
 
-▸ **emit**(event: *`string` \| `symbol`*, ...args: *`any`[]*): `boolean`
+▸ **emit**(`event`: string | symbol, ...`args`: any[]): *boolean*
 
-▸ **emit**(event: *"data"*, data: *[AssistantResponse](../interfaces/assistantresponse.md)*): `boolean`
-
-▸ **emit**(event: *"action"*, action: *`unknown`*): `boolean`
-
-▸ **emit**(event: *"actionongoogle"*, actionOnGoogle: *`unknown`*): `boolean`
-
-▸ **emit**(event: *"audio"*, audio: *`Buffer`*): `boolean`
-
-▸ **emit**(event: *"conversationend"*, latestData: *[AssistantResponse](../interfaces/assistantresponse.md)*): `boolean`
-
-▸ **emit**(event: *"message"*, text: *`string`*): `boolean`
-
-▸ **emit**(event: *"html"*, html: *`string`*): `boolean`
-
-▸ **emit**(event: *"volume"*, newVolume: *`number`*): `boolean`
-
-▸ **emit**(event: *"speechrecognition"*, speechRecognitionResults: *[AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[]*): `boolean`
-
-▸ **emit**(event: *"utteranceend"*, latestData: *[AssistantResponse](../interfaces/assistantresponse.md)*): `boolean`
-
-▸ **emit**(event: *"end"*): `boolean`
-
-▸ **emit**(event: *"close"*): `boolean`
-
-▸ **emit**(event: *"error"*, error: *`Error`*): `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| `Rest` args | `any`[] |
+Name | Type |
+------ | ------ |
+`event` | string &#124; symbol |
+`...args` | any[] |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
-**Parameters:**
+▸ **emit**(`event`: "data", `data`: [AssistantResponse](../interfaces/assistantresponse.md)): *boolean*
 
-| Name | Type |
-| ------ | ------ |
-| event | "data" |
-| data | [AssistantResponse](../interfaces/assistantresponse.md) |
-
-**Returns:** `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "action" |
-| action | `unknown` |
+Name | Type |
+------ | ------ |
+`event` | "data" |
+`data` | [AssistantResponse](../interfaces/assistantresponse.md) |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
-**Parameters:**
+▸ **emit**(`event`: "action", `action`: unknown): *boolean*
 
-| Name | Type |
-| ------ | ------ |
-| event | "actionongoogle" |
-| actionOnGoogle | `unknown` |
-
-**Returns:** `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "audio" |
-| audio | `Buffer` |
+Name | Type |
+------ | ------ |
+`event` | "action" |
+`action` | unknown |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
-**Parameters:**
+▸ **emit**(`event`: "actionongoogle", `actionOnGoogle`: unknown): *boolean*
 
-| Name | Type |
-| ------ | ------ |
-| event | "conversationend" |
-| latestData | [AssistantResponse](../interfaces/assistantresponse.md) |
-
-**Returns:** `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "message" |
-| text | `string` |
+Name | Type |
+------ | ------ |
+`event` | "actionongoogle" |
+`actionOnGoogle` | unknown |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
-**Parameters:**
+▸ **emit**(`event`: "audio", `audio`: Buffer): *boolean*
 
-| Name | Type |
-| ------ | ------ |
-| event | "html" |
-| html | `string` |
-
-**Returns:** `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "volume" |
-| newVolume | `number` |
+Name | Type |
+------ | ------ |
+`event` | "audio" |
+`audio` | Buffer |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
-**Parameters:**
+▸ **emit**(`event`: "conversationend", `latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *boolean*
 
-| Name | Type |
-| ------ | ------ |
-| event | "speechrecognition" |
-| speechRecognitionResults | [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[] |
-
-**Returns:** `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "utteranceend" |
-| latestData | [AssistantResponse](../interfaces/assistantresponse.md) |
+Name | Type |
+------ | ------ |
+`event` | "conversationend" |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
-**Parameters:**
+▸ **emit**(`event`: "message", `text`: string): *boolean*
 
-| Name | Type |
-| ------ | ------ |
-| event | "end" |
-
-**Returns:** `boolean`
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "close" |
+Name | Type |
+------ | ------ |
+`event` | "message" |
+`text` | string |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "html", `html`: string): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | "error" |
-| error | `Error` |
+Name | Type |
+------ | ------ |
+`event` | "html" |
+`html` | string |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "volume", `newVolume`: number): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | "volume" |
+`newVolume` | number |
+
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "speechrecognition", `speechRecognitionResults`: [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[]): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | "speechrecognition" |
+`speechRecognitionResults` | [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[] |
+
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "utteranceend", `latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | "utteranceend" |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "end"): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | "end" |
+
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "close"): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | "close" |
+
+**Returns:** *boolean*
+
+▸ **emit**(`event`: "error", `error`: Error): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | "error" |
+`error` | Error |
+
+**Returns:** *boolean*
 
 ___
-<a id="end"></a>
 
 ###  end
 
-▸ **end**(): `Promise`<`void`>
+▸ **end**(): *Promise‹void›*
 
-**Returns:** `Promise`<`void`>
+**Returns:** *Promise‹void›*
 
 ___
-<a id="eventnames"></a>
 
 ###  eventNames
 
-▸ **eventNames**(): `Array`<`string` \| `symbol`>
+▸ **eventNames**(): *Array‹string | symbol›*
 
-▸ **eventNames**(): [ConversationEvent](../#conversationevent)[]
+*Inherited from [Conversation](conversation.md).[eventNames](conversation.md#eventnames)*
 
-**Returns:** `Array`<`string` \| `symbol`>
+**Returns:** *Array‹string | symbol›*
 
-**Returns:** [ConversationEvent](../#conversationevent)[]
+▸ **eventNames**(): *[ConversationEvent](../globals.md#conversationevent)[]*
+
+*Inherited from [Conversation](conversation.md).[eventNames](conversation.md#eventnames)*
+
+**Returns:** *[ConversationEvent](../globals.md#conversationevent)[]*
 
 ___
-<a id="getmaxlisteners"></a>
 
 ###  getMaxListeners
 
-▸ **getMaxListeners**(): `number`
+▸ **getMaxListeners**(): *number*
 
-▸ **getMaxListeners**(): `number`
+*Inherited from [Conversation](conversation.md).[getMaxListeners](conversation.md#getmaxlisteners)*
 
-**Returns:** `number`
+**Returns:** *number*
 
-**Returns:** `number`
+▸ **getMaxListeners**(): *number*
+
+*Inherited from [Conversation](conversation.md).[getMaxListeners](conversation.md#getmaxlisteners)*
+
+**Returns:** *number*
 
 ___
-<a id="listenercount"></a>
 
 ###  listenerCount
 
-▸ **listenerCount**(type: *`string` \| `symbol`*): `number`
+▸ **listenerCount**(`type`: string | symbol): *number*
 
-▸ **listenerCount**(type: *[ConversationEvent](../#conversationevent)*): `number`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| type | `string` \| `symbol` |
-
-**Returns:** `number`
+*Inherited from [Conversation](conversation.md).[listenerCount](conversation.md#listenercount)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| type | [ConversationEvent](../#conversationevent) |
+Name | Type |
+------ | ------ |
+`type` | string &#124; symbol |
 
-**Returns:** `number`
+**Returns:** *number*
+
+▸ **listenerCount**(`type`: [ConversationEvent](../globals.md#conversationevent)): *number*
+
+*Inherited from [Conversation](conversation.md).[listenerCount](conversation.md#listenercount)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`type` | [ConversationEvent](../globals.md#conversationevent) |
+
+**Returns:** *number*
 
 ___
-<a id="listeners"></a>
 
 ###  listeners
 
-▸ **listeners**(event: *`string` \| `symbol`*): `Function`[]
+▸ **listeners**(`event`: string | symbol): *Function[]*
 
-▸ **listeners**(event: *[ConversationEvent](../#conversationevent)*): `Array`<`function`>
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-
-**Returns:** `Function`[]
+*Inherited from [Conversation](conversation.md).[listeners](conversation.md#listeners)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | [ConversationEvent](../#conversationevent) |
+Name | Type |
+------ | ------ |
+`event` | string &#124; symbol |
 
-**Returns:** `Array`<`function`>
+**Returns:** *Function[]*
+
+▸ **listeners**(`event`: [ConversationEvent](../globals.md#conversationevent)): *Array‹function›*
+
+*Inherited from [Conversation](conversation.md).[listeners](conversation.md#listeners)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | [ConversationEvent](../globals.md#conversationevent) |
+
+**Returns:** *Array‹function›*
 
 ___
-<a id="off"></a>
 
 ###  off
 
-▸ **off**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **off**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[off](conversation.md#off)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="on"></a>
 
 ###  on
 
-▸ **on**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **on**(`event`: string | symbol, `listener`: function): *this*
 
-▸ **on**(event: *"data"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"action"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"actionongoogle"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"audio"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"conversationend"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"message"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"html"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"volume"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"speechrecognition"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"utteranceend"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"end"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"close"*, listener: *`function`*): `this`
-
-▸ **on**(event: *"error"*, listener: *`function`*): `this`
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+▸ **on**(`event`: "data", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when the Assistant sends any type of data.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "data" |  The 'data' event. |
-| listener | `function` |  A callback that will receive the Assistant data as param. |
+▪ **event**: *"data"*
 
-**Returns:** `this`
-The conversation.
+The 'data' event.
 
-Adds an event listener that will be triggered if the user has triggered a Device Action. For example, a device which supports the query _Turn on the light_ would receive an object containing the semantics of the request.
+▪ **listener**: *function*
 
-**Parameters:**
+A callback that will receive the Assistant data as param.
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "action" |  The 'action' event. |
-| listener | `function` |  A callback that will receive the object containing the semantics of the request as param. |
-
-**Returns:** `this`
-The conversation.
-
-Adds an event listener that will be triggered with the original response from an Action-on-Google agent to Google server. To be able to receive this data, the conversation has to be in debug mode, the request maker has to own the AoG project and the AoG project has to be in preview mode.
+▸ (`data`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "actionongoogle" |  The 'actionongoogle' event. |
-| listener | `function` |  A callback that will receive the original response from the AoG agent as param. |
+Name | Type |
+------ | ------ |
+`data` | [AssistantResponse](../interfaces/assistantresponse.md) |
 
-**Returns:** `this`
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "action", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
+
+Adds an event listener that will be triggered if the user has triggered a Device Action.
+For example, a device which supports the query *Turn on the light* would receive an
+object containing the semantics of the request.
+
+**Parameters:**
+
+▪ **event**: *"action"*
+
+The 'action' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the object containing the semantics of the request as param.
+
+▸ (`action`: unknown): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`action` | unknown |
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **on**(`event`: "actionongoogle", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
+
+Adds an event listener that will be triggered with the original response from an
+Action-on-Google agent to Google server. To be able to receive this data, the conversation
+has to be in debug mode, the request maker has to own the AoG project and the AoG project
+has to be in preview mode.
+
+**Parameters:**
+
+▪ **event**: *"actionongoogle"*
+
+The 'actionongoogle' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the original response from the AoG agent as param.
+
+▸ (`actionOnGoogle`: unknown): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`actionOnGoogle` | unknown |
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **on**(`event`: "audio", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when the Assistant sends an audio message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "audio" |  The 'audio' event. |
-| listener | `function` |  A callback that will receive the Assistant audio message as param. |
+▪ **event**: *"audio"*
 
-**Returns:** `this`
+The 'audio' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the Assistant audio message as param.
+
+▸ (`audio`: Buffer): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`audio` | Buffer |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "conversationend", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when the conversation with the Assistant ends.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "conversationend" |  The 'conversationend' event. |
-| listener | `function` |  A callback that will receive the latest Assistant response as param. |
+▪ **event**: *"conversationend"*
 
-**Returns:** `this`
+The 'conversationend' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the latest Assistant response as param.
+
+▸ (`latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "message", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when the Assistant sends a text message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "message" |  The 'message' event. |
-| listener | `function` |  A callback that will receive the Assistant text message as param. |
+▪ **event**: *"message"*
 
-**Returns:** `this`
+The 'message' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the Assistant text message as param.
+
+▸ (`text`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`text` | string |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "html", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when the Assistant sends HTML data.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "html" |  The 'html' event. |
-| listener | `function` |  A callback that will receive the HTML data as param. |
+▪ **event**: *"html"*
 
-**Returns:** `this`
+The 'html' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the HTML data as param.
+
+▸ (`html`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`html` | string |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "volume", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when the Assistant sends the new device volume level.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "volume" |  The 'volume' event. |
-| listener | `function` |  A callback that will receive the new device volume level as param. |
+▪ **event**: *"volume"*
 
-**Returns:** `this`
+The 'volume' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the new device volume level as param.
+
+▸ (`newVolume`: number): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`newVolume` | number |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "speechrecognition", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered with the Assistant speech recognition results.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "speechrecognition" |  The 'speechrecognition' event. |
-| listener | `function` |  A callback that will receive the Assistant speech recognition results as param. |
+▪ **event**: *"speechrecognition"*
 
-**Returns:** `this`
-The conversation.
+The 'speechrecognition' event.
 
-Adds an event listener that will be triggered when the Assistant detects the end of the user's speech utterance and expects no additional speech. Therefore, it will not process additional audio (although it may subsequently return additional results).
+▪ **listener**: *function*
 
-**Parameters:**
+A callback that will receive the Assistant speech recognition results as param.
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "utteranceend" |  The 'utteranceend' event. |
-| listener | `function` |  A callback that will receive the latest Assistant response as param. |
-
-**Returns:** `this`
-The conversation.
-
-Adds an event listener that will be triggered when the Assistant closes the connection, thus not sending any more data.
+▸ (`speechRecognitionResults`: [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[]): *void*
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "end" |  The 'end' event. |
-| listener | `function` |  A callback with no params. |
+Name | Type |
+------ | ------ |
+`speechRecognitionResults` | [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[] |
 
-**Returns:** `this`
+**Returns:** *this*
+
 The conversation.
 
-Adds an event listener that will be triggered when the connection with the Assistant is fully closed.
+▸ **on**(`event`: "utteranceend", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
+
+Adds an event listener that will be triggered when the Assistant detects the end of the user's
+speech utterance and expects no additional speech. Therefore, it will not process additional audio
+(although it may subsequently return additional results).
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "close" |  The 'end' event. |
-| listener | `function` |  A callback with no params. |
+▪ **event**: *"utteranceend"*
 
-**Returns:** `this`
+The 'utteranceend' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the latest Assistant response as param.
+
+▸ (`latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **on**(`event`: "end", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
+
+Adds an event listener that will be triggered when the Assistant closes the connection,
+thus not sending any more data.
+
+**Parameters:**
+
+▪ **event**: *"end"*
+
+The 'end' event.
+
+▪ **listener**: *function*
+
+A callback with no params.
+
+▸ (): *void*
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **on**(`event`: "close", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
+
+Adds an event listener that will be triggered when the connection with the Assistant is
+fully closed.
+
+**Parameters:**
+
+▪ **event**: *"close"*
+
+The 'end' event.
+
+▪ **listener**: *function*
+
+A callback with no params.
+
+▸ (): *void*
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **on**(`event`: "error", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
 
 Adds an event listener that will be triggered when any type of error occurs.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "error" |  The 'error' event. |
-| listener | `function` |  A callback that will receive the error as param. |
+▪ **event**: *"error"*
 
-**Returns:** `this`
-The conversation.
+The 'error' event.
 
-___
-<a id="once"></a>
+▪ **listener**: *function*
 
-###  once
+A callback that will receive the error as param.
 
-▸ **once**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
-
-▸ **once**(event: *"data"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"action"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"actionongoogle"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"audio"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"conversationend"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"message"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"html"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"volume"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"speechrecognition"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"utteranceend"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"end"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"close"*, listener: *`function`*): `this`
-
-▸ **once**(event: *"error"*, listener: *`function`*): `this`
+▸ (`error`: Error): *void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+Name | Type |
+------ | ------ |
+`error` | Error |
 
-**Returns:** `this`
+**Returns:** *this*
+
+The conversation.
+
+___
+
+###  once
+
+▸ **once**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+**Parameters:**
+
+▪ **event**: *string | symbol*
+
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+▸ **once**(`event`: "data", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when the Assistant sends any type of data.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "data" |  The 'data' event. |
-| listener | `function` |  A callback that will receive the Assistant data as param. |
+▪ **event**: *"data"*
 
-**Returns:** `this`
-The conversation.
+The 'data' event.
 
-Adds a one time event listener that will be triggered if the user has triggered a Device Action. For example, a device which supports the query _Turn on the light_ would receive an object containing the semantics of the request.
+▪ **listener**: *function*
 
-**Parameters:**
+A callback that will receive the Assistant data as param.
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "action" |  The 'action' event. |
-| listener | `function` |  A callback that will receive the object containing the semantics of the request as param. |
-
-**Returns:** `this`
-The conversation.
-
-Adds a one time event listener that will be triggered with the original response from an Action-on-Google agent to Google server. To be able to receive this data, the conversation has to be in debug mode, the request maker has to own the AoG project and the AoG project has to be in preview mode.
+▸ (`data`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "actionongoogle" |  The 'actionongoogle' event. |
-| listener | `function` |  A callback that will receive the original response from the AoG agent as param. |
+Name | Type |
+------ | ------ |
+`data` | [AssistantResponse](../interfaces/assistantresponse.md) |
 
-**Returns:** `this`
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "action", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+Adds a one time event listener that will be triggered if the user has triggered a Device Action.
+For example, a device which supports the query *Turn on the light* would receive an
+object containing the semantics of the request.
+
+**Parameters:**
+
+▪ **event**: *"action"*
+
+The 'action' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the object containing the semantics of the request as param.
+
+▸ (`action`: unknown): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`action` | unknown |
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **once**(`event`: "actionongoogle", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+Adds a one time event listener that will be triggered with the original response from an
+Action-on-Google agent to Google server. To be able to receive this data, the conversation
+has to be in debug mode, the request maker has to own the AoG project and the AoG project
+has to be in preview mode.
+
+**Parameters:**
+
+▪ **event**: *"actionongoogle"*
+
+The 'actionongoogle' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the original response from the AoG agent as param.
+
+▸ (`actionOnGoogle`: unknown): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`actionOnGoogle` | unknown |
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **once**(`event`: "audio", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when the Assistant sends an audio message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "audio" |  The 'audio' event. |
-| listener | `function` |  A callback that will receive the Assistant audio message as param. |
+▪ **event**: *"audio"*
 
-**Returns:** `this`
+The 'audio' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the Assistant audio message as param.
+
+▸ (`audio`: Buffer): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`audio` | Buffer |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "conversationend", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when the conversation with the Assistant ends.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "conversationend" |  The 'conversationend' event. |
-| listener | `function` |  A callback that will receive the latest Assistant response as param. |
+▪ **event**: *"conversationend"*
 
-**Returns:** `this`
+The 'conversationend' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the latest Assistant response as param.
+
+▸ (`latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "message", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when the Assistant sends a text message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "message" |  The 'message' event. |
-| listener | `function` |  A callback that will receive the Assistant text message as param. |
+▪ **event**: *"message"*
 
-**Returns:** `this`
+The 'message' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the Assistant text message as param.
+
+▸ (`text`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`text` | string |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "html", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when the Assistant sends HTML data.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "html" |  The 'html' event. |
-| listener | `function` |  A callback that will receive the HTML data as param. |
+▪ **event**: *"html"*
 
-**Returns:** `this`
+The 'html' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the HTML data as param.
+
+▸ (`html`: string): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`html` | string |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "volume", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when the Assistant sends the new device volume level.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "volume" |  The 'volume' event. |
-| listener | `function` |  A callback that will receive the new device volume level as param. |
+▪ **event**: *"volume"*
 
-**Returns:** `this`
+The 'volume' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the new device volume level as param.
+
+▸ (`newVolume`: number): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`newVolume` | number |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "speechrecognition", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered with the Assistant speech recognition results.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "speechrecognition" |  The 'speechrecognition' event. |
-| listener | `function` |  A callback that will receive the Assistant speech recognition results as param. |
+▪ **event**: *"speechrecognition"*
 
-**Returns:** `this`
-The conversation.
+The 'speechrecognition' event.
 
-Adds a one time event listener that will be triggered when the Assistant detects the end of the user's speech utterance and expects no additional speech. Therefore, it will not process additional audio (although it may subsequently return additional results).
+▪ **listener**: *function*
 
-**Parameters:**
+A callback that will receive the Assistant speech recognition results as param.
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "utteranceend" |  The 'utteranceend' event. |
-| listener | `function` |  A callback that will receive the latest Assistant response as param. |
-
-**Returns:** `this`
-The conversation.
-
-Adds a one time event listener that will be triggered when the Assistant closes the connection, thus not sending any more data.
+▸ (`speechRecognitionResults`: [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[]): *void*
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "end" |  The 'end' event. |
-| listener | `function` |  A callback with no params. |
+Name | Type |
+------ | ------ |
+`speechRecognitionResults` | [AssistantSpeechRecognitionResult](../interfaces/assistantspeechrecognitionresult.md)[] |
 
-**Returns:** `this`
+**Returns:** *this*
+
 The conversation.
 
-Adds a one time event listener that will be triggered when the connection with the Assistant is fully closed.
+▸ **once**(`event`: "utteranceend", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+Adds a one time event listener that will be triggered when the Assistant detects the end of the user's
+speech utterance and expects no additional speech. Therefore, it will not process additional audio
+(although it may subsequently return additional results).
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "close" |  The 'end' event. |
-| listener | `function` |  A callback with no params. |
+▪ **event**: *"utteranceend"*
 
-**Returns:** `this`
+The 'utteranceend' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the latest Assistant response as param.
+
+▸ (`latestData`: [AssistantResponse](../interfaces/assistantresponse.md)): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`latestData` | [AssistantResponse](../interfaces/assistantresponse.md) |
+
+**Returns:** *this*
+
 The conversation.
+
+▸ **once**(`event`: "end", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+Adds a one time event listener that will be triggered when the Assistant closes the connection,
+thus not sending any more data.
+
+**Parameters:**
+
+▪ **event**: *"end"*
+
+The 'end' event.
+
+▪ **listener**: *function*
+
+A callback with no params.
+
+▸ (): *void*
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **once**(`event`: "close", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+Adds a one time event listener that will be triggered when the connection with the Assistant is
+fully closed.
+
+**Parameters:**
+
+▪ **event**: *"close"*
+
+The 'end' event.
+
+▪ **listener**: *function*
+
+A callback with no params.
+
+▸ (): *void*
+
+**Returns:** *this*
+
+The conversation.
+
+▸ **once**(`event`: "error", `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
 
 Adds a one time event listener that will be triggered when any type of error occurs.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| event | "error" |  The 'error' event. |
-| listener | `function` |  A callback that will receive the error as param. |
+▪ **event**: *"error"*
 
-**Returns:** `this`
+The 'error' event.
+
+▪ **listener**: *function*
+
+A callback that will receive the error as param.
+
+▸ (`error`: Error): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`error` | Error |
+
+**Returns:** *this*
+
 The conversation.
 
 ___
-<a id="prependlistener"></a>
 
 ###  prependListener
 
-▸ **prependListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **prependListener**(`event`: string | symbol, `listener`: function): *this*
 
-▸ **prependListener**(event: *[ConversationEvent](../#conversationevent)*, listener: *`function`*): `this`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
-
-**Returns:** `this`
+*Inherited from [Conversation](conversation.md).[prependListener](conversation.md#prependlistener)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | [ConversationEvent](../#conversationevent) |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+▸ **prependListener**(`event`: [ConversationEvent](../globals.md#conversationevent), `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[prependListener](conversation.md#prependlistener)*
+
+**Parameters:**
+
+▪ **event**: *[ConversationEvent](../globals.md#conversationevent)*
+
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="prependoncelistener"></a>
 
 ###  prependOnceListener
 
-▸ **prependOnceListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **prependOnceListener**(`event`: string | symbol, `listener`: function): *this*
 
-▸ **prependOnceListener**(event: *[ConversationEvent](../#conversationevent)*, listener: *`function`*): `this`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
-
-**Returns:** `this`
+*Inherited from [Conversation](conversation.md).[prependOnceListener](conversation.md#prependoncelistener)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | [ConversationEvent](../#conversationevent) |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+▸ **prependOnceListener**(`event`: [ConversationEvent](../globals.md#conversationevent), `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[prependOnceListener](conversation.md#prependoncelistener)*
+
+**Parameters:**
+
+▪ **event**: *[ConversationEvent](../globals.md#conversationevent)*
+
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="rawlisteners"></a>
 
 ###  rawListeners
 
-▸ **rawListeners**(event: *`string` \| `symbol`*): `Function`[]
+▸ **rawListeners**(`event`: string | symbol): *Function[]*
 
-▸ **rawListeners**(event: *[ConversationEvent](../#conversationevent)*): `Array`<`function`>
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-
-**Returns:** `Function`[]
+*Inherited from [Conversation](conversation.md).[rawListeners](conversation.md#rawlisteners)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | [ConversationEvent](../#conversationevent) |
+Name | Type |
+------ | ------ |
+`event` | string &#124; symbol |
 
-**Returns:** `Array`<`function`>
+**Returns:** *Function[]*
+
+▸ **rawListeners**(`event`: [ConversationEvent](../globals.md#conversationevent)): *Array‹function›*
+
+*Inherited from [Conversation](conversation.md).[rawListeners](conversation.md#rawlisteners)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event` | [ConversationEvent](../globals.md#conversationevent) |
+
+**Returns:** *Array‹function›*
 
 ___
-<a id="removealllisteners"></a>
 
 ###  removeAllListeners
 
-▸ **removeAllListeners**(event?: *`string` \| `symbol`*): `this`
+▸ **removeAllListeners**(`event?`: string | symbol): *this*
 
-▸ **removeAllListeners**(event?: *[ConversationEvent](../#conversationevent)*): `this`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| `Optional` event | `string` \| `symbol` |
-
-**Returns:** `this`
+*Inherited from [Conversation](conversation.md).[removeAllListeners](conversation.md#removealllisteners)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| `Optional` event | [ConversationEvent](../#conversationevent) |
+Name | Type |
+------ | ------ |
+`event?` | string &#124; symbol |
 
-**Returns:** `this`
+**Returns:** *this*
+
+▸ **removeAllListeners**(`event?`: [ConversationEvent](../globals.md#conversationevent)): *this*
+
+*Inherited from [Conversation](conversation.md).[removeAllListeners](conversation.md#removealllisteners)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`event?` | [ConversationEvent](../globals.md#conversationevent) |
+
+**Returns:** *this*
 
 ___
-<a id="removelistener"></a>
 
 ###  removeListener
 
-▸ **removeListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **removeListener**(`event`: string | symbol, `listener`: function): *this*
 
-▸ **removeListener**(event: *[ConversationEvent](../#conversationevent)*, listener: *`function`*): `this`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
-
-**Returns:** `this`
+*Inherited from [Conversation](conversation.md).[removeListener](conversation.md#removelistener)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | [ConversationEvent](../#conversationevent) |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
+
+▸ **removeListener**(`event`: [ConversationEvent](../globals.md#conversationevent), `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[removeListener](conversation.md#removelistener)*
+
+**Parameters:**
+
+▪ **event**: *[ConversationEvent](../globals.md#conversationevent)*
+
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="sendrawrequest"></a>
 
 ###  sendRawRequest
 
-▸ **sendRawRequest**(rawRequest: *[AssistRequest](../#assistrequest)*): `boolean`
+▸ **sendRawRequest**(`rawRequest`: [AssistRequest](../globals.md#assistrequest)): *boolean*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| rawRequest | [AssistRequest](../#assistrequest) |
+Name | Type |
+------ | ------ |
+`rawRequest` | [AssistRequest](../globals.md#assistrequest) |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
 ___
-<a id="sendrequest"></a>
 
 ###  sendRequest
 
-▸ **sendRequest**(request: *[AssistantRequest](../#assistantrequest)*): `boolean`
+▸ **sendRequest**(`request`: [AssistantRequest](../globals.md#assistantrequest)): *boolean*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| request | [AssistantRequest](../#assistantrequest) |
+Name | Type |
+------ | ------ |
+`request` | [AssistantRequest](../globals.md#assistantrequest) |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
 ___
-<a id="setmaxlisteners"></a>
 
 ###  setMaxListeners
 
-▸ **setMaxListeners**(n: *`number`*): `this`
+▸ **setMaxListeners**(`n`: number): *this*
 
-▸ **setMaxListeners**(n: *`number`*): `this`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `number` |
-
-**Returns:** `this`
+*Inherited from [Conversation](conversation.md).[setMaxListeners](conversation.md#setmaxlisteners)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| n | `number` |
+Name | Type |
+------ | ------ |
+`n` | number |
 
-**Returns:** `this`
+**Returns:** *this*
 
-___
-<a id="listenercount-1"></a>
+▸ **setMaxListeners**(`n`: number): *this*
 
-### `<Static>` listenerCount
-
-▸ **listenerCount**(emitter: *`EventEmitter`*, event: *`string` \| `symbol`*): `number`
-
-*__deprecated__*: since v4.0.0
+*Inherited from [Conversation](conversation.md).[setMaxListeners](conversation.md#setmaxlisteners)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| emitter | `EventEmitter` |
-| event | `string` \| `symbol` |
+Name | Type |
+------ | ------ |
+`n` | number |
 
-**Returns:** `number`
+**Returns:** *this*
 
 ___
 
+### `Static` listenerCount
+
+▸ **listenerCount**(`emitter`: EventEmitter, `event`: string | symbol): *number*
+
+*Inherited from [Conversation](conversation.md).[listenerCount](conversation.md#static-listenercount)*
+
+**`deprecated`** since v4.0.0
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`emitter` | EventEmitter |
+`event` | string &#124; symbol |
+
+**Returns:** *number*

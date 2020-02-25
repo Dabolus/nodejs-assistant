@@ -1,4 +1,4 @@
-[Assistant SDK for Node.js](../README.md) > [ScreenMode](../enums/screenmode.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [ScreenMode](screenmode.md)
 
 # Enumeration: ScreenMode
 
@@ -10,29 +10,20 @@
 * [PLAYING](screenmode.md#playing)
 * [SCREEN_MODE_UNSPECIFIED](screenmode.md#screen_mode_unspecified)
 
----
-
 ## Enumeration members
-
-<a id="off"></a>
 
 ###  OFF
 
-**OFF**:  = 1
+• **OFF**: = 1
 
 ___
-<a id="playing"></a>
 
 ###  PLAYING
 
-**PLAYING**:  = 3
+• **PLAYING**: = 3
 
 ___
-<a id="screen_mode_unspecified"></a>
 
 ###  SCREEN_MODE_UNSPECIFIED
 
-**SCREEN_MODE_UNSPECIFIED**:  = 0
-
-___
-
+• **SCREEN_MODE_UNSPECIFIED**: = 0

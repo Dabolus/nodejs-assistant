@@ -1,26 +1,19 @@
-[Assistant SDK for Node.js](../README.md) > [ScreenOutConfig](../interfaces/screenoutconfig.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [ScreenOutConfig](screenoutconfig.md)
 
 # Interface: ScreenOutConfig
 
 ## Hierarchy
 
-**ScreenOutConfig**
+* **ScreenOutConfig**
 
 ## Index
 
 ### Properties
 
-* [screenMode](screenoutconfig.md#screenmode)
-
----
+* [screenMode](screenoutconfig.md#optional-screenmode)
 
 ## Properties
 
-<a id="screenmode"></a>
+### `Optional` screenMode
 
-### `<Optional>` screenMode
-
-**● screenMode**: *[ScreenMode](../enums/screenmode.md)*
-
-___
-
+• **screenMode**? : *[ScreenMode](../enums/screenmode.md)*

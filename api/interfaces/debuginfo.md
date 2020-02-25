@@ -1,10 +1,10 @@
-[Assistant SDK for Node.js](../README.md) > [DebugInfo](../interfaces/debuginfo.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [DebugInfo](debuginfo.md)
 
 # Interface: DebugInfo
 
 ## Hierarchy
 
-**DebugInfo**
+* **DebugInfo**
 
 ## Index
 
@@ -12,15 +12,8 @@
 
 * [aogAgentToAssistantJson](debuginfo.md#aogagenttoassistantjson)
 
----
-
 ## Properties
-
-<a id="aogagenttoassistantjson"></a>
 
 ###  aogAgentToAssistantJson
 
-**● aogAgentToAssistantJson**: *`string`*
-
-___
-
+• **aogAgentToAssistantJson**: *string*

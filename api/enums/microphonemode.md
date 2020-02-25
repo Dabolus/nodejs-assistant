@@ -1,4 +1,4 @@
-[Assistant SDK for Node.js](../README.md) > [MicrophoneMode](../enums/microphonemode.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [MicrophoneMode](microphonemode.md)
 
 # Enumeration: MicrophoneMode
 
@@ -10,29 +10,20 @@
 * [DIALOG_FOLLOW_ON](microphonemode.md#dialog_follow_on)
 * [MICROPHONE_MODE_UNSPECIFIED](microphonemode.md#microphone_mode_unspecified)
 
----
-
 ## Enumeration members
-
-<a id="close_microphone"></a>
 
 ###  CLOSE_MICROPHONE
 
-**CLOSE_MICROPHONE**:  = 1
+• **CLOSE_MICROPHONE**: = 1
 
 ___
-<a id="dialog_follow_on"></a>
 
 ###  DIALOG_FOLLOW_ON
 
-**DIALOG_FOLLOW_ON**:  = 2
+• **DIALOG_FOLLOW_ON**: = 2
 
 ___
-<a id="microphone_mode_unspecified"></a>
 
 ###  MICROPHONE_MODE_UNSPECIFIED
 
-**MICROPHONE_MODE_UNSPECIFIED**:  = 0
-
-___
-
+• **MICROPHONE_MODE_UNSPECIFIED**: = 0

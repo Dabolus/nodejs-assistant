@@ -1,20 +1,18 @@
-[Assistant SDK for Node.js](../README.md) > [TextConversation](../classes/textconversation.md)
+[Assistant SDK for Node.js](../README.md) › [Globals](../globals.md) › [TextConversation](textconversation.md)
 
 # Class: TextConversation
 
 Represents a text conversation with the Assistant.
 
-*__author__*: Giorgio Garasto [giorgio@garasto.it](mailto:giorgio@garasto.it)
+**`author`** Giorgio Garasto <giorgio@garasto.it>
 
-*__license__*: MIT
-
-*__class__*: 
+**`license`** MIT
 
 ## Hierarchy
 
-↳  [Conversation](conversation.md)
+  ↳ [Conversation](conversation.md)
 
-**↳ TextConversation**
+  ↳ **TextConversation**
 
 ## Index
 
@@ -24,11 +22,10 @@ Represents a text conversation with the Assistant.
 
 ### Properties
 
-* [_audioOutConfig](textconversation.md#_audiooutconfig)
-* [_deviceId](textconversation.md#_deviceid)
-* [_deviceModelId](textconversation.md#_devicemodelid)
+* [_audioOutConfig](textconversation.md#private-_audiooutconfig)
+* [_deviceId](textconversation.md#protected-_deviceid)
+* [_deviceModelId](textconversation.md#protected-_devicemodelid)
 * [locale](textconversation.md#locale)
-* [defaultMaxListeners](textconversation.md#defaultmaxlisteners)
 
 ### Methods
 
@@ -51,378 +48,440 @@ Represents a text conversation with the Assistant.
 * [sendRawRequest](textconversation.md#sendrawrequest)
 * [sendRequest](textconversation.md#sendrequest)
 * [setMaxListeners](textconversation.md#setmaxlisteners)
-* [listenerCount](textconversation.md#listenercount-1)
-
----
 
 ## Constructors
 
-<a id="constructor"></a>
-
 ###  constructor
 
-⊕ **new TextConversation**(_stream: *`ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)>*, _deviceId: *`string`*, _deviceModelId: *`string`*, locale: *[AssistantLanguage](../enums/assistantlanguage.md)*, _audioOutConfig?: *[AudioOutConfig](../interfaces/audiooutconfig.md)*): [TextConversation](textconversation.md)
+\+ **new TextConversation**(`_stream`: ClientDuplexStream‹[AssistRequest](../globals.md#assistrequest), [AssistResponse](../interfaces/assistresponse.md)›, `_deviceId`: string, `_deviceModelId`: string, `locale`: [AssistantLanguage](../enums/assistantlanguage.md), `_audioOutConfig`: [AudioOutConfig](../interfaces/audiooutconfig.md)): *[TextConversation](textconversation.md)*
+
+*Overrides [Conversation](conversation.md).[constructor](conversation.md#constructor)*
 
 Creates a new audio conversation.
 
-*__constructor__*: 
-
 **Parameters:**
 
-| Name | Type | Default value | Description |
-| ------ | ------ | ------ | ------ |
-| _stream | `ClientDuplexStream`<[AssistRequest](../#assistrequest), [AssistResponse](../interfaces/assistresponse.md)> | - |  The duplex stream to use to communicate with the Assistant SDK. |
-| _deviceId | `string` | - |  The device ID to use during this conversation. |
-| _deviceModelId | `string` | - |  The device model ID to use during this conversation. |
-| locale | [AssistantLanguage](../enums/assistantlanguage.md) | - |  The locale to use during this conversation. |
-| `Default value` _audioOutConfig | [AudioOutConfig](../interfaces/audiooutconfig.md) |  {encoding: AudioOutEncoding.LINEAR16,sampleRateHertz: 16000,volumePercentage: 100,} |  The audio output configuration. |
+Name | Type | Default | Description |
+------ | ------ | ------ | ------ |
+`_stream` | ClientDuplexStream‹[AssistRequest](../globals.md#assistrequest), [AssistResponse](../interfaces/assistresponse.md)› | - | The duplex stream to use to communicate with the Assistant SDK. |
+`_deviceId` | string | - | The device ID to use during this conversation. |
+`_deviceModelId` | string | - | The device model ID to use during this conversation. |
+`locale` | [AssistantLanguage](../enums/assistantlanguage.md) | - | The locale to use during this conversation. |
+`_audioOutConfig` | [AudioOutConfig](../interfaces/audiooutconfig.md) | {
+      encoding: AudioOutEncoding.LINEAR16,
+      sampleRateHertz: 16000,
+      volumePercentage: 100,
+    } | The audio output configuration. |
 
-**Returns:** [TextConversation](textconversation.md)
-
-___
+**Returns:** *[TextConversation](textconversation.md)*
 
 ## Properties
 
-<a id="_audiooutconfig"></a>
+### `Private` _audioOutConfig
 
-### `<Private>` _audioOutConfig
-
-**● _audioOutConfig**: *[AudioOutConfig](../interfaces/audiooutconfig.md)*
+• **_audioOutConfig**: *[AudioOutConfig](../interfaces/audiooutconfig.md)*
 
 The audio output configuration.
 
 ___
-<a id="_deviceid"></a>
 
-### `<Protected>` _deviceId
+### `Protected` _deviceId
 
-**● _deviceId**: *`string`*
+• **_deviceId**: *string*
+
+*Inherited from [Conversation](conversation.md).[_deviceId](conversation.md#protected-_deviceid)*
 
 The device ID to use during this conversation.
 
 ___
-<a id="_devicemodelid"></a>
 
-### `<Protected>` _deviceModelId
+### `Protected` _deviceModelId
 
-**● _deviceModelId**: *`string`*
+• **_deviceModelId**: *string*
+
+*Inherited from [Conversation](conversation.md).[_deviceModelId](conversation.md#protected-_devicemodelid)*
 
 The device model ID to use during this conversation.
 
 ___
-<a id="locale"></a>
 
 ###  locale
 
-**● locale**: *[AssistantLanguage](../enums/assistantlanguage.md)*
+• **locale**: *[AssistantLanguage](../enums/assistantlanguage.md)*
+
+*Inherited from [Conversation](conversation.md).[locale](conversation.md#locale)*
 
 The locale to use during this conversation.
 
-___
-<a id="defaultmaxlisteners"></a>
-
-### `<Static>` defaultMaxListeners
-
-**● defaultMaxListeners**: *`number`*
-
-___
-
 ## Methods
-
-<a id="addlistener"></a>
 
 ###  addListener
 
-▸ **addListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **addListener**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[addListener](conversation.md#addlistener)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="emit"></a>
 
 ###  emit
 
-▸ **emit**(event: *`string` \| `symbol`*, ...args: *`any`[]*): `boolean`
+▸ **emit**(`event`: string | symbol, ...`args`: any[]): *boolean*
+
+*Inherited from [Conversation](conversation.md).[emit](conversation.md#emit)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| `Rest` args | `any`[] |
+Name | Type |
+------ | ------ |
+`event` | string &#124; symbol |
+`...args` | any[] |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
 ___
-<a id="end"></a>
 
 ###  end
 
-▸ **end**(): `Promise`<`void`>
+▸ **end**(): *Promise‹void›*
 
-**Returns:** `Promise`<`void`>
+*Inherited from [Conversation](conversation.md).[end](conversation.md#end)*
+
+**Returns:** *Promise‹void›*
 
 ___
-<a id="eventnames"></a>
 
 ###  eventNames
 
-▸ **eventNames**(): `Array`<`string` \| `symbol`>
+▸ **eventNames**(): *Array‹string | symbol›*
 
-**Returns:** `Array`<`string` \| `symbol`>
+*Inherited from [Conversation](conversation.md).[eventNames](conversation.md#eventnames)*
+
+*Overrides void*
+
+**Returns:** *Array‹string | symbol›*
 
 ___
-<a id="getmaxlisteners"></a>
 
 ###  getMaxListeners
 
-▸ **getMaxListeners**(): `number`
+▸ **getMaxListeners**(): *number*
 
-**Returns:** `number`
+*Inherited from [Conversation](conversation.md).[getMaxListeners](conversation.md#getmaxlisteners)*
+
+*Overrides void*
+
+**Returns:** *number*
 
 ___
-<a id="listenercount"></a>
 
 ###  listenerCount
 
-▸ **listenerCount**(type: *`string` \| `symbol`*): `number`
+▸ **listenerCount**(`type`: string | symbol): *number*
+
+*Inherited from [Conversation](conversation.md).[listenerCount](conversation.md#listenercount)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| type | `string` \| `symbol` |
+Name | Type |
+------ | ------ |
+`type` | string &#124; symbol |
 
-**Returns:** `number`
+**Returns:** *number*
 
 ___
-<a id="listeners"></a>
 
 ###  listeners
 
-▸ **listeners**(event: *`string` \| `symbol`*): `Function`[]
+▸ **listeners**(`event`: string | symbol): *Function[]*
+
+*Inherited from [Conversation](conversation.md).[listeners](conversation.md#listeners)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
+Name | Type |
+------ | ------ |
+`event` | string &#124; symbol |
 
-**Returns:** `Function`[]
+**Returns:** *Function[]*
 
 ___
-<a id="off"></a>
 
 ###  off
 
-▸ **off**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **off**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[off](conversation.md#off)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="on"></a>
 
 ###  on
 
-▸ **on**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **on**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[on](conversation.md#on)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="once"></a>
 
 ###  once
 
-▸ **once**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **once**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[once](conversation.md#once)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="prependlistener"></a>
 
 ###  prependListener
 
-▸ **prependListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **prependListener**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[prependListener](conversation.md#prependlistener)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="prependoncelistener"></a>
 
 ###  prependOnceListener
 
-▸ **prependOnceListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **prependOnceListener**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[prependOnceListener](conversation.md#prependoncelistener)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="rawlisteners"></a>
 
 ###  rawListeners
 
-▸ **rawListeners**(event: *`string` \| `symbol`*): `Function`[]
+▸ **rawListeners**(`event`: string | symbol): *Function[]*
+
+*Inherited from [Conversation](conversation.md).[rawListeners](conversation.md#rawlisteners)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
+Name | Type |
+------ | ------ |
+`event` | string &#124; symbol |
 
-**Returns:** `Function`[]
+**Returns:** *Function[]*
 
 ___
-<a id="removealllisteners"></a>
 
 ###  removeAllListeners
 
-▸ **removeAllListeners**(event?: *`string` \| `symbol`*): `this`
+▸ **removeAllListeners**(`event?`: string | symbol): *this*
+
+*Inherited from [Conversation](conversation.md).[removeAllListeners](conversation.md#removealllisteners)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| `Optional` event | `string` \| `symbol` |
+Name | Type |
+------ | ------ |
+`event?` | string &#124; symbol |
 
-**Returns:** `this`
+**Returns:** *this*
 
 ___
-<a id="removelistener"></a>
 
 ###  removeListener
 
-▸ **removeListener**(event: *`string` \| `symbol`*, listener: *`function`*): `this`
+▸ **removeListener**(`event`: string | symbol, `listener`: function): *this*
+
+*Inherited from [Conversation](conversation.md).[removeListener](conversation.md#removelistener)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| event | `string` \| `symbol` |
-| listener | `function` |
+▪ **event**: *string | symbol*
 
-**Returns:** `this`
+▪ **listener**: *function*
+
+▸ (...`args`: any[]): *void*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`...args` | any[] |
+
+**Returns:** *this*
 
 ___
-<a id="send"></a>
 
 ###  send
 
-▸ **send**(text: *`string`*): `boolean`
+▸ **send**(`text`: string): *boolean*
 
 Sends a text query to the Assistant.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| text | `string` |  The text query to send to the Assistant. |
+Name | Type | Description |
+------ | ------ | ------ |
+`text` | string | The text query to send to the Assistant. |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
+
 A boolean that tells whether the text query was successfully sent or not.
 
 ___
-<a id="sendrawrequest"></a>
 
 ###  sendRawRequest
 
-▸ **sendRawRequest**(rawRequest: *[AssistRequest](../#assistrequest)*): `boolean`
+▸ **sendRawRequest**(`rawRequest`: [AssistRequest](../globals.md#assistrequest)): *boolean*
+
+*Inherited from [Conversation](conversation.md).[sendRawRequest](conversation.md#sendrawrequest)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| rawRequest | [AssistRequest](../#assistrequest) |
+Name | Type |
+------ | ------ |
+`rawRequest` | [AssistRequest](../globals.md#assistrequest) |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
 ___
-<a id="sendrequest"></a>
 
 ###  sendRequest
 
-▸ **sendRequest**(request: *[AssistantRequest](../#assistantrequest)*): `boolean`
+▸ **sendRequest**(`request`: [AssistantRequest](../globals.md#assistantrequest)): *boolean*
+
+*Inherited from [Conversation](conversation.md).[sendRequest](conversation.md#sendrequest)*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| request | [AssistantRequest](../#assistantrequest) |
+Name | Type |
+------ | ------ |
+`request` | [AssistantRequest](../globals.md#assistantrequest) |
 
-**Returns:** `boolean`
+**Returns:** *boolean*
 
 ___
-<a id="setmaxlisteners"></a>
 
 ###  setMaxListeners
 
-▸ **setMaxListeners**(n: *`number`*): `this`
+▸ **setMaxListeners**(`n`: number): *this*
+
+*Inherited from [Conversation](conversation.md).[setMaxListeners](conversation.md#setmaxlisteners)*
+
+*Overrides void*
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| n | `number` |
+Name | Type |
+------ | ------ |
+`n` | number |
 
-**Returns:** `this`
-
-___
-<a id="listenercount-1"></a>
-
-### `<Static>` listenerCount
-
-▸ **listenerCount**(emitter: *`EventEmitter`*, event: *`string` \| `symbol`*): `number`
-
-*__deprecated__*: since v4.0.0
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| emitter | `EventEmitter` |
-| event | `string` \| `symbol` |
-
-**Returns:** `number`
-
-___
-
+**Returns:** *this*

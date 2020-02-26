@@ -6,6 +6,7 @@ import {
   AssistantOptions,
   AssistantResponse,
   mapAssistResponseToAssistantResponse,
+  mapAssistantRequestToAssistRequest,
 } from './common';
 import {
   AssistResponse,
@@ -185,28 +186,26 @@ export class Assistant {
         resolve(response);
       });
       conversation.on('error', reject);
-      conversation.write({
-        config: {
+      conversation.write(
+        mapAssistantRequestToAssistRequest({
+          locale: this.locale,
+          deviceId: this.deviceId,
+          deviceModelId: this.deviceModelId,
           audioOutConfig,
-          deviceConfig: {
-            deviceId: this.deviceId,
-            deviceModelId: this.deviceModelId,
-          },
-          dialogStateIn: {
-            conversationState,
-            languageCode: this.locale,
-          },
+          conversationState,
           ...(typeof textOrAudio === 'string'
             ? {
-                textQuery: textOrAudio,
+                text: textOrAudio,
               }
             : {
                 audioInConfig,
               }),
-        },
-      });
+        }),
+      );
       if (typeof textOrAudio !== 'string') {
-        conversation.write({ audioIn: textOrAudio });
+        conversation.write(
+          mapAssistantRequestToAssistRequest({ audio: textOrAudio }),
+        );
       }
       conversation.end();
     });

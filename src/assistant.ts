@@ -193,6 +193,7 @@ export class Assistant {
           deviceModelId: this.deviceModelId,
           audioOutConfig,
           conversationState,
+          html: true,
           ...(typeof textOrAudio === 'string'
             ? {
                 text: textOrAudio,

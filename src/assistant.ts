@@ -1,5 +1,5 @@
 import { JWTInput, UserRefreshClient } from 'google-auth-library';
-import * as grpc from 'grpc';
+import * as grpc from '@grpc/grpc-js';
 import { AudioConversation } from './audio-conversation';
 import {
   AssistantLanguage,

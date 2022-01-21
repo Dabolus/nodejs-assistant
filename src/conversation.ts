@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { ClientDuplexStream } from 'grpc';
+import { ClientDuplexStream } from '@grpc/grpc-js';
 import {
   AssistantLanguage,
   AssistantRequest,

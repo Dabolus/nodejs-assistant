@@ -1,4 +1,4 @@
-import { ClientDuplexStream } from 'grpc';
+import { ClientDuplexStream } from '@grpc/grpc-js';
 import { AssistantLanguage } from './common';
 import { Conversation } from './conversation';
 import {

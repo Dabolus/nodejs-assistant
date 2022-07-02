@@ -4,7 +4,7 @@ import {
   ChannelCredentials,
   ClientDuplexStream,
   loadPackageDefinition,
-} from 'grpc';
+} from '@grpc/grpc-js';
 
 // Service that implements the Google Assistant API.
 export declare class EmbeddedAssistant {

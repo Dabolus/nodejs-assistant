@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { ClientDuplexStream } from 'grpc';
+import { ClientDuplexStream } from '@grpc/grpc-js';
 import {
   AssistantLanguage,
   AssistantRequest,
@@ -56,6 +56,7 @@ export class Conversation extends EventEmitter {
 
   public end(): Promise<void> {
     return new Promise((resolve, reject) => {
+	  // @ts-ignore
       this._stream.end((err: Error) => {
         if (err) {
           reject(err);

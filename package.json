@@ -10,16 +10,16 @@
   "scripts": {
     "build": "rm -rf lib && rollup -c rollup.config.ts",
     "test": "jest",
-    "lint": "eslint --ext .ts --ext .js 'src/**/*.ts'",
+    "lint": "eslint --ext .ts --ext .js ./src/**/*.ts",
     "format": "npm run lint -- --fix",
     "generate-docs": "typedoc src --out api --mode file --name 'Assistant SDK for Node.js' --theme markdown --hideSources",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.6.7",
     "@grpc/proto-loader": "^0.5.3",
-    "google-auth-library": "^5.10.0",
-    "google-proto-files": "^1.1.2",
-    "grpc": "^1.24.2"
+    "google-auth-library": "^5.10.1",
+    "google-proto-files": "^1.1.2"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",

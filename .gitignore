@@ -6,3 +6,4 @@ dev/
 client_secret*.json
 credentials.json
 api/
+coverage/

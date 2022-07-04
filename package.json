@@ -13,7 +13,8 @@
     "lint": "eslint --ext .ts --ext .js ./src/**/*.ts",
     "format": "npm run lint -- --fix",
     "generate-docs": "typedoc src --out api --mode file --name 'Assistant SDK for Node.js' --theme markdown --hideSources",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+	"postinstall": "npm run build"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.6.7",
@@ -34,7 +35,7 @@
     "rollup": "^1.31.1",
     "rollup-plugin-typescript2": "^0.26.0",
     "ts-jest": "^25.2.1",
-    "typedoc": "^0.16.10",
+    "typedoc": "^0.16.11",
     "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "^3.8.2"
   },
